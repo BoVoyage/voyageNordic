@@ -10,7 +10,7 @@
 
 	<!-- Redirection vers une page jsp -->
 	<%
-		response.sendRedirect("etudiant/liste");
+		response.sendRedirect("offreVoyage/listeOffreVoyage");
 	%>
 </body>
 </html>
