@@ -1,14 +1,31 @@
 package fr.adaming.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="vehicules")
 public class Vehicule {
 	
 	
 	//****************************************************************************************
 	/**Les attributs de l'excursion*/
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVehicule;
 	private String categorieVehicule;
 	private String marqueVehicule;
 	private double prixVehicule;
+	
+	//transformation de l'association UML en JAVA
+	@OneToOne
+	@JoinColumn(name="voyage_id", referencedColumnName="idvoyage")
+	private OffreVoyage offreVoyage;
 
 	
 	//****************************************************************************************
