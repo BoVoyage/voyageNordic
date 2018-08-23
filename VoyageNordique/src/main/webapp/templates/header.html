@@ -1,0 +1,60 @@
+<nav class="navbar navbar-inverse text-center"
+	style="background-color: A DEFINIR; border-top: none">
+	<ul class="nav nav-pills center-pills"
+		style="background-color: A DEFINIR">
+		<li role="presentation"><a href="${pageContext.request.contextPath}/" style="color: A DEFINIR">Accueil</a></li>
+		<li role="presentation"><div class="dropdown"
+				style="background-color: #52527a; padding-top: 5px">
+				<button class="btn btn-default dropdown-toggle" type="button"
+					id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="true"
+					style="background-color: #52527a; color: #ffc61a">
+					Client <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"
+					style="background-color: #52527a; border: 2px solid black">
+					<li role="presentation"><a href="listeClient.jsp"
+						style="color: #ffc61a">Liste Clients</a></li>
+					<li role="presentation"><a href="addClient.jsp"
+						style="color: #ffc61a">Ajouter Client</a></li>
+					<li role="presentation"><a href="upClient.jsp"
+						style="color: #ffc61a">Modifier Client</a></li>
+					<li role="presentation"><a href="delClient.jsp"
+						style="color: #ffc61a">Supprimer Client</a></li>
+					<li role="presentation"><a href="rechercheClient.jsp"
+						style="color: #ffc61a">Rechercher Client</a></li>
+				</ul>
+			</div></li>
+
+		<li role="presentation"><div class="dropdown"
+				style="background-color: #52527a; padding-top: 5px">
+				<button class="btn btn-default dropdown-toggle" type="button"
+					id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="true"
+					style="background-color: #52527a; color: #ffc61a">
+					Comptes <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"
+					style="background-color: #52527a">
+					<li role="presentation"><a href="listeC.jsp"
+						style="color: #ffc61a">Liste Comptes</a></li>
+					<li role="presentation"><a href="addCC.jsp"
+						style="color: #ffc61a">Ajouter Compte</a></li>
+					<li role="presentation"><a href="delCC.jsp"
+						style="color: #ffc61a">Supprimer Compte</a></li>
+					<li role="presentation"><a href="upCC.jsp"
+						style="color: #ffc61a">Modifier Compte</a></li>
+					<li role="presentation"><a href="rechercherCC.jsp"
+						style="color: #ffc61a">Recherche Compte</a></li>
+					<li role="presentation"><a href="rechercheCCByCl.jsp"
+						style="color: #ffc61a">Recherche Compte par Client</a></li>
+					<li role="presentation"><a href="virementC.jsp"
+						style="color: #ffc61a">Virement</a></li>
+				</ul>
+			</div></li>
+		<li role="presentation"><a href="login.jsp"
+			style="color: #ffc61a">Login</a></li>
+		<li role="presentation"><a href="logout.jsp"
+			style="color: #ffc61a">Logout</a></li>
+	</ul>
+</nav>

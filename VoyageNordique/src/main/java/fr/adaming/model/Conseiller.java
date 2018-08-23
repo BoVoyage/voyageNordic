@@ -50,7 +50,7 @@ public class Conseiller implements Serializable{
 	 * Permet de créer l'association entre les rôles et les conseillers
 	 */
 	@ManyToMany(mappedBy="listeRoles")
-	private List<Conseiller> listeConseiller=new ArrayList<Conseiller>();
+	private List<Role> listeRoles = new ArrayList<Role>();
 	
 	// Constructeurs
 	/**

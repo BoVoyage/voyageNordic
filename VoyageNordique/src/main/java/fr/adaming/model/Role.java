@@ -41,7 +41,7 @@ public class Role implements Serializable{
 	 */
 	@ManyToMany
 	@JoinTable(name = "conseillers_roles", joinColumns = @JoinColumn(name = "roleId"), inverseJoinColumns = @JoinColumn(name = "conseillerId"))
-	private List<Role> listeRoles = new ArrayList<Role>();
+	private List<Conseiller> listeConseillers = new ArrayList<Conseiller>();
 
 	/**
 	 * Permet de créer l'association entre les rôles et les clients
