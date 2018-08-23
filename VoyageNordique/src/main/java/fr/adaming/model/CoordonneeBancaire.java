@@ -7,7 +7,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Embeddable
+@SuppressWarnings("serial")
+//@Embeddable
 public class CoordonneeBancaire implements Serializable {
 
 	// declaration des attributs

@@ -49,8 +49,8 @@ public class Client implements Serializable {
 	@OneToMany(mappedBy = "client")
 	private List<Commande> listeCommandes;
 
-	@Embedded
-	private CoordonneeBancaire carteBancaire;
+//	@Embedded
+//	private CoordonneeBancaire carteBancaire;
 
 	// ****************************************************************************************
 	/** Le constructeur vide du client */
@@ -161,4 +161,21 @@ public class Client implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<Commande> getListeCommandes() {
+		return listeCommandes;
+	}
+
+	public void setListeCommandes(List<Commande> listeCommandes) {
+		this.listeCommandes = listeCommandes;
+	}
+	
 }
