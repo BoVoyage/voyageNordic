@@ -51,9 +51,6 @@ public class OffreVoyage {
 	@OneToOne(mappedBy = "offreVoyage")
 	private Vehicule vehicule;
 
-	@OneToMany(mappedBy = "offrevoyage")
-	private List<LigneCommande> listeLignesCommandes;
-
 	// declaration des constructeurs
 	public OffreVoyage() {
 		super();

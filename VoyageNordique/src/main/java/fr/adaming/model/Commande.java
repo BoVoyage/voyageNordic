@@ -98,6 +98,14 @@ public class Commande implements Serializable {
 		this.client = client;
 	}
 
+	public List<LigneCommande> getListeCommandes() {
+		return listeCommandes;
+	}
+
+	public void setListeCommandes(List<LigneCommande> listeCommandes) {
+		this.listeCommandes = listeCommandes;
+	}
+
 	// toString
 	@Override
 	public String toString() {
