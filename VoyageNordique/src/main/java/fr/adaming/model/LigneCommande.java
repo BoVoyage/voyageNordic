@@ -29,6 +29,10 @@ public class LigneCommande implements Serializable {
 	@JoinColumn(name = "commande_id", referencedColumnName = "idcommande")
 	private Commande commande;
 
+	@ManyToOne
+	@JoinColumn(name = "voyage_id", referencedColumnName = "idVoyage")
+	private OffreVoyage offrevoyage;
+
 	// declaration des constructeurs
 	public LigneCommande(int idLigneCommande, int quantite, double prix) {
 		super();
