@@ -16,55 +16,62 @@
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 </head>
 <body>
+	<!-- Ajouter le menu avec include -->
+	<%@ include file="../../templates/header.html"%>
+
+	<br />
 
 	<form:form cssClass="form-horizontal" method="POST"	action="soumettreAjoutClient" modelAttribute="clientAjout" enctype = "multipart/form-data">
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="noClient">N° référence du Client</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="noClient"
-					path="noClient" />
+			<form:label cssClass="col-xs-2 control-label" path="noClient">Numero référence du Client</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="numero Client" path="noClient" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="nomClient">Nom Client</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="nomClient" path="nomClient" />
+			<form:label cssClass="col-xs-2 control-label" path="nomClient">Nom Client</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="nom Client" path="nomClient" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="prenomClient">Prenom Client</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="prenomClient" path="prenomClient" />
+			<form:label cssClass="col-xs-2 control-label" path="prenomClient">Prenom Client</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="prenom Client" path="prenomClient" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<form:label cssClass="col-xs-2 control-label" path="dn">Date de Naissance</form:label>
+			<div class="col-xs-3">
+				<form:input type="date" cssClass="form-control" placeholder="Date de Naissance du client" path="dn" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<form:label cssClass="col-xs-2 control-label" path="mail">Mail</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="mail Client" path="mail" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="mail">Mail</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="mail"
-					path="mail" />
+			<form:label cssClass="col-xs-2 control-label" path="mdp">Mot de passe</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="mot de passe du Client" path="mdp" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="mdp">Mot de passe</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="mdp"
-					path="mdp" />
+			<form:label cssClass="col-xs-2 control-label" path="tel">Telephone</form:label>
+			<div class="col-xs-3">
+				<form:input cssClass="form-control" placeholder="telephone du Client" path="tel" />
 			</div>
 		</div>
+		
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="tel">Telephone</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="tel" path="tel" />
+			<div class="col-xs-offset-2 col-xs-10">
+				<button type="submit" class="btn btn-default">Ajouter Client</button>
 			</div>
 		</div>
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="dn">Date de Naissance</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="dn" path="dn" />
-			</div>
-		</div>
-
-		<button type="submit" class="btn btn-default">Ajouter client</button>
 	</form:form>
 
 
