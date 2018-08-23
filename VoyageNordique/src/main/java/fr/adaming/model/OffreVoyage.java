@@ -2,13 +2,16 @@ package fr.adaming.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -37,6 +40,8 @@ public class OffreVoyage {
 	private String designation;
 	
 	//transformation des associations UML en JAVA
+	@ManyToOne
+	@JoinColumn(name="heberg_id", referencedColumnName="idhebergement")
 	private Hebergement hebergement;
 	@Embedded
 	private Vol vol;
@@ -52,7 +57,7 @@ public class OffreVoyage {
 
 	public OffreVoyage(String noVoyage, String pays, String ville, int quantite, boolean etat, byte[] imageDestination,
 			boolean promotion, String descriptionVoyage, double prixVoyage, double remiseVoyage,
-			String designation, Hebergement hebergement, Vol vol) {
+			String designation, Vol vol) {
 		super();
 		this.noVoyage = noVoyage;
 		this.pays = pays;
@@ -65,13 +70,12 @@ public class OffreVoyage {
 		this.prixVoyage = prixVoyage;
 		this.remiseVoyage = remiseVoyage;
 		this.designation = designation;
-		this.hebergement = hebergement;
 		this.vol = vol;
 	}
 
 	public OffreVoyage(int idVoyage, String noVoyage, String pays, String ville, int quantite, boolean etat,
 			byte[] imageDestination, boolean promotion, String descriptionVoyage, double prixVoyage,
-			double remiseVoyage, String designation, Hebergement hebergement, Vol vol) {
+			double remiseVoyage, String designation, Vol vol) {
 		super();
 		this.idVoyage = idVoyage;
 		this.noVoyage = noVoyage;
@@ -85,7 +89,6 @@ public class OffreVoyage {
 		this.prixVoyage = prixVoyage;
 		this.remiseVoyage = remiseVoyage;
 		this.designation = designation;
-		this.hebergement = hebergement;
 		this.vol = vol;
 	}
 

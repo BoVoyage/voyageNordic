@@ -1,10 +1,14 @@
 package fr.adaming.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,6 +19,7 @@ public class Hebergement {
 	//declaration des attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idhebergement")
 	private int idHebergement;
 	private String nomHebergement;
 	private String descriptionHebergement;
@@ -22,6 +27,10 @@ public class Hebergement {
 	private byte[] imageHebergement;
 	@Transient
 	private String imageHeberg;
+	
+	//transformation de l'asso UML en JAVA
+	@OneToMany(mappedBy="hebergement")
+	private List<OffreVoyage> listeOffres;
 
 	
 	//declaration des constructeurs
@@ -95,6 +104,16 @@ public class Hebergement {
 
 	public void setImageHeberg(String imageHeberg) {
 		this.imageHeberg = imageHeberg;
+	}
+
+
+	public List<OffreVoyage> getListeOffres() {
+		return listeOffres;
+	}
+
+
+	public void setListeOffres(List<OffreVoyage> listeOffres) {
+		this.listeOffres = listeOffres;
 	}
 	
 	
