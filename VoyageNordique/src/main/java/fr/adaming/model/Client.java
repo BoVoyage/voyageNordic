@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +45,9 @@ public class Client implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "roleId", referencedColumnName = "idRole")
 	private Role role;
+
+	@OneToMany(mappedBy = "client")
+	private List<Commande> listeCommandes;
 
 	@Embedded
 	private CoordonneeBancaire carteBancaire;
