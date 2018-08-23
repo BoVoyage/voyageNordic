@@ -51,20 +51,20 @@ public class ClientController {
 	 * ModelAndView
 	 */
 
-	@RequestMapping(value = "/ClientsListe", method = RequestMethod.GET)
-	public ModelAndView affichageListeClients() {
+	@RequestMapping(value = "/ListeClients", method = RequestMethod.GET)
+	public ModelAndView afficheListeClients() {
 
 		/** Recuperation de la liste des offres */
-		List<Client> listeClients = clientService.getAllClientService();
-		return new ModelAndView("listeClients", "LesClients", listeClients);
+		List<Client> LaListeClients = clientService.getAllClientService();
+		return new ModelAndView("listeClients", "LesClients", LaListeClients);
 	}
 
 	// ***********************************************************************************************
 	// ******$$$$$$$$$$$$$$$**********
 	/** Le formulaire AjoutClient */
 	@RequestMapping(value = "/ajouterClient", method = RequestMethod.GET)
-	public String affichageFormulaireAddClient(Model modele) {
-		modele.addAttribute("clientAdd", new Client());
+	public String afficheFormulaireAddClient(Model modele) {
+		modele.addAttribute("clientAjout", new Client());
 		return "ajoutClient";
 	}
 
@@ -73,13 +73,14 @@ public class ClientController {
 	 * Methode ajout de clients. On utilise la methode String qui accepte des
 	 * args en entrée
 	 */
-	@RequestMapping(value = "/soumettreAddClient", method = RequestMethod.POST)
-	public String soumettreAddFormulaire(@ModelAttribute("clAdd") Client clIn, RedirectAttributes rda) {
+	@RequestMapping(value = "/soumettreAjoutClient", method = RequestMethod.POST)
+	public String soumettreAjoutFormulaire(@ModelAttribute("clientAjout") Client clAjout, RedirectAttributes rda) {
 
 		/** Instancier un nouveau client */
-		Client clOut = clientService.addClientService(clIn);
+		Client clOut = clientService.addClientService(clAjout);
+		
 		if (clOut.getIdClient() != 0) {
-			return "rediracte:listeClient";
+			return "redirect:listeClients";
 		} else {
 			rda.addAttribute("msg", "L'ajout du client à échouer");
 			return "redirect:ajouterClient";
