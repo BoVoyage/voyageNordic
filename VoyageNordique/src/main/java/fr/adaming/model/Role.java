@@ -13,7 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javassist.expr.NewArray;
 
 @Entity
 @Table(name = "roles")
@@ -46,9 +49,8 @@ public class Role implements Serializable{
 	/**
 	 * Permet de créer l'association entre les rôles et les clients
 	 */
-	@ManyToOne
-	@JoinColumn(name = "clientId", referencedColumnName = "idClient")
-	private Client client;
+	@OneToMany(mappedBy="role")
+	private List<Client> listeClients = new ArrayList<Client>();
 
 	// Constructeurs
 	/**

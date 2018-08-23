@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,8 +41,9 @@ public class Client implements Serializable{
 	/**
 	 * Permet de créer l'association entre les rôles et les clients.
 	 */
-	@OneToMany(mappedBy="client")
-	private List<Role> listeRoles;
+	@ManyToOne
+	@JoinColumn(name = "roleId", referencedColumnName = "idRole")
+	private Role role;
 	
 	//****************************************************************************************
 	/**Le constructeur vide du client*/
