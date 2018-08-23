@@ -29,6 +29,7 @@ public class OffreVoyageController {
 	//transformation de l'association UML en JAVA
 	@Autowired
 	private IOffreVoyageService offreVoyageService;
+	
 
 	//declaration du setter obligatoire pour l'injection-dependance
 	public void setOffreVoyageService(IOffreVoyageService offreVoyageService) {
