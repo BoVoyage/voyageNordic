@@ -13,7 +13,6 @@
 
 	<!-- Spring IOC -->
 	<!-- Declaration du chemin du fichier config qu context spring IoC -->
-	<!-- Specification le chemin du fichier de config de Spring Security -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/application-context.xml</param-value>
