@@ -1,35 +1,48 @@
+<div class="container-fluid voyageheader">
+	<h1>Bifrost Voyage</h1>
+</div>
+
 <nav class="navbar navbar-inverse text-center"
-	style="background-color: A DEFINIR; border-top: none">
-	<ul class="nav nav-pills center-pills"
-		style="background-color: A DEFINIR">
+	style="background-color: #000099; border-top: none">
+	<a href="${pageContext.request.contextPath}/"
+		class="col-xs-4 navbar-brand"><img
+		src="/resources/images/logo.png"></a>
+	<ul class="nav nav-pills center-pills col-xs-4"
+		style="background-color: #000099">
 		<li role="presentation"><a
-			href="${pageContext.request.contextPath}/" style="color: A DEFINIR">Accueil</a></li>
-		<li role="presentation"><div class="dropdown"
-				style="background-color: A DEFINIR; padding-top: 5px">
+			href="${pageContext.request.contextPath}/" style="color: #ffffff">Accueil</a></li>
+		<li role="presentation">
+			<div class="dropdown"
+				style="background-color: #000099; padding-top: 5px">
 				<button class="btn btn-default dropdown-toggle" type="button"
 					id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="true"
-					style="background-color: #52527a; color: #ffc61a">
+					style="background-color: #000099; color: #ffffff">
 					Cherchez et réservez! <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"
-					style="background-color: A DEFINIR; border: 2px solid black">
+					style="background-color: #000099; border: 2px solid black">
 					<li role="presentation"><a
-						href="${pageContext.request.contextPath}/" style="color: #ffc61a">Listes
+						href="${pageContext.request.contextPath}/" style="color: #ffffff">Listes
 							Voyages!</a></li>
 					<li role="presentation"><a
-						href="${pageContext.request.contextPath}/" style="color: #ffc61a">Chercher
+						href="${pageContext.request.contextPath}/" style="color: #ffffff">Chercher
 							une offre</a></li>
 					<li role="presentation"><a
-						href="${pageContext.request.contextPath}/" style="color: #ffc61a">Réserver</a></li>
+						href="${pageContext.request.contextPath}/" style="color: #ffffff">Réserver</a></li>
 				</ul>
-			</div></li>
-
+			</div>
+		</li>
 		<li role="presentation"><a
-			href="${pageContext.request.contextPath}/" style="color: A DEFINIR">Last Minute!</a></li>
-		<li role="presentation"><a href="login.jsp"
-			style="color: #ffc61a; n">Login</a></li>
-		<li role="presentation"><a href="logout.jsp"
-			style="color: #ffc61a">Logout</a></li>
+			href="${pageContext.request.contextPath}/" style="color: #ffffff">Last
+				Minute!</a></li>
+		<li role="presentation"><a
+			href="${pageContext.request.contextPath}/" style="color: #ffffff;">Login</a></li>
+		<li role="presentation"><a href="${pageContext.request.contextPath}/"> <span
+				class="glyphicon glyphicon-cog"></span>
+		</a></li>
 	</ul>
+	<form class="form-inline">
+		<input type="text" class="col-xs-4 form-control" placeholder="Search">
+	</form>
 </nav>

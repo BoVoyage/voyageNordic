@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+
+.voyageheader {
+	font-family: 'Cormorant Garamond', serif;
+	text-align: center;
+	background-color: #000099;
+	border-bottom: none;
+	font: bolder;
+	color: #ffffff;
+}
+
+.voyagefooter {
+	font-family: 'Cormorant Garamond', serif;
+	text-align: center;
+	background-color: #000099;
+	border-bottom: none;
+	font: bolder;
+	color: #ffffff;
+}

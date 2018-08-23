@@ -10,7 +10,6 @@
 		<!-- Notifications des versions à appeler en EL -->
 		<hibernate.version>4.2.21.Final</hibernate.version>
 		<spring.version>4.1.9.RELEASE</spring.version>
-		<spring-security.version>3.2.10.RELEASE</spring-security.version>
 	</properties>
 
 
