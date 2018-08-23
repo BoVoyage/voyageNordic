@@ -8,8 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="excursions")
@@ -23,8 +25,11 @@ public class Excursion{
 	private String nomExcursion;
 	private String descriptionExcursion;
 	private String imageExcursion;
+	@Lob
 	private byte[] photo;
 	private double prixExcursion;
+	@Transient
+	private String imageExcu;
 	
 	//transformation de l'association UML en JAVA
 	@ManyToMany
@@ -101,6 +106,12 @@ public class Excursion{
 	}
 	public void setListeOffreVoyage(List<OffreVoyage> listeOffreVoyage) {
 		this.listeOffreVoyage = listeOffreVoyage;
+	}
+	public String getImageExcu() {
+		return imageExcu;
+	}
+	public void setImageExcu(String imageExcu) {
+		this.imageExcu = imageExcu;
 	}
 	
 	

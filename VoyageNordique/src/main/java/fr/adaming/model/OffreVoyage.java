@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="offreVoyages")
@@ -24,7 +26,10 @@ public class OffreVoyage {
 	private String ville;
 	private int quantite;
 	private boolean etat;
+	@Lob
 	private byte[] imageDestination;
+	@Transient
+	private String imageDesti;
 	private boolean promotion;
 	private String descriptionVoyage;
 	private double prixVoyage;
@@ -229,6 +234,22 @@ public class OffreVoyage {
 
 	public void setListeExcursion(List<Excursion> listeExcursion) {
 		this.listeExcursion = listeExcursion;
+	}
+
+	public Vehicule getVehicule() {
+		return vehicule;
+	}
+
+	public void setVehicule(Vehicule vehicule) {
+		this.vehicule = vehicule;
+	}
+
+	public String getImageDesti() {
+		return imageDesti;
+	}
+
+	public void setImageDesti(String imageDesti) {
+		this.imageDesti = imageDesti;
 	}
 	
 	

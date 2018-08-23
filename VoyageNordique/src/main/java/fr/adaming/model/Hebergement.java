@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="hebergements")
@@ -16,7 +18,10 @@ public class Hebergement {
 	private int idHebergement;
 	private String nomHebergement;
 	private String descriptionHebergement;
+	@Lob
 	private byte[] imageHebergement;
+	@Transient
+	private String imageHeberg;
 
 	
 	//declaration des constructeurs
@@ -80,6 +85,16 @@ public class Hebergement {
 
 	public void setImageHebergement(byte[] imageHebergement) {
 		this.imageHebergement = imageHebergement;
+	}
+
+
+	public String getImageHeberg() {
+		return imageHeberg;
+	}
+
+
+	public void setImageHeberg(String imageHeberg) {
+		this.imageHeberg = imageHeberg;
 	}
 	
 	

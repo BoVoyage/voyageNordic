@@ -3,12 +3,16 @@ package fr.adaming.model;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 public class Vol {
 	
 	//declaration des attributs
+	@Temporal(TemporalType.DATE)
 	private Date dateDepart;
+	@Temporal(TemporalType.DATE)
 	private Date dateRetour;
 	private String compagnie;
 
