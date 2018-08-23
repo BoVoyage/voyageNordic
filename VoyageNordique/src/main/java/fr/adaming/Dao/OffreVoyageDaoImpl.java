@@ -37,14 +37,21 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 	public List<OffreVoyage> getAllOffres() {
 		// recuperer la session à partir de sf
 		Session s = sf.getCurrentSession();
-		
-		//creation de la requete
-		String req="FROM OffreVoyage ov";
-		
-		//recuperation de la requete
-		Query query=s.createQuery(req);
-		
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+
 		return query.list();
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageById(int id) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+		return (OffreVoyage) s.get(OffreVoyage.class, id);
 	}
 
 }

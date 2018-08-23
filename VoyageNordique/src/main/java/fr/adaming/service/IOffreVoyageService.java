@@ -18,5 +18,7 @@ public interface IOffreVoyageService {
 	 * @return liste d'objets Offre de voyage
 	 */
 	public List<OffreVoyage> getAllOffres();
+	
+	public OffreVoyage getOffreVoyageById(int id);
 
 }

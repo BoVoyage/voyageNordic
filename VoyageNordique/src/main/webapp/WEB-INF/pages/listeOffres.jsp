@@ -28,6 +28,7 @@
 			<th>Ville</th>
 			<th>Description</th>
 			<th>Prix</th>
+			<th>Image</th>
 		</tr>
 
 		<c:forEach var="o" items="${allOffresVoyage}">
@@ -38,6 +39,8 @@
 				<td>${o.ville}</td>
 				<td>${o.descriptionVoyage}</td>
 				<td>${o.prixVoyage}</td>
+				
+				<td><img  src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"></td>
 			</tr>
 		</c:forEach>
 

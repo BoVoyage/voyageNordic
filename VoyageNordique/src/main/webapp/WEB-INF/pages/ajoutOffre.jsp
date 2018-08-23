@@ -84,10 +84,10 @@
 			</div>
 		</div>
 		<div class="radio">
-			<form:label cssClass="col-sm-3 control-label" path="promotion">
+			<form:label cssClass="col-sm-4 control-label" path="promotion">
 				<input type="radio" name="promotion" value="true"> Voyage en promotion
 			</form:label>
-			<form:label cssClass="col-sm-3 control-label" path="promotion">
+			<form:label cssClass="col-sm-4 control-label" path="promotion">
 				<input type="radio" name="promotion" value="false" />
 				Voyage non remisé
 			</form:label>
@@ -100,11 +100,9 @@
 					path="remiseVoyage" />
 			</div>
 		</div>
-		<!-- 		<div class="form-group"> -->
-		<!-- 			<label for="InputFile">Photo de la Destination</label>  -->
-		<!-- 			<input type="file" accept="image/png, image/jpeg, image/gif" id="InputFile" value="" /> -->
-		<!-- 		</div> -->
-		
+
+		<input type="file" name="file">
+
 		<button type="submit" class="btn btn-default">Ajouter cette
 			offre de voyage</button>
 	</form:form>
