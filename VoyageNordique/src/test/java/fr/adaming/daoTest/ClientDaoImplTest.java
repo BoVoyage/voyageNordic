@@ -20,7 +20,6 @@ public class ClientDaoImplTest {
 	//************************************************
 	public void testAddClient(){
 		
-		Client clTest=new Client(12, "DIOP"," Demba", 16/05/2000, "a", "a", 0222, 1);
 	}
 
 }
