@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -30,10 +31,21 @@ public class OffreVoyageController {
 	@Autowired
 	private IOffreVoyageService offreVoyageService;
 	
+	private FileUpload file;
+	
 
 	//declaration du setter obligatoire pour l'injection-dependance
 	public void setOffreVoyageService(IOffreVoyageService offreVoyageService) {
 		this.offreVoyageService = offreVoyageService;
+	}
+	
+	//declaration des getter et setter de file
+	public FileUpload getFile() {
+		return file;
+	}
+
+	public void setFile(FileUpload file) {
+		this.file = file;
 	}
 	
 	@InitBinder
@@ -43,6 +55,7 @@ public class OffreVoyageController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(formatDate, false));
 	}
 	
+
 	// ******************* recup de la liste
 	/**
 	 * Méthode d'affichage de la liste des offres

@@ -16,15 +16,25 @@
 
 </head>
 <body>
+	<!-- Ajouter le menu avec include -->
+	<%@ include file="../../templates/header.html"%>
 
 	<br />
 	<form:form cssClass="form-horizontal" method="POST"
-		action="soumettreAjoutOffre" modelAttribute="offreAjout" enctype = "multipart/form-data">
+		action="soumettreAjoutOffre" modelAttribute="offreAjout"
+		enctype="multipart/form-data">
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
 			<div class="col-sm-9">
 				<form:input cssClass="form-control" placeholder="noVoyage"
 					path="noVoyage" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="designation">Nom du voyage</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="designation"
+					path="designation" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -40,13 +50,6 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="quantite">Quantite</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="quantite"
-					path="quantite" />
-			</div>
-		</div>
-		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label"
 				path="descriptionVoyage">Description du voyage</form:label>
 			<div class="col-sm-9">
@@ -54,6 +57,25 @@
 					path="descriptionVoyage" />
 			</div>
 		</div>
+		<div class="radio">
+			<form:label cssClass="col-sm-3 control-label" path="etat">
+				<input type="radio" name="etat" value="true">
+				Offre valide
+			</form:label>
+			<form:label cssClass="col-sm-3 control-label" path="etat">
+				<input type="radio" name="etat" value="false">
+				Offre close
+			</form:label>
+		</div>
+		<br />
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="quantite">Quantite</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="quantite"
+					path="quantite" />
+			</div>
+		</div>
+
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="prixVoyage">Prix initial du voyage</form:label>
 			<div class="col-sm-9">
@@ -61,29 +83,16 @@
 					path="prixVoyage" />
 			</div>
 		</div>
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="designation">Nom du voyage</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="designation"
-					path="designation" />
-			</div>
+		<div class="radio">
+			<form:label cssClass="col-sm-3 control-label" path="promotion">
+				<input type="radio" name="promotion" value="true"> Voyage en promotion
+			</form:label>
+			<form:label cssClass="col-sm-3 control-label" path="promotion">
+				<input type="radio" name="promotion" value="false" />
+				Voyage non remisé
+			</form:label>
 		</div>
-		<div class="form-group">
-			<div class="checkbox">
-				<form:label path="etat"><form:input type="radio" value="true" path="etat"/> Offre valide</form:label>
-			</div>
-			<div class="checkbox">
-				<form:label path="etat"><form:input type="radio" value="false" path="etat"/> Offre close</form:label>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="checkbox">
-				<form:label path="promotion"><form:input type="radio" value="true" path="promotion"/> Voyage en promotion</form:label>
-			</div>
-			<div class="checkbox">
-				<form:label path="promotion"><form:input type="radio" value="false" path="promotion"/> Voyage non remisé</form:label>
-			</div>
-		</div>
+		<br />
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="remiseVoyage">Prix remisé du voyage</form:label>
 			<div class="col-sm-9">
@@ -91,10 +100,11 @@
 					path="remiseVoyage" />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="InputFile">Photo de la Destination</label> 
-			<input type="file" accept="image/png, image/jpeg, image/gif" id="InputFile" value="" />
-		</div>
+		<!-- 		<div class="form-group"> -->
+		<!-- 			<label for="InputFile">Photo de la Destination</label>  -->
+		<!-- 			<input type="file" accept="image/png, image/jpeg, image/gif" id="InputFile" value="" /> -->
+		<!-- 		</div> -->
+		
 		<button type="submit" class="btn btn-default">Ajouter cette
 			offre de voyage</button>
 	</form:form>
