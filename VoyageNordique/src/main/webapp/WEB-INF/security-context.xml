@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- Specifier l'acces au fichier db.properties afin d'utiliser la db pour 
+		l'authentification -->
+	<context:property-placeholder location="classpath*:db.properties" />
+
+	<!-- Declaration de la DataSource -->
+	<bean id="dataSourceBean1"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.mdp}" />
+	</bean>
+
+	<!-- 1: Configuration de la partie authorisation -->
+	<security:http>
+
+		<!-- specifier les url à protéger grâce à l'attribut "pattern" de intercept-url 
+			et l'authorisation supportée grâce à l'attribut "access" -->
+		<security:intercept-url pattern="/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/client/**"
+			access="ROLE_CLIENT" />
+
+		<!-- utilisation d'un formulaire perso pour la connexion et definition 
+			de la page d'apres connexion -->
+		<security:form-login login-page="/login"
+			authentication-failure-url="/error" default-target-url="/client/accueil" />
+
+		<!-- pour spécifier la page d'accès refusé -->
+		<security:access-denied-handler
+			error-page="/denied" />
+
+
+		<!-- la balise lors de la deconnexion -->
+		<security:logout logout-success-url="/logout" />
+	</security:http>
+
+
+	<!-- 2: Configuration de la partie authentification -->
+	<security:authentication-manager>
+
+		<!-- fournisseur d'authentification -->
+		<security:authentication-provider>
+
+			<!-- declaration des utilisateurs à partir d'une db -->
+			<security:jdbc-user-service
+				data-source-ref="dataSourceBean1" 
+				users-by-username-query="SELECT mail, mdp, active FROM clients WHERE mail=?"
+				authorities-by-username-query="SELECT c.identifiant, r.roleName FROM conseillers as c, roles as r WHERE c.id_c=r.f_id AND c.identifiant=?" />
+
+		</security:authentication-provider>
+
+	</security:authentication-manager>
+
+</beans>
