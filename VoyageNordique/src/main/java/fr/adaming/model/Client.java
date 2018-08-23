@@ -37,7 +37,7 @@ public class Client implements Serializable{
 	
 	// Transformation de l'association UML en JAVA
 	/**
-	 * Permet de créer l'association entre les rôles et les clients
+	 * Permet de créer l'association entre les rôles et les clients.
 	 */
 	@OneToMany(mappedBy="client")
 	private List<Role> listeRoles;
