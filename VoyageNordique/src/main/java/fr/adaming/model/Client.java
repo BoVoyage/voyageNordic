@@ -2,12 +2,14 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,8 +35,15 @@ public class Client implements Serializable{
 	private String tel;
 	private boolean active;
 	
+	// Transformation de l'association UML en JAVA
+	/**
+	 * Permet de créer l'association entre les rôles et les clients
+	 */
+	@OneToMany(mappedBy="client")
+	private List<Role> listeRoles;
+	
 	//****************************************************************************************
-	/**Les attributs du clients*/
+	/**Le constructeur vide du client*/
 	public Client() {
 		super();
 	}
