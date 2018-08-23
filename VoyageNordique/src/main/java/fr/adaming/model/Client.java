@@ -3,14 +3,30 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+@Entity
+@Table(name = "clients")
 public class Client implements Serializable{
 	
 	//****************************************************************************************
 	/**Les attributs du clients*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idClient")
 	private int idClient;
 	private String noClient;
 	private String nomClient;
 	private String prenomClient;
+	@Temporal(TemporalType.DATE)
 	private Date dn;
 	private String mail;
 	private String mdp;
