@@ -1,5 +1,8 @@
 package fr.adaming.Dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,17 @@ public class ClientDaoImpl implements IClientDao{
 		return cl;
 	}
 	//************************************************************************************
+	@Override
+	public List<Client> getAllClientDao() {
+		/**recup de la session*/
+		Session s=sf.getCurrentSession();
+		/** La requete HQL*/
+		String reqHQL="From Client";
+		/**Creation du query*/
+		Query query=s.createQuery(reqHQL);
+		/**recuperation de la liste*/
+		return query.list();
+	}
 
 
 }
