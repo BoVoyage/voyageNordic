@@ -9,7 +9,6 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/application-context.xml</config>
 		<config>src/main/webapp/WEB-INF/mvc-context.xml</config>
-		<config>src/main/webapp/WEB-INF/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
