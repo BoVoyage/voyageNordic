@@ -1,5 +1,6 @@
 package fr.adaming.Dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import fr.adaming.model.Client;
 
 @Repository
 /** sert a declarer le dao comme un bean de spring IoC. On pouvait aussi utiliser: @component. On l'utilise juste pour le Dao*/
-public class ClientDoaImpl implements IClientDao{
+public class ClientDaoImpl implements IClientDao{
 	
 	//*****************************************************************************
 	/**declaration de l'attribut sessionFactory*/
@@ -23,7 +24,7 @@ public class ClientDoaImpl implements IClientDao{
 	@Override
 	public Client addClient(Client cl) {
 		/** recuperer une session */
-		org.hibernate.Session s=sf.getCurrentSession();
+		Session s=sf.getCurrentSession();
 		s.save(cl);
 		return cl;
 	}
