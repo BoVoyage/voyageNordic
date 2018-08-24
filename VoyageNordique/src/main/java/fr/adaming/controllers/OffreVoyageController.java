@@ -140,11 +140,12 @@ public class OffreVoyageController {
 	 * @return ModelAndView avec une offre de voyage en modèle et en vue la page recherche
 	 */
 	@RequestMapping(value = "/rechercherParNoVoyage", method = RequestMethod.GET)
-	public ModelAndView afficherFormRechercheNoVoyage(Model modele, @RequestParam(value="error", required=false) String error) {
-		if(msg!=null){
+	public String afficherFormRechercheNoVoyage(Model modele, @RequestParam(value="error", required=false) String error) {
+		if(error!=null){
 			modele.addAttribute("error",error);
 		}
-		return new ModelAndView("offreRecherche", "SearchNoVoyage", new OffreVoyage());
+		modele.addAttribute("SearchNoVoyage", new OffreVoyage());
+		return "offreRecherche";
 	}
 
 	/**
