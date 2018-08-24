@@ -22,17 +22,35 @@ public class ClientServiceImpl implements IClientService{
 		this.clientDao = clientDao;
 	}
 //*****************************************************************
-	//***********$$$$$$$$$$$$$$$$$$**************
+	//***********$$$$$$$$$$$$$$$$$$***************************************
 	@Override
 	public Client addClientService(Client cl) {
 		// TODO Auto-generated method stub
 		return clientDao.addClient(cl);
 	}
-	//***********$$$$$$$$$$$$$$$$$$**************
+	//***********$$$$$$$$$$$$$$$$$$*********************************
 	@Override
 	public List<Client> getAllClientService() {
 		// TODO Auto-generated method stub
 		return clientDao.getAllClientDao();
+	}
+	//***********$$$$$$$$$$$$$$$$$$**********************************
+	@Override
+	public int updateClient(Client cl) {
+		// TODO Auto-generated method stub
+		return clientDao.updateClient(cl);
+	}
+	//***********$$$$$$$$$$$$$$$$$$***************************************
+	@Override
+	public Client deleteEtudiant(Client cl) {
+		// TODO Auto-generated method stub
+		return clientDao.deleteEtudiant(cl);
+	}
+	//***********$$$$$$$$$$$$$$$$$$***************************************
+	@Override
+	public List<Client> getClientByNomOrNoClient(Client cl) {
+		// TODO Auto-generated method stub
+		return clientDao.getClientByNomOrNoClient(cl);
 	}
 
 }

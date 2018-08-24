@@ -19,14 +19,9 @@ public interface IClientDao {
 	* Methode pour supprimer le client 
 	 */
 	public Client deleteEtudiant(Client cl);
-	/**
-	* Methode rechercher un client par id
-	 */
-	
-	public Client getEtudiantById(Client cl);
 	
 	/**
 	* Methode rechercher le client par nom ou par id
 	 */
-	public List<Client> getClientByNomOrId(Client cl);
+	public List<Client> getClientByNomOrNoClient(Client cl);
 }

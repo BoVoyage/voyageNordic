@@ -44,35 +44,54 @@ public class ClientDaoImpl implements IClientDao{
 		return query.list();
 	}
 	//************************************************************************************
-//	public int modifClient(Client cl){
-//		
-//		//Recuperer la session
-//		Session s=sf.getCurrentSession();
-//		
-//		//La requete HQL
-//		String reqHQL="UPDATE Client cl SET cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=?";
-//		
-//		return 0;
-//	}
 	@Override
 	public int updateClient(Client cl) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		/**Recuperer la session*/
+		Session s=sf.getCurrentSession();
+		
+		/**La requete HQL*/
+		String reqHQL="UPDATE Client cl SET cl.noClient=:pNoClient, cl.nomClient=:pNom, cl.prenomClient=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=:pIdClient";
+		
+		//Creation du Query
+		Query query=s.createQuery(reqHQL);
+		
+		/**Passage des params*/
+		query.setParameter("pNoClient", cl.getNoClient());
+		query.setParameter("pNom", cl.getNomClient());
+		query.setParameter("pPrenom", cl.getPrenomClient());
+		query.setParameter("pDn", cl.getDn());
+		query.setParameter("pMail", cl.getMail());
+		query.setParameter("pMdp", cl.getMdp());
+		query.setParameter("pTel", cl.getTel());
+		query.setParameter("pIdClient", cl.getIdClient());
+		
+		return query.executeUpdate();
 	}
 	@Override
 	public Client deleteEtudiant(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		/**Recuperer la session*/
+		Session s = sf.getCurrentSession();
+		/**utilisation de delete*/
+		s.delete(cl);
+		return cl;
 	}
 	@Override
-	public Client getEtudiantById(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Client> getClientByNomOrId(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Client> getClientByNomOrNoClient(Client cl) {
+		/**Recuperer la session*/
+		Session s = sf.getCurrentSession();
+		
+		/** Req HQL*/
+		String req = "FROM Client cl WHERE cl.noClient=:pNoClient OR cl.nomClient=:pNom";
+
+		/** Query*/
+		Query query = s.createQuery(req);
+
+		// passage des parametres
+		query.setParameter("pNoClient", cl.getNoClient());
+		query.setParameter("pNom", cl.getNomClient());
+
+		return query.list();
 	}
 
 

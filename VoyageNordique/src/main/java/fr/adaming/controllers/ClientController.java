@@ -56,7 +56,7 @@ public class ClientController {
 
 		/** Recuperation de la liste des offres */
 		List<Client> LaListeClients = clientService.getAllClientService();
-		return new ModelAndView("listeClients", "LesClients", LaListeClients);
+		return new ModelAndView("Clientsliste", "LesClients", LaListeClients);
 	}
 
 	// ***********************************************************************************************
@@ -64,8 +64,8 @@ public class ClientController {
 	/** Le formulaire AjoutClient */
 	@RequestMapping(value = "/ajouterClient", method = RequestMethod.GET)
 	public String afficheFormulaireAddClient(Model modele) {
-		modele.addAttribute("clientAjout", new Client());
-		return "ajoutClient";
+		modele.addAttribute("AjoutClient", new Client());
+		return "ClientAjout";
 	}
 
 	// ******$$$$$$$$$$$$$$$**********
@@ -80,10 +80,35 @@ public class ClientController {
 		Client clOut = clientService.addClientService(clAjout);
 		
 		if (clOut.getIdClient() != 0) {
-			return "redirect:listeClients";
+			return "redirect:ListeClients";
 		} else {
 			rda.addAttribute("msg", "L'ajout du client à échouer");
-			return "redirect:ajoutClient";
+			return "redirect:ajouterClient";
+		}
+	}
+	
+	// ***********************************************************************************************
+	// ******$$$$$$$$$$$$$$$**********
+	
+	//methode Modifier un Client
+	@RequestMapping(value="/modifier" , method=RequestMethod.GET)
+	public String afficheFormModifClient(Model modele){
+		modele.addAttribute("clientModif", new Client());
+	
+		return "ClientModif";
+	}
+	@RequestMapping(value = "/soumettreModifClient", method = RequestMethod.POST)
+	public String soumettreModifFrom(@ModelAttribute("clientModif") Client clAjout, RedirectAttributes rda) {
+		
+		/** Instancier un nouveau client */
+		int clOut = clientService.updateClient(clAjout);
+		
+		if (clOut!=0){
+			
+			return "redirect:ListeClients";
+		}else{
+			rda.addAttribute("msg", "La modif a echoué!");
+			return "redirect:modifier";
 		}
 	}
 }
