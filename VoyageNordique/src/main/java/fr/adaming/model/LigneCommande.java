@@ -34,6 +34,10 @@ public class LigneCommande implements Serializable {
 	private OffreVoyage offrevoyage;
 
 	// declaration des constructeurs
+	public LigneCommande() {
+		super();
+	}
+
 	public LigneCommande(int idLigneCommande, int quantite, double prix) {
 		super();
 		this.idLigneCommande = idLigneCommande;
@@ -70,6 +74,22 @@ public class LigneCommande implements Serializable {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
+	public OffreVoyage getOffrevoyage() {
+		return offrevoyage;
+	}
+
+	public void setOffrevoyage(OffreVoyage offrevoyage) {
+		this.offrevoyage = offrevoyage;
 	}
 
 	// toString
