@@ -27,6 +27,12 @@
 				<form:input cssClass="form-control" placeholder="numero de commande"
 					path="${lc.commande.noCommande}" />
 			</div>
+			<form:label cssClass="col-sm-2 control-label"
+				path="${lc.idLigneCommande}">Id Ligne de commande</form:label>
+			<div class="col-sm-10">
+				<form:input cssClass="form-control" placeholder="id ligne de commande"
+					path="${lc.idLigneCommande}" />
+			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
@@ -34,6 +40,12 @@
 			</div>
 		</div>
 	</form:form>
+
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">Cette commande
+			n'existe pas (vérifiez votre n° de commande)</h1>
+	</c:if>
+
 	<table class="table table-bordered">
 		<tr>
 			<th>Numéro Commande</th>
@@ -55,7 +67,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-
-	<h1 style="color: blue">${msg}</h1>
 </body>
 </html>

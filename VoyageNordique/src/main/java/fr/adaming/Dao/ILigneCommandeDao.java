@@ -39,6 +39,6 @@ public interface ILigneCommandeDao {
 	/**
 	 * Rechercher une ligne de commande
 	 */
-	public List<LigneCommande> getLigneCommandeByNoCommande(LigneCommande lc);
+	public List<LigneCommande> getLigneCommandebyIdORbyNoCmd(LigneCommande lc);
 
 }

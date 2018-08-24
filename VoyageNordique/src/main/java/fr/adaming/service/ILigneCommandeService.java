@@ -43,6 +43,6 @@ public interface ILigneCommandeService {
 	 * @param lc
 	 * @return
 	 */
-	public List<LigneCommande> getLigneCommandeByNoCommande(LigneCommande lc, Commande cmd);
+	public List<LigneCommande> getLigneCommandebyIdORbyNoCmd(LigneCommande lc, Commande cmd);
 
 }

@@ -87,10 +87,10 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 	 * @return une ligne de commande par l'id de la commande
 	 */
 	@Override
-	public List<LigneCommande> getLigneCommandeByNoCommande(LigneCommande lc, Commande cmd) {
+	public List<LigneCommande> getLigneCommandebyIdORbyNoCmd(LigneCommande lc, Commande cmd) {
 		// lier les objets java
 		lc.setCommande(cmd);
-		return ligneCommandeDao.getLigneCommandeByNoCommande(lc);
+		return ligneCommandeDao.getLigneCommandebyIdORbyNoCmd(lc);
 	}
 
 }

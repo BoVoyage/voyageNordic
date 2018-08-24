@@ -50,6 +50,8 @@
 		</div>
 	</form:form>
 
-	<h1 style="color: blue">${msg}</h1>
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">La modification n'a pu être prise en compte</h1>
+	</c:if>
 </body>
 </html>

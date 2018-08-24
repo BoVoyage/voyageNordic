@@ -53,7 +53,11 @@ public class LigneCommandeController {
 	 *         concluante
 	 */
 	@RequestMapping(value = "/updateLigneCommande", method = RequestMethod.GET)
-	public String updtLigneCommande(Model modele) {
+	public String updtLigneCommande(Model modele, @RequestParam(value = "error", required = false) String error) {
+
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 
 		modele.addAttribute("lcModif", new LigneCommande());
 
@@ -61,14 +65,15 @@ public class LigneCommandeController {
 	}
 
 	@RequestMapping(value = "/updateLCLink", method = RequestMethod.GET)
-	public String updtLigneCommandeLien(Model modele, @RequestParam("pId") int id) {
+	public String updtLigneCommandeLien(Model modele, @RequestParam(value = "error", required = false) String error,
+			@RequestParam("pId") int id) {
 
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		LigneCommande lcIn = new LigneCommande();
-
 		lcIn.setIdLigneCommande(id);
-
 		LigneCommande lcOut = ligneCommandeService.getLigneCommandebyId(lcIn);
-
 		modele.addAttribute("lcModif", lcOut);
 
 		return "ligneCommandeUpdate";
@@ -83,38 +88,8 @@ public class LigneCommandeController {
 			return "redirect:ListeLignesCommandes";
 
 		} else {
-			rda.addAttribute("msg", "modification non fonctionnelle");
+			rda.addAttribute("error", true);
 			return "redirect:updateLigneCommande";
-		}
-	}
-
-	/**
-	 * Rechercher une ligne de commande par son id
-	 * 
-	 * @return dans un premier temps vers le formulaire de recherche de la ligne
-	 *         ciblée puis affiche la ligne souhaitée si elle existe
-	 */
-	@RequestMapping(value = "/searchLigneCommande", method = RequestMethod.GET)
-	public ModelAndView searchLigneCommande() {
-
-		return new ModelAndView("rechercheLigneCommande", "lcSearch", new LigneCommande());
-	}
-
-	@RequestMapping(value = "/soumettreSearchLigneCommande", method = RequestMethod.POST)
-	public String searchLigneCommandeForm(ModelMap modele, @ModelAttribute("ligneCommandeSearch") LigneCommande lcIn,
-			RedirectAttributes rda) {
-
-		LigneCommande lcOut = ligneCommandeService.getLigneCommandebyId(lcIn);
-
-		if (lcOut != null) {
-
-			modele.addAttribute("lcFind", lcOut);
-
-			return "trouverLigneCommande";
-
-		} else {
-			rda.addAttribute("msg", "Ligne de commande non existante");
-			return "redirect:searchLigneCommande";
 		}
 	}
 
@@ -125,27 +100,33 @@ public class LigneCommandeController {
 	 *         ciblée puis affiche la ligne souhaitée si la commande ciblée
 	 *         existe
 	 */
-	@RequestMapping(value = "/searchLigneCommandebyCommande", method = RequestMethod.GET)
-	public ModelAndView searchLigneCommandebyCommande() {
+	@RequestMapping(value = "/searchLigneCommandebyIdORbyCommande", method = RequestMethod.GET)
+	public String searchLigneCommandebyCommande(Model modele,
+			@RequestParam(value = "error", required = false) String error) {
 
-		return new ModelAndView("ligneCommandeSearch", "lcSearch2", new LigneCommande());
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
+
+		modele.addAttribute("lcSearch2", new LigneCommande());
+		return "ligneCommandeSearch";
 	}
 
-	@RequestMapping(value = "/soumettreSearchLigneCommandebyCommande", method = RequestMethod.POST)
-	public String searchLigneCommandebyCommandeForm(ModelMap modele,
+	@RequestMapping(value = "/soumettreSearchLigneCommandebyIdORbyCommande", method = RequestMethod.POST)
+	public String searchLigneCommandebyIdORbyCommandeForm(ModelMap modele,
 			@ModelAttribute("ligneCommandeSearch") LigneCommande lcIn, Commande coIn, RedirectAttributes rda) {
 
-		LigneCommande lcOut = (LigneCommande) ligneCommandeService.getLigneCommandeByNoCommande(lcIn, coIn);
+		List<LigneCommande> liste = ligneCommandeService.getLigneCommandebyIdORbyNoCmd(lcIn, coIn);
 
-		if (lcOut != null) {
+		if (liste != null) {
 
-			modele.addAttribute("lcFind2", lcOut);
+			modele.addAttribute("lcFind2", liste);
 
 			return "ligneCommandeSearch";
 
 		} else {
-			rda.addAttribute("msg", "Ligne de commande non existante pour cette commande");
-			return "redirect:searchLigneCommandebyCommande";
+			rda.addAttribute("error", true);
+			return "redirect:searchLigneCommandebyIdORbyCommande";
 		}
 	}
 
@@ -156,6 +137,7 @@ public class LigneCommandeController {
 	 */
 	@RequestMapping(value = "/deleteLCLink/{pId}", method = RequestMethod.GET)
 	public String deleteLigneCommandeLien(ModelMap model, @PathVariable("pId") int id) {
+
 		LigneCommande lcIn = new LigneCommande();
 		lcIn.setIdLigneCommande(id);
 

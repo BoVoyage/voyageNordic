@@ -90,35 +90,21 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public LigneCommande getLigneCommandebyId(LigneCommande lc) {
+	public List<LigneCommande> getLigneCommandebyIdORbyNoCmd(LigneCommande lc) {
 
 		// recuperer la session
 		Session s = sf.getCurrentSession();
 
-		String req = "SELECT lc FROM LigneCommande as lc WHERE lc.idLigneCommande=:pIdLC";
+		String req = "FROM LigneCommande lc WHERE lc.idLigneCommande=:pIdLC OR lc.commande.noCommande=:pNoCmd";
 
 		Query query = s.createQuery(req);
 
 		query.setParameter("pIdLC", lc.getIdLigneCommande());
+		query.setParameter("pNoCmd", lc.getCommande().getNoCommande());
 
-		return (LigneCommande) query.uniqueResult();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<LigneCommande> getLigneCommandeByNoCommande(LigneCommande lc) {
-
-		// recuperer la session
-		Session s = sf.getCurrentSession();
-
-		String req = "SELECT lc FROM LigneCommande AS lc WHERE lc.commande.noCommande=:pNoCmd";
-
-		Query query = s.createQuery(req);
-
-		query.setParameter("ppNoCmd", lc.getCommande().getNoCommande());
-
-		return (List<LigneCommande>) query.uniqueResult();
+		return query.list();
 	}
 
 }
