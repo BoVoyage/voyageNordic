@@ -1,19 +1,37 @@
 @CHARSET "ISO-8859-1";
 
 .voyageheader {
-	font-family: 'Cormorant Garamond', serif;
+	font-family: 'Oswald', sans-serif;
 	text-align: center;
-	background-color: #000099;
+	background-color: #4172c1;
 	border-bottom: none;
 	font: bolder;
 	color: #ffffff;
 }
 
 .voyagefooter {
-	font-family: 'Cormorant Garamond', serif;
+	font-family: 'Oswald', sans-serif;
 	text-align: center;
-	background-color: #000099;
+	background-color: #4172c1;
 	border-bottom: none;
 	font: bolder;
 	color: #ffffff;
+}
+
+.center-pills {
+	display: inline-block;
+}
+
+.center-pills>li>a:hover {
+	background-color: grey;
+	background-image: none;
+}
+
+.dropdown-toggle {
+	border: none;
+}
+
+.dropdown-menu>li>a:hover {
+	background-color: grey;
+	background-image: none;
 }
