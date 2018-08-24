@@ -8,8 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.mail.Multipart;
-
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +63,7 @@ public class OffreVoyageController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(formatDate, false));
 	}
 	
-//methode pour recuperer les images et les envoyer à la page jsp
+	//methode pour recuperer les images et les envoyer à la page jsp
 	@RequestMapping(value="/getImage",method=RequestMethod.GET,produces=MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	public byte[] recupImage(@RequestParam("pId") int id) throws IOException{
@@ -79,7 +77,7 @@ public class OffreVoyageController {
 	}
 	
 	
-	// ******************* recup de la liste
+	// ******************* recup de la liste des offres
 	/**
 	 * Méthode d'affichage de la liste des offres
 	 * @return modelAndView 
@@ -93,7 +91,7 @@ public class OffreVoyageController {
 		return new ModelAndView("listeOffres", "allOffresVoyage", listingOffres);
 	}
 
-	// ******************* ajouter un etudiant
+	// ******************* ajouter une offre de voyage
 	/**
 	 * Méthode du formulaire d'ajout d'une offre de voyage
 	 * @param modele correspondant à une offre de voyage
