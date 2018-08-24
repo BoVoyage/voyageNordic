@@ -19,32 +19,32 @@
 	<form:form cssClass="form-inline" action="soumettreRechCommande"
 		method="POST" modelAttribute="coRech">
 		<div class="form-group">
-			<form:label path="noCommande">N° Commande: </form:label>
-			<form:input type="text" class="form-control" path="noCommande" />
+			<form:label for="pNoCom" path="noCommande">N° Commande: </form:label>
+			<form:select id="pNoCom" path="noCommande" multiple="true">
+					<form:options items="${co.noCommande}" />
+			</form:select>
 		</div>
 		<div>
 			<button type="submit" cssClass="btn btn-default">Rechercher</button>
 		</div>
 	</form:form>
-	
-<h1 style="color: red; text-align: center">${msg}</h1>
-	
-	
-	<table class="table table-bordered">
-		<tr>
-			<th>Numéro Commande</th>
-			<th>Date Commande</th>
-			<th>Gestion</th>
-		</tr>
-		<tr>
-			<td>${coFind.noCommande}</td>
-			<td><fmt:formatDate value="${coFind.dateCommande}"
-					pattern="dd/MM/yyyy" /></td>
-			<td><a
-				href="<c:url value="/commande/supprLink/${coFind.noCommande}"/>">Supprimer</a></td>
-		</tr>
-	</table>
 
-
+	<h1 style="color: red; text-align: center">${msg}</h1>
+	<c:if test="${not empty coFind}">
+		<table class="table table-bordered">
+			<tr>
+				<th>Numéro Commande</th>
+				<th>Date Commande</th>
+				<th>Gestion</th>
+			</tr>
+			<tr>
+				<td>${coFind.noCommande}</td>
+				<td><fmt:formatDate value="${coFind.dateCommande}"
+						pattern="dd/MM/yyyy" /></td>
+				<td><a
+					href="<c:url value="/commande/supprLink/${coFind.noCommande}"/>">Supprimer</a></td>
+			</tr>
+		</table>
+	</c:if>
 </body>
 </html>
