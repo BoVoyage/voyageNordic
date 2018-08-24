@@ -42,7 +42,7 @@ public class LigneCommandeController {
 		// Recuperation de la liste des offres
 		List<LigneCommande> listeLigneCommande = ligneCommandeService.getAllLignesCommandes();
 
-		return new ModelAndView("LigneCommandeListe", "listeLC", listeLigneCommande);
+		return new ModelAndView("ligneCommandeListe", "listeLC", listeLigneCommande);
 	}
 
 	/**
@@ -57,11 +57,25 @@ public class LigneCommandeController {
 
 		modele.addAttribute("lcModif", new LigneCommande());
 
-		return "modifLigneCommande";
+		return "ligneCommandeUpdate";
+	}
+
+	@RequestMapping(value = "/updateLCLink", method = RequestMethod.GET)
+	public String updtLigneCommandeLien(Model modele, @RequestParam("pId") int id) {
+
+		LigneCommande lcIn = new LigneCommande();
+
+		lcIn.setIdLigneCommande(id);
+
+		LigneCommande lcOut = ligneCommandeService.getLigneCommandebyId(lcIn);
+
+		modele.addAttribute("lcUpdt", lcOut);
+
+		return "ligneCommandeUpdate";
 	}
 
 	@RequestMapping(value = "/soumettreUpdateLigneCommande", method = RequestMethod.POST)
-	public String updtELigneCommandeForm(@ModelAttribute("lcModif") LigneCommande lcIn, RedirectAttributes rda) {
+	public String updtLigneCommandeForm(@ModelAttribute("lcModif") LigneCommande lcIn, RedirectAttributes rda) {
 		int verif = ligneCommandeService.updateLigneCommande(lcIn);
 
 		if (verif != 0) {
@@ -72,20 +86,6 @@ public class LigneCommandeController {
 			rda.addAttribute("msg", "modification non fonctionnelle");
 			return "redirect:updateLigneCommande";
 		}
-	}
-
-	@RequestMapping(value = "/updateLink", method = RequestMethod.GET)
-	public String modifLient(Model modele, @RequestParam("pId") int id) {
-
-		LigneCommande lcIn = new LigneCommande();
-
-		lcIn.setIdLigneCommande(id);
-
-		LigneCommande lcOut = ligneCommandeService.getLigneCommandebyId(lcIn);
-
-		modele.addAttribute("lcUpdt", lcOut);
-
-		return "modifLigneCommande";
 	}
 
 	/**

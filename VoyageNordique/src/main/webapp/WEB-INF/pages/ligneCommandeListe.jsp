@@ -15,11 +15,12 @@
 <title>Ligne Commande Page</title>
 </head>
 <body>
+	<!-- Ajouter le menu avec include -->
+	<%@ include file="../../templates/header.html"%>
 
 	<table class="table table-bordered">
 
-		<!-- Ajouter le menu avec include -->
-		<%@ include file="../../templates/header.html"%>
+
 
 		<tr>
 			<th>Numéro Commande</th>
