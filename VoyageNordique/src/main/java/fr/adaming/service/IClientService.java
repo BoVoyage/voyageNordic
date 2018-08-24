@@ -19,7 +19,7 @@ public interface IClientService {
 	/**
 	* Methode pour supprimer le client 
 	 */
-	public Client deleteEtudiant(Client cl);
+	public int deleteClient(Client cl);
 	
 	/**
 	* Methode rechercher le client par nom ou par id

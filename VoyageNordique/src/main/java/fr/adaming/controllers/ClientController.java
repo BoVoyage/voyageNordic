@@ -98,10 +98,10 @@ public class ClientController {
 		return "ClientModif";
 	}
 	@RequestMapping(value = "/soumettreModifClient", method = RequestMethod.POST)
-	public String soumettreModifFrom(@ModelAttribute("clientModif") Client clAjout, RedirectAttributes rda) {
+	public String soumettreModifFrom(@ModelAttribute("clientModif") Client clModif, RedirectAttributes rda) {
 		
 		/** Instancier un nouveau client */
-		int clOut = clientService.updateClient(clAjout);
+		int clOut = clientService.updateClient(clModif);
 		
 		if (clOut!=0){
 			
@@ -109,6 +109,31 @@ public class ClientController {
 		}else{
 			rda.addAttribute("msg", "La modif a echoué!");
 			return "redirect:modifier";
+		}
+	}
+	
+	// ***********************************************************************************************
+	// ******$$$$$$$$$$$$$$$**********
+	
+	//methode Supprimer un Client
+	@RequestMapping(value="/supprimer" , method=RequestMethod.GET)
+	public String afficheFormSupprimeClient(Model modele){
+		modele.addAttribute("clientSupprime", new Client());
+	
+		return "ClientSupprime";
+	}
+	@RequestMapping(value = "/soumettreSupprimeClient", method = RequestMethod.POST)
+	public String soumettreSupprimeFrom(@ModelAttribute("clientSupprime") Client clSuppr, RedirectAttributes rda) {
+		
+		/** Instancier un nouveau client */
+		int clOut = clientService.deleteClient(clSuppr);
+		
+		if (clOut!=0){
+			
+			return "redirect:ListeClients";
+		}else{
+			rda.addAttribute("msg", "La suppession a echoué!");
+			return "redirect:supprimer";
 		}
 	}
 }

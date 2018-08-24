@@ -69,12 +69,22 @@ public class ClientDaoImpl implements IClientDao{
 		return query.executeUpdate();
 	}
 	@Override
-	public Client deleteEtudiant(Client cl) {
+	public int deleteClient(Client cl) {
 		/**Recuperer la session*/
 		Session s = sf.getCurrentSession();
-		/**utilisation de delete*/
-		s.delete(cl);
-		return cl;
+		
+		/** La req HQL*/
+		String reqHQl="Delete Client cl where cl.noClient=:pNoClient";
+		
+		/**Recuperation du query*/
+		Query query=s.createQuery(reqHQl);
+		
+		/**pASSAGE DES params*/
+		query.setParameter("pNoClient", cl.getNoClient());
+		
+		int verif=query.executeUpdate();
+		
+		return verif;
 	}
 	@Override
 	public List<Client> getClientByNomOrNoClient(Client cl) {
@@ -93,6 +103,5 @@ public class ClientDaoImpl implements IClientDao{
 
 		return query.list();
 	}
-
 
 }
