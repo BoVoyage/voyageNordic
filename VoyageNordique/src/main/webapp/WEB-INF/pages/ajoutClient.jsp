@@ -15,6 +15,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 </head>
+
+
 <body>
 	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>

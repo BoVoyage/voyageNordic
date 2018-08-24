@@ -17,6 +17,10 @@
 <body>
 
 <table class="table table-bordered">
+
+	<!-- Ajouter le menu avec include -->
+	<%@ include file="../../templates/header.html"%>
+	
 		<tr>
 			<th>Numéro Client</th>
 			<th>Nom Client</th>

@@ -43,6 +43,17 @@ public class ClientDaoImpl implements IClientDao{
 		/**recuperation de la liste*/
 		return query.list();
 	}
+	//************************************************************************************
+	public int modifClient(Client cl){
+		
+		//Recuperer la session
+		Session s=sf.getCurrentSession();
+		
+		//La requete HQL
+		String reqHQL="UPDATE Client cl SET cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=?";
+		
+		return 0;
+	}
 
 
 }

@@ -83,7 +83,7 @@ public class ClientController {
 			return "redirect:listeClients";
 		} else {
 			rda.addAttribute("msg", "L'ajout du client à échouer");
-			return "redirect:ajouterClient";
+			return "redirect:ajoutClient";
 		}
 	}
 }
