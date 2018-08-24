@@ -136,4 +136,27 @@ public class ClientController {
 			return "redirect:supprimer";
 		}
 	}
+	// ***********************************************************************************************
+	// ******$$$$$$$$$$$$$$$**********
+	
+	//methode Supprimer un Client
+	@RequestMapping(value="/rechercher" , method=RequestMethod.GET)
+	public ModelAndView afficheFormRechercheClient(){
+		return new ModelAndView("ClientRecherche", "clientRecherche", new Client());
+	}
+
+	@RequestMapping(value = "/soumettreRechercheClient", method = RequestMethod.POST)
+	public String soumettreRechercheFrom(@ModelAttribute("clientRecherche") Client clRech, RedirectAttributes rda,Model modele ) {
+		
+		/** Instancier un nouveau client */
+		List<Client> clOut = clientService.getClientByNomOrNoClient(clRech);
+		
+		if (clOut!=null){
+			modele.addAttribute("clientListe",clOut);
+			return "ClientRecherche";
+		}else{
+			rda.addAttribute("msg", "La recherche a echoué!");
+			return "redirect:rechercher";
+		}
+	}
 }
