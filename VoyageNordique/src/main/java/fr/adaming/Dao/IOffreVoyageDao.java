@@ -84,4 +84,9 @@ public interface IOffreVoyageDao {
 	 */
 	public int promoOffreVoyage(OffreVoyage ov);
 	
+	/**
+	 * Methode de listing des offres de voyage en promo
+	 * @return liste d'objets Offre de voyage en promo
+	 */
+	public List<OffreVoyage> getOffresPromo();
 }

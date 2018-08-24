@@ -186,4 +186,20 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		return query.executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<OffreVoyage> getOffresPromo() {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov WHERE ov.promotion=:pPromo";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+		query.setParameter("pPromo", true);
+
+		return query.list();
+	}
+
 }

@@ -95,6 +95,21 @@ public class OffreVoyageController {
 		return new ModelAndView("offreListe", "allOffresVoyage", listingOffres);
 	}
 
+	// ******************* recup de la liste des offres en promo
+	/**
+	 * Méthode d'affichage de la liste des offres en promo
+	 * 
+	 * @return modelAndView
+	 */
+	@RequestMapping(value = "/listeOffrePromo", method = RequestMethod.GET)
+	public ModelAndView afficheListePromo() {
+
+		// recuperer la liste d'offres à partir de service
+		List<OffreVoyage> listingPromo = offreVoyageService.getOffresPromoService();
+
+		return new ModelAndView("promoListe", "allOffresPromo", listingPromo);
+	}
+
 	// ******************* ajouter une offre de voyage
 	/**
 	 * Méthode du formulaire d'ajout d'une offre de voyage
