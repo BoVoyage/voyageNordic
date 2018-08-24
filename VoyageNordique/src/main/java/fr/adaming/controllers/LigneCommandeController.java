@@ -1,9 +1,9 @@
 package fr.adaming.controllers;
 
-import java.awt.LinearGradientPaint;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,7 +20,8 @@ import fr.adaming.model.LigneCommande;
 import fr.adaming.service.ILigneCommandeService;
 
 @Controller
-@RequestMapping("/commande")
+@RequestMapping("/lignecommande")
+@Scope("session")
 public class LigneCommandeController {
 
 	@Autowired
@@ -41,7 +42,7 @@ public class LigneCommandeController {
 		// Recuperation de la liste des offres
 		List<LigneCommande> listeLigneCommande = ligneCommandeService.getAllLignesCommandes();
 
-		return new ModelAndView("afficherLigneC", "listeLC", listeLigneCommande);
+		return new ModelAndView("LigneCommandeListe", "listeLC", listeLigneCommande);
 	}
 
 	/**
@@ -130,7 +131,7 @@ public class LigneCommandeController {
 		return new ModelAndView("rechercheLigneCommande", "lcSearch2", new LigneCommande());
 	}
 
-	@RequestMapping(value = "/soumettreSearchLigneCommande", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreSearchLigneCommandebyCommande", method = RequestMethod.POST)
 	public String searchLigneCommandebyCommandeForm(ModelMap modele,
 			@ModelAttribute("ligneCommandeSearch") LigneCommande lcIn, Commande coIn, RedirectAttributes rda) {
 
