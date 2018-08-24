@@ -40,7 +40,7 @@
 				<td>${o.descriptionVoyage}</td>
 				<td>${o.prixVoyage}</td>
 				
-				<td><img  src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"></td>
+				<td><img  src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}" style="width: 100px; height: 100px"/></td>
 			</tr>
 		</c:forEach>
 

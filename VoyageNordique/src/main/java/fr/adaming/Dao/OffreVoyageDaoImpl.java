@@ -118,14 +118,40 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 	public int deleteOffreVoyage(OffreVoyage ov) {
 		// recuperer la session à partir de sf
 		Session s = sf.getCurrentSession();
-		ov=this.getOffreVoyageByNoVoyage(ov);
-		try{
+		ov = this.getOffreVoyageByNoVoyage(ov);
+		try {
 			s.delete(ov);
 			return 1;
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public int updateOffreVoyage(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "UPDATE OffreVoyage ov SET ov.pays=:pPays, ov.ville=:pVille, ov.quantite=:pQuantite, ov.etat=:pEtat, ov.imageDestination=:pImg, ov.promotion=:pPromo, ov.descriptionVoyage=:pDesc, ov.prixVoyage=:pPrix, ov.remiseVoyage=:pRemise, ov.designation=:pNom WHERE ov.noVoyage=:pNo";
+
+		//creation de la query et passage des param
+		Query query=s.createQuery(req);
+		query.setParameter("pPays", ov.getPays());
+		query.setParameter("pVille", ov.getVille());
+		query.setParameter("pQuantite", ov.getQuantite());
+		query.setParameter("pEtat", ov.isEtat());
+		query.setParameter("pImg", ov.getImageDestination());
+		query.setParameter("pPromo", ov.isPromotion());
+		query.setParameter("pDesc", ov.getDescriptionVoyage());
+		query.setParameter("pPrix", ov.getPrixVoyage());
+		query.setParameter("pRemise", ov.getRemiseVoyage());
+		query.setParameter("pNom", ov.getDesignation());
+		query.setParameter("pNo", ov.getNoVoyage());
+		
+		
+		return query.executeUpdate();
 	}
 
 }

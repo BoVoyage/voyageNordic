@@ -99,4 +99,14 @@ public class OffreVoyageDaoTest {
 		offreVoyageDao.deleteOffreVoyage(ovSuppr);
 		assertEquals(1, offreVoyageDao.getAllOffres().size());
 	}
+	
+	//cas de test de la modification d'une offre de voyage
+	@Ignore
+//	@Test
+//	@Transactional
+	public void testUpdateOffre(){
+		OffreVoyage ovModif= new OffreVoyage("sdfsdf", "Finlande", null, 12, true, null, false, null, 2300, 0, null, null);
+		offreVoyageDao.updateOffreVoyage(ovModif);
+		assertEquals("Finlande", offreVoyageDao.getAllOffres().get(0).getPays());
+	}
 }

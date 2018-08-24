@@ -4,11 +4,13 @@
 <!-- besoin des balises form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Page d'ajout Offre de Voyage</title>
+<title>Page de modification d'une offre</title>
 
 <!-- ajouter la librairie de bootstrap.css -->
 <link rel="stylesheet"
@@ -16,12 +18,13 @@
 
 </head>
 <body>
+
 	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>
 
 	<br />
 	<form:form cssClass="form-horizontal" method="POST"
-		action="soumettreAjoutOffre" modelAttribute="offreAjout"
+		action="soumettreModifOffre" modelAttribute="offreModif"
 		enctype="multipart/form-data">
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
@@ -101,9 +104,9 @@
 			</div>
 		</div>
 
-		<input style="margin: auto;" type="file" name="file"/>
+		<input style="margin: auto" type="file" name="file" />
 
-		<button type="submit" class="btn btn-default">Ajouter cette
+		<button type="submit" class="btn btn-default">Modifier cette
 			offre de voyage</button>
 	</form:form>
 

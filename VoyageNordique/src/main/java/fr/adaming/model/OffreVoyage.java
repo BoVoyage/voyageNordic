@@ -13,10 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
-@Table(name = "offreVoyages")
+@Table(name ="offreVoyages")
 public class OffreVoyage {
 
 	// declaration des attributs

@@ -60,5 +60,12 @@ public interface IOffreVoyageDao {
 	 * @return int
 	 */
 	public int deleteOffreVoyage(OffreVoyage ov);
+	
+	/**
+	 * Méthode de modification d'une offre de voyage
+	 * @param ov, un objet offre de voyage
+	 * @return int
+	 */
+	public int updateOffreVoyage(OffreVoyage ov);
 
 }

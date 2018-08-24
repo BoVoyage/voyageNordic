@@ -113,7 +113,7 @@ public class OffreVoyageController {
 	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/soumettreAjoutOffre", method = RequestMethod.POST)
-	public String soumettreAjoutForm(@ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda,MultipartFile file) throws IOException {
+	public String soumettreAjoutForm(@ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda, MultipartFile file) throws IOException {
 		if(file!=null){
 			// transformer l'image en tableau de byte
 			ovAjout.setImageDestination(file.getBytes());
@@ -140,7 +140,10 @@ public class OffreVoyageController {
 	 * @return ModelAndView avec une offre de voyage en modèle et en vue la page recherche
 	 */
 	@RequestMapping(value = "/rechercherParNoVoyage", method = RequestMethod.GET)
-	public ModelAndView afficherFormRechercheNoVoyage() {
+	public ModelAndView afficherFormRechercheNoVoyage(Model modele, @RequestParam(value="error", required=false) String error) {
+		if(msg!=null){
+			modele.addAttribute("error",error);
+		}
 		return new ModelAndView("offreRecherche", "SearchNoVoyage", new OffreVoyage());
 	}
 
@@ -160,7 +163,7 @@ public class OffreVoyageController {
 			modele.addAttribute("SearchNoVoyage", ovOut);
 			return "offreRecherche";
 		} else {
-			rda.addAttribute("error", "La recherche a échoué");
+			rda.addAttribute("error", true);
 			return "redirect:rechercherParNoVoyage";
 		}
 	}
@@ -200,6 +203,47 @@ public class OffreVoyageController {
 		}
 	}
 	
+	// ******************* modifier une offre de voyage
+		/**
+		 * Méthode du formulaire de modification d'une offre de voyage
+		 * @param modele correspondant à une offre de voyage
+		 * @return page ajout d'offre
+		 */
+		@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
+		public String afficheFormModifOffre(Model modele) {
+			modele.addAttribute("offreModif", new OffreVoyage());
+			return "offreModifier";
+		}
+
+		/**
+		 * Méthode pour soumettre la modification de l'offre de voyage
+		 * @param ovAjout, un objet offre de voyage
+		 * @param rda, attribut message d'erreur
+		 * @param file, un multipartFile pour l'image
+		 * @return page de liste si succès, d'ajout si echec
+		 * @throws IOException 
+		 */
+		@RequestMapping(value = "/soumettreModifOffre", method = RequestMethod.POST)
+		public String soumettreModifForm(@ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,MultipartFile file) throws IOException {
+			if(file!=null){
+				// transformer l'image en tableau de byte
+				ovModif.setImageDestination(file.getBytes());
+			}
+			
+			
+			// appel de la methode service pour ajouter l'offre
+			int retour= offreVoyageService.updateOffreVoyage(ovModif);
+
+			if (retour != 0) {
+				// je vais rediriger la requete vers la methode liste des offres
+				return "redirect:listeOffreVoyage";
+			} else {
+				rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+
+				// redirection vers la methode modifierOffre
+				return "redirect:modifierOffre";
+			}
+		}
 	
 
 }
