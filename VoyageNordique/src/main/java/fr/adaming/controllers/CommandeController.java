@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -92,8 +93,14 @@ public class CommandeController {
 	// ****************************Fonctionnalité recherche
 	// Afficher le formulaire de recherche
 	@RequestMapping(value = "/rechercheCommande", method = RequestMethod.GET)
-	public ModelAndView displayFormRechCommande() {
-		return new ModelAndView("commandeRechercher", "coRech", new Commande());
+	public String displayFormRechCommande(Model model, @RequestParam(value = "msg", required = false) String msg) {
+		model.addAttribute("coRech", new Commande());
+
+		if (msg != null) {
+			model.addAttribute("msg", msg);
+		}
+
+		return "commandeRechercher";
 	}
 
 	// // Soumettre le formulaire de recherche et afficher le résultat
@@ -104,10 +111,9 @@ public class CommandeController {
 		if (coOut != null) {
 			model.addAttribute("coFind", coOut);
 			return "commandeRechercher";
-			
+
 		} else {
-			System.out.println("Je suis là bitches");
-			rda.addAttribute("msg", "Commande introuvable.");
+			rda.addAttribute("msg", "Commande introuvable");
 			return "redirect:rechercheCommande";
 		}
 	}

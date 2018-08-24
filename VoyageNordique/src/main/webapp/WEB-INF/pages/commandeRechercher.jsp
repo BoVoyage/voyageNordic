@@ -27,7 +27,8 @@
 		</div>
 	</form:form>
 	
-	<h1 style="color: red; text-align: center">${msg}</h1>
+<h1 style="color: red; text-align: center">${msg}</h1>
+	
 	
 	<table class="table table-bordered">
 		<tr>
