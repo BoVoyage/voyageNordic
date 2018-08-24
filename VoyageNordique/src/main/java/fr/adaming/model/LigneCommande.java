@@ -19,7 +19,7 @@ public class LigneCommande implements Serializable {
 	// declaration des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idlignecommande")
+	@Column(name = "id_lc")
 	private int idLigneCommande;
 	private int quantite;
 	private double prix;

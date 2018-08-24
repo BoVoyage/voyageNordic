@@ -69,7 +69,7 @@ public class LigneCommandeController {
 
 		LigneCommande lcOut = ligneCommandeService.getLigneCommandebyId(lcIn);
 
-		modele.addAttribute("lcUpdt", lcOut);
+		modele.addAttribute("lcModif", lcOut);
 
 		return "ligneCommandeUpdate";
 	}
@@ -128,7 +128,7 @@ public class LigneCommandeController {
 	@RequestMapping(value = "/searchLigneCommandebyCommande", method = RequestMethod.GET)
 	public ModelAndView searchLigneCommandebyCommande() {
 
-		return new ModelAndView("rechercheLigneCommande", "lcSearch2", new LigneCommande());
+		return new ModelAndView("ligneCommandeSearch", "lcSearch2", new LigneCommande());
 	}
 
 	@RequestMapping(value = "/soumettreSearchLigneCommandebyCommande", method = RequestMethod.POST)
@@ -141,7 +141,7 @@ public class LigneCommandeController {
 
 			modele.addAttribute("lcFind2", lcOut);
 
-			return "trouverLigneCommandebyCommande";
+			return "ligneCommandeSearch";
 
 		} else {
 			rda.addAttribute("msg", "Ligne de commande non existante pour cette commande");
@@ -165,7 +165,7 @@ public class LigneCommandeController {
 		List<LigneCommande> listeLigneCommande = ligneCommandeService.getAllLignesCommandes();
 
 		model.addAttribute("afficherLigneC", listeLigneCommande);
-		return "ListeLignesCommandes";
+		return "ligneCommandeListe";
 
 	}
 

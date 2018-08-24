@@ -26,6 +26,7 @@
 			<th>Numéro Commande</th>
 			<th>Nb de place</th>
 			<th>Prix</th>
+			<th>Gestion</th>
 
 		</tr>
 
@@ -34,6 +35,11 @@
 				<td>${lc.commande.noCommande}</td>
 				<td>${lc.quantite}</td>
 				<td>${lc.prix}</td>
+				<td><a
+					href="<c:url value="/lignecommande/updateLCLink?pId=${lc.idLigneCommande}"/>">
+						modifier </a>| <a
+					href="<c:url value="/lignecommande/deleteLCLink/${lc.idLigneCommande}"/>">
+						supprimer </a></td>
 			</tr>
 		</c:forEach>
 
