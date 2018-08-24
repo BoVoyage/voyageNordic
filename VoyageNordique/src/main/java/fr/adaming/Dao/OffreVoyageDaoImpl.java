@@ -175,12 +175,12 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		Session s = sf.getCurrentSession();
 
 		// creation de la requete
-		String req = "UPDATE OffreVoyage ov SET ov.promotion=:pPromo, ov.prixVoyage=:pPrix WHERE ov.noVoyage=:pNo";
+		String req = "UPDATE OffreVoyage ov SET ov.promotion=:pPromo, ov.remiseVoyage=:pRemise WHERE ov.noVoyage=:pNo";
 
 		// creation de la query et passage des param
 		Query query = s.createQuery(req);
 		query.setParameter("pPromo", ov.isPromotion());
-		query.setParameter("pPrix", ov.getPrixVoyage());
+		query.setParameter("pRemise", ov.getRemiseVoyage());
 		query.setParameter("pNo", ov.getNoVoyage());
 
 		return query.executeUpdate();

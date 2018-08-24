@@ -6,6 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,9 +38,10 @@ public class OffreVoyageDaoTest {
 	}
 
 	// cas de test de l'ajout d'une offre de voyage
-	// @Test
 	@Ignore
-	// @Transactional
+	@Test
+	@Transactional
+	@Rollback(true)
 	public void testAddOffreVoyage() {
 		OffreVoyage ov1 = new OffreVoyage("VOY01", "Finlande", "Eygifluk", 130, true, null, false,
 				"Un voyage au pays du père noel", 2300.99, 0, "Week-end en Laponie", null);

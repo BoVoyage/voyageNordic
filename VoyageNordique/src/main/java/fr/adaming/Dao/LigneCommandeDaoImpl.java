@@ -107,4 +107,10 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.list();
 	}
 
+	@Override
+	public LigneCommande getLigneCommandebyId(LigneCommande lc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

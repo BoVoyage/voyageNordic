@@ -64,12 +64,12 @@ public class OffreVoyageServiceImpl implements IOffreVoyageService{
 
 	@Override
 	public int closeOffreVoyageService(OffreVoyage ov) {
-		return closeOffreVoyageService(ov);
+		return offreVoyageDao.closeOffreVoyage(ov);
 	}
 
 	@Override
 	public int promoOffreVoyageService(OffreVoyage ov) {
-		return closeOffreVoyageService(ov);
+		return offreVoyageDao.promoOffreVoyage(ov);
 	}
 	
 	

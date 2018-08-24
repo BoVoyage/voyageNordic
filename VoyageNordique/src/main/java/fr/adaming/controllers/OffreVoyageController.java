@@ -39,12 +39,16 @@ public class OffreVoyageController {
 	@Autowired
 	private IOffreVoyageService offreVoyageService;
 
-	private FileUpload file;
-
 	// declaration du setter obligatoire pour l'injection-dependance
+	/**
+	 * @param offreVoyageService
+	 *            the offreVoyageService to set
+	 */
 	public void setOffreVoyageService(IOffreVoyageService offreVoyageService) {
 		this.offreVoyageService = offreVoyageService;
 	}
+
+	private FileUpload file;
 
 	// declaration des getter et setter de file
 	public FileUpload getFile() {
@@ -242,7 +246,8 @@ public class OffreVoyageController {
 	/**
 	 * Méthode pour soumettre la modification de l'offre de voyage
 	 * 
-	 * @param un objet offre de voyage
+	 * @param un
+	 *            objet offre de voyage
 	 * @param rda,
 	 *            attribut message d'erreur
 	 * @param file,
@@ -282,15 +287,21 @@ public class OffreVoyageController {
 	 * @return page de cloture d'offre
 	 */
 	@RequestMapping(value = "/cloreOffre", method = RequestMethod.GET)
-	public String afficheFormCloreOffre(Model modele) {
+	public String afficheFormCloreOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
+
 		modele.addAttribute("offreClose", new OffreVoyage());
+
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		return "offreClore";
 	}
 
 	/**
 	 * Méthode pour soumettre la clôture de l'offre de voyage
 	 * 
-	 * @param un objet offre de voyage
+	 * @param un
+	 *            objet offre de voyage
 	 * @param rda,
 	 *            attribut message d'erreur
 	 * @return page de liste si succès, d'ajout si echec
@@ -315,25 +326,28 @@ public class OffreVoyageController {
 
 	// *******************Mettre une offre de voyage en promo
 	/**
-	 * Méthode du formulaire permettant de mettre en promo
-	 * une offre de voyage.
+	 * Méthode du formulaire permettant de mettre en promo une offre de voyage.
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
 	 * @return page de mise en promo d'une offre
 	 */
 	@RequestMapping(value = "/promoOffre", method = RequestMethod.GET)
-	public String afficheFormPromoOffre(Model modele) {
+	public String afficheFormPromoOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
 		modele.addAttribute("offrePromo", new OffreVoyage());
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		return "offrePromo";
 	}
 
 	/**
-	 * Méthode pour soumettre la mise en promo
-	 * de l'offre de voyage
+	 * Méthode pour soumettre la mise en promo de l'offre de voyage
 	 * 
-	 * @param un objet offre de voyage
-	 * @param rda, attribut message d'erreur
+	 * @param un
+	 *            objet offre de voyage
+	 * @param rda,
+	 *            attribut message d'erreur
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
