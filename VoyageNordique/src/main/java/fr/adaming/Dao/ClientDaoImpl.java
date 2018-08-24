@@ -44,15 +44,35 @@ public class ClientDaoImpl implements IClientDao{
 		return query.list();
 	}
 	//************************************************************************************
-	public int modifClient(Client cl){
-		
-		//Recuperer la session
-		Session s=sf.getCurrentSession();
-		
-		//La requete HQL
-		String reqHQL="UPDATE Client cl SET cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=?";
-		
+//	public int modifClient(Client cl){
+//		
+//		//Recuperer la session
+//		Session s=sf.getCurrentSession();
+//		
+//		//La requete HQL
+//		String reqHQL="UPDATE Client cl SET cl.nom=:pNom, cl.prenom=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=?";
+//		
+//		return 0;
+//	}
+	@Override
+	public int updateClient(Client cl) {
+		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public Client deleteEtudiant(Client cl) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Client getEtudiantById(Client cl) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Client> getClientByNomOrId(Client cl) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
