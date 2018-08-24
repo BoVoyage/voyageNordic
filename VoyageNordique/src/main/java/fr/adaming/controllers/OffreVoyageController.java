@@ -1,6 +1,5 @@
 package fr.adaming.controllers;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -35,20 +34,19 @@ import fr.adaming.service.IOffreVoyageService;
 @RequestMapping("/offreVoyage")
 @Scope("session")
 public class OffreVoyageController {
-	
-	//transformation de l'association UML en JAVA
+
+	// transformation de l'association UML en JAVA
 	@Autowired
 	private IOffreVoyageService offreVoyageService;
-	
-	private FileUpload file;
-	
 
-	//declaration du setter obligatoire pour l'injection-dependance
+	private FileUpload file;
+
+	// declaration du setter obligatoire pour l'injection-dependance
 	public void setOffreVoyageService(IOffreVoyageService offreVoyageService) {
 		this.offreVoyageService = offreVoyageService;
 	}
-	
-	//declaration des getter et setter de file
+
+	// declaration des getter et setter de file
 	public FileUpload getFile() {
 		return file;
 	}
@@ -56,38 +54,39 @@ public class OffreVoyageController {
 	public void setFile(FileUpload file) {
 		this.file = file;
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		DateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
 		formatDate.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(formatDate, false));
 	}
-	
-	//*************** methode pour recuperer les images et les envoyer à la page jsp
-	@RequestMapping(value="/getImage",method=RequestMethod.GET,produces=MediaType.IMAGE_JPEG_VALUE)
+
+	// *************** methode pour recuperer les images et les envoyer à la
+	// page jsp
+	@RequestMapping(value = "/getImage", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	public byte[] recupImage(@RequestParam("pId") int id) throws IOException{
-		OffreVoyage voyage=offreVoyageService.getOffreVoyageById(id);
-		
-		if(voyage.getImageDestination()==null){
+	public byte[] recupImage(@RequestParam("pId") int id) throws IOException {
+		OffreVoyage voyage = offreVoyageService.getOffreVoyageById(id);
+
+		if (voyage.getImageDestination() == null) {
 			return new byte[0];
-		}else{
+		} else {
 			return IOUtils.toByteArray(new ByteArrayInputStream(voyage.getImageDestination()));
 		}
 	}
-	
-	
+
 	// ******************* recup de la liste des offres
 	/**
 	 * Méthode d'affichage de la liste des offres
-	 * @return modelAndView 
+	 * 
+	 * @return modelAndView
 	 */
 	@RequestMapping(value = "/listeOffreVoyage", method = RequestMethod.GET)
 	public ModelAndView afficheListeOffre() {
 
 		// recuperer la liste d'offres à partir de service
-		List<OffreVoyage> listingOffres=offreVoyageService.getAllOffres();
+		List<OffreVoyage> listingOffres = offreVoyageService.getAllOffres();
 
 		return new ModelAndView("offreListe", "allOffresVoyage", listingOffres);
 	}
@@ -95,7 +94,9 @@ public class OffreVoyageController {
 	// ******************* ajouter une offre de voyage
 	/**
 	 * Méthode du formulaire d'ajout d'une offre de voyage
-	 * @param modele correspondant à une offre de voyage
+	 * 
+	 * @param modele
+	 *            correspondant à une offre de voyage
 	 * @return page ajout d'offre
 	 */
 	@RequestMapping(value = "/ajouterOffre", method = RequestMethod.GET)
@@ -106,22 +107,26 @@ public class OffreVoyageController {
 
 	/**
 	 * Méthode d'ajout d'une offre de voyage pour la soumettre
-	 * @param ovAjout, un objet offre de voyage
-	 * @param rda, attribut message d'erreur
-	 * @param file, un multipartFile pour l'image
+	 * 
+	 * @param ovAjout,
+	 *            un objet offre de voyage
+	 * @param rda,
+	 *            attribut message d'erreur
+	 * @param file,
+	 *            un multipartFile pour l'image
 	 * @return page de liste si succès, d'ajout si echec
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreAjoutOffre", method = RequestMethod.POST)
-	public String soumettreAjoutForm(@ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda, MultipartFile file) throws IOException {
-		if(file!=null){
+	public String soumettreAjoutForm(@ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda,
+			MultipartFile file) throws IOException {
+		if (file != null) {
 			// transformer l'image en tableau de byte
 			ovAjout.setImageDestination(file.getBytes());
 		}
-		
-		
+
 		// appel de la methode service pour ajouter l'offre
-		OffreVoyage ov2= offreVoyageService.addOffreVoyage(ovAjout);
+		OffreVoyage ov2 = offreVoyageService.addOffreVoyage(ovAjout);
 
 		if (ov2.getIdVoyage() != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
@@ -133,16 +138,20 @@ public class OffreVoyageController {
 			return "redirect:ajouterOffre";
 		}
 	}
-	
-	//******************************************* methode pour rechercher une offre de voyage par no voyage
+
+	// ******************************************* methode pour rechercher une
+	// offre de voyage par no voyage
 	/**
 	 * Méthode du formulaire de recherche par no du voyage
-	 * @return ModelAndView avec une offre de voyage en modèle et en vue la page recherche
+	 * 
+	 * @return ModelAndView avec une offre de voyage en modèle et en vue la page
+	 *         recherche
 	 */
 	@RequestMapping(value = "/rechercherParNoVoyage", method = RequestMethod.GET)
-	public String afficherFormRechercheNoVoyage(Model modele, @RequestParam(value="error", required=false) String error) {
-		if(error!=null){
-			modele.addAttribute("error",error);
+	public String afficherFormRechercheNoVoyage(Model modele,
+			@RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
 		}
 		modele.addAttribute("SearchNoVoyage", new OffreVoyage());
 		return "offreRecherche";
@@ -150,15 +159,20 @@ public class OffreVoyageController {
 
 	/**
 	 * Methode pour soumettre la recherche
-	 * @param ov1, un objet offre de voyage
-	 * @param rda, attribut message d'erreur
-	 * @param modele, contiendra l'offre de voyage si elle est non nulle
-	 * @return page recherche ou redirection vers la methode rechercherParNoVoyage
+	 * 
+	 * @param ov1,
+	 *            un objet offre de voyage
+	 * @param rda,
+	 *            attribut message d'erreur
+	 * @param modele,
+	 *            contiendra l'offre de voyage si elle est non nulle
+	 * @return page recherche ou redirection vers la methode
+	 *         rechercherParNoVoyage
 	 */
 	@RequestMapping(value = "/soumettreSearch", method = RequestMethod.POST)
 	public String soumettreSearch(@ModelAttribute("SearchNoVoyage") OffreVoyage ov1, RedirectAttributes rda,
 			ModelMap modele) {
-		OffreVoyage ovOut= offreVoyageService.getOffreVoyageByNoVoyage(ov1);
+		OffreVoyage ovOut = offreVoyageService.getOffreVoyageByNoVoyage(ov1);
 		if (ovOut != null) {
 			// ajouter dans le modele, l'offre trouvée
 			modele.addAttribute("SearchNoVoyage", ovOut);
@@ -168,12 +182,15 @@ public class OffreVoyageController {
 			return "redirect:rechercherParNoVoyage";
 		}
 	}
-	
-	//***************************************** methode pour supprimer une offre de voyage
-	
+
+	// ***************************************** methode pour supprimer une
+	// offre de voyage
+
 	/**
 	 * Méthode du formulaire de suppression d'une offre de voyage
-	 * @param modele correspondant à une offre de voyage
+	 * 
+	 * @param modele
+	 *            correspondant à une offre de voyage
 	 * @return page de suppression d'offre
 	 */
 	@RequestMapping(value = "/supprimerOffre", method = RequestMethod.GET)
@@ -184,14 +201,18 @@ public class OffreVoyageController {
 
 	/**
 	 * Méthode pour soumettre la suppression d'une offre de voyage
-	 * @param ovSuppr, un objet offre de voyage à supprimer
-	 * @param rda, attribut message d'erreur
-	 * @return redirection vers les méthodes liste (si succès de la suppression) ou suppr (si echec de la suppression)
+	 * 
+	 * @param ovSuppr,
+	 *            un objet offre de voyage à supprimer
+	 * @param rda,
+	 *            attribut message d'erreur
+	 * @return redirection vers les méthodes liste (si succès de la suppression)
+	 *         ou suppr (si echec de la suppression)
 	 */
 	@RequestMapping(value = "/soumettreSupprOffre", method = RequestMethod.POST)
-	public String soumettreSupprForm(@ModelAttribute("offreSuppr") OffreVoyage ovSuppr, RedirectAttributes rda){
+	public String soumettreSupprForm(@ModelAttribute("offreSuppr") OffreVoyage ovSuppr, RedirectAttributes rda) {
 		// appel de la methode service pour ajouter l'offre
-		int retour= offreVoyageService.deleteOffreVoyage(ovSuppr);
+		int retour = offreVoyageService.deleteOffreVoyage(ovSuppr);
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
@@ -203,48 +224,134 @@ public class OffreVoyageController {
 			return "redirect:supprimerOffre";
 		}
 	}
-	
+
 	// ******************* modifier une offre de voyage
-		/**
-		 * Méthode du formulaire de modification d'une offre de voyage
-		 * @param modele correspondant à une offre de voyage
-		 * @return page ajout d'offre
-		 */
-		@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
-		public String afficheFormModifOffre(Model modele) {
-			modele.addAttribute("offreModif", new OffreVoyage());
-			return "offreModifier";
+	/**
+	 * Méthode du formulaire de modification d'une offre de voyage
+	 * 
+	 * @param modele
+	 *            correspondant à une offre de voyage
+	 * @return page ajout d'offre
+	 */
+	@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
+	public String afficheFormModifOffre(Model modele) {
+		modele.addAttribute("offreModif", new OffreVoyage());
+		return "offreModifier";
+	}
+
+	/**
+	 * Méthode pour soumettre la modification de l'offre de voyage
+	 * 
+	 * @param un objet offre de voyage
+	 * @param rda,
+	 *            attribut message d'erreur
+	 * @param file,
+	 *            un multipartFile pour l'image
+	 * @return page de liste si succès, d'ajout si echec
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/soumettreModifOffre", method = RequestMethod.POST)
+	public String soumettreModifForm(@ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,
+			MultipartFile file) throws IOException {
+		if (file != null) {
+			// transformer l'image en tableau de byte
+			ovModif.setImageDestination(file.getBytes());
 		}
 
-		/**
-		 * Méthode pour soumettre la modification de l'offre de voyage
-		 * @param ovAjout, un objet offre de voyage
-		 * @param rda, attribut message d'erreur
-		 * @param file, un multipartFile pour l'image
-		 * @return page de liste si succès, d'ajout si echec
-		 * @throws IOException 
-		 */
-		@RequestMapping(value = "/soumettreModifOffre", method = RequestMethod.POST)
-		public String soumettreModifForm(@ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,MultipartFile file) throws IOException {
-			if(file!=null){
-				// transformer l'image en tableau de byte
-				ovModif.setImageDestination(file.getBytes());
-			}
-			
-			
-			// appel de la methode service pour ajouter l'offre
-			int retour= offreVoyageService.updateOffreVoyage(ovModif);
+		// appel de la methode service pour ajouter l'offre
+		int retour = offreVoyageService.updateOffreVoyage(ovModif);
 
-			if (retour != 0) {
-				// je vais rediriger la requete vers la methode liste des offres
-				return "redirect:listeOffreVoyage";
-			} else {
-				rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+		if (retour != 0) {
+			// je vais rediriger la requete vers la methode liste des offres
+			return "redirect:listeOffreVoyage";
+		} else {
+			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
 
-				// redirection vers la methode modifierOffre
-				return "redirect:modifierOffre";
-			}
+			// redirection vers la methode modifierOffre
+			return "redirect:modifierOffre";
 		}
-	
+	}
+
+	// ******************* clore une offre de voyage
+	/**
+	 * Méthode du formulaire permettant de clore une offre pour qu'elle soit
+	 * visible mais plus accessible.
+	 * 
+	 * @param modele
+	 *            correspondant à une offre de voyage
+	 * @return page de cloture d'offre
+	 */
+	@RequestMapping(value = "/cloreOffre", method = RequestMethod.GET)
+	public String afficheFormCloreOffre(Model modele) {
+		modele.addAttribute("offreClose", new OffreVoyage());
+		return "offreClore";
+	}
+
+	/**
+	 * Méthode pour soumettre la clôture de l'offre de voyage
+	 * 
+	 * @param un objet offre de voyage
+	 * @param rda,
+	 *            attribut message d'erreur
+	 * @return page de liste si succès, d'ajout si echec
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/soumettreCloreOffre", method = RequestMethod.POST)
+	public String soumettreCloreForm(@ModelAttribute("offreClose") OffreVoyage ovClose, RedirectAttributes rda) {
+
+		// appel de la methode service pour clore l'oddre
+		int retour = offreVoyageService.closeOffreVoyageService(ovClose);
+
+		if (retour != 0) {
+			// je vais rediriger la requete vers la methode liste des offres
+			return "redirect:listeOffreVoyage";
+		} else {
+			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+
+			// redirection vers la methode modifierOffre
+			return "redirect:cloreOffre";
+		}
+	}
+
+	// *******************Mettre une offre de voyage en promo
+	/**
+	 * Méthode du formulaire permettant de mettre en promo
+	 * une offre de voyage.
+	 * 
+	 * @param modele
+	 *            correspondant à une offre de voyage
+	 * @return page de mise en promo d'une offre
+	 */
+	@RequestMapping(value = "/promoOffre", method = RequestMethod.GET)
+	public String afficheFormPromoOffre(Model modele) {
+		modele.addAttribute("offrePromo", new OffreVoyage());
+		return "offrePromo";
+	}
+
+	/**
+	 * Méthode pour soumettre la mise en promo
+	 * de l'offre de voyage
+	 * 
+	 * @param un objet offre de voyage
+	 * @param rda, attribut message d'erreur
+	 * @return page de liste si succès, d'ajout si echec
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/soumettrePromoOffre", method = RequestMethod.POST)
+	public String soumettrePromoForm(@ModelAttribute("offrePromo") OffreVoyage ovPromo, RedirectAttributes rda) {
+
+		// appel de la methode service pour clore l'oddre
+		int retour = offreVoyageService.promoOffreVoyageService(ovPromo);
+
+		if (retour != 0) {
+			// je vais rediriger la requete vers la methode liste des offres
+			return "redirect:listeOffreVoyage";
+		} else {
+			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+
+			// redirection vers la methode modifierOffre
+			return "redirect:promoOffre";
+		}
+	}
 
 }

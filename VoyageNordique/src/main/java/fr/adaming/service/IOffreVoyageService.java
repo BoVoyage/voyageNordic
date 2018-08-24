@@ -67,5 +67,21 @@ public interface IOffreVoyageService {
 	 * @return int
 	 */
 	public int updateOffreVoyage(OffreVoyage ov);
+	
+	/**
+	 * Méthode servant à désactiver une offre
+	 * afin qu'elle soit visible mais plus réservable
+	 * @param ov, un objet offre de voyage
+	 * @return int
+	 */
+	public int closeOffreVoyageService(OffreVoyage ov);
+	
+	/**
+	 * Méthode servant à désactiver une offre
+	 * afin qu'elle soit visible mais plus réservable
+	 * @param ov, un objet offre de voyage
+	 * @return int
+	 */
+	public int promoOffreVoyageService(OffreVoyage ov);
 
 }

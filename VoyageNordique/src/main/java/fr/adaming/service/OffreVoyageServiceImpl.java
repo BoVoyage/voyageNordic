@@ -61,6 +61,16 @@ public class OffreVoyageServiceImpl implements IOffreVoyageService{
 	public int updateOffreVoyage(OffreVoyage ov) {
 		return offreVoyageDao.updateOffreVoyage(ov);
 	}
+
+	@Override
+	public int closeOffreVoyageService(OffreVoyage ov) {
+		return closeOffreVoyageService(ov);
+	}
+
+	@Override
+	public int promoOffreVoyageService(OffreVoyage ov) {
+		return closeOffreVoyageService(ov);
+	}
 	
 	
 

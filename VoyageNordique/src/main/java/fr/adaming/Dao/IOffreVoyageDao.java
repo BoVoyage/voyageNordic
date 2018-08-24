@@ -68,4 +68,20 @@ public interface IOffreVoyageDao {
 	 */
 	public int updateOffreVoyage(OffreVoyage ov);
 
+	/**
+	 * Méthode servant à désactiver une offre
+	 * afin qu'elle soit visible mais plus réservable
+	 * @param ov, un objet offre de voyage
+	 * @return int
+	 */
+	public int closeOffreVoyage(OffreVoyage ov);
+	
+	/**
+	 * Méthode servant à désactiver une offre
+	 * afin qu'elle soit visible mais plus réservable
+	 * @param ov, un objet offre de voyage
+	 * @return int
+	 */
+	public int promoOffreVoyage(OffreVoyage ov);
+	
 }

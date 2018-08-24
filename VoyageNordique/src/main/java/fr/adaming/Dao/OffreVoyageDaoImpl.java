@@ -136,8 +136,8 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		// creation de la requete
 		String req = "UPDATE OffreVoyage ov SET ov.pays=:pPays, ov.ville=:pVille, ov.quantite=:pQuantite, ov.etat=:pEtat, ov.imageDestination=:pImg, ov.promotion=:pPromo, ov.descriptionVoyage=:pDesc, ov.prixVoyage=:pPrix, ov.remiseVoyage=:pRemise, ov.designation=:pNom WHERE ov.noVoyage=:pNo";
 
-		//creation de la query et passage des param
-		Query query=s.createQuery(req);
+		// creation de la query et passage des param
+		Query query = s.createQuery(req);
 		query.setParameter("pPays", ov.getPays());
 		query.setParameter("pVille", ov.getVille());
 		query.setParameter("pQuantite", ov.getQuantite());
@@ -149,8 +149,40 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		query.setParameter("pRemise", ov.getRemiseVoyage());
 		query.setParameter("pNom", ov.getDesignation());
 		query.setParameter("pNo", ov.getNoVoyage());
-		
-		
+
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int closeOffreVoyage(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "UPDATE OffreVoyage ov SET ov.etat=:pEtat WHERE ov.noVoyage=:pNo";
+
+		// creation de la query et passage des param
+		Query query = s.createQuery(req);
+		query.setParameter("pEtat", ov.isEtat());
+		query.setParameter("pNo", ov.getNoVoyage());
+
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int promoOffreVoyage(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "UPDATE OffreVoyage ov SET ov.promotion=:pPromo, ov.prixVoyage=:pPrix WHERE ov.noVoyage=:pNo";
+
+		// creation de la query et passage des param
+		Query query = s.createQuery(req);
+		query.setParameter("pPromo", ov.isPromotion());
+		query.setParameter("pPrix", ov.getPrixVoyage());
+		query.setParameter("pNo", ov.getNoVoyage());
+
 		return query.executeUpdate();
 	}
 
