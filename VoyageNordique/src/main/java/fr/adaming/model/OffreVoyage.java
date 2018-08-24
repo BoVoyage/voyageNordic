@@ -30,8 +30,6 @@ public class OffreVoyage {
 	private boolean etat;
 	@Lob
 	private byte[] imageDestination;
-	@Transient
-	private String imageDesti;
 	private boolean promotion;
 	private String descriptionVoyage;
 	private double prixVoyage;
@@ -220,12 +218,5 @@ public class OffreVoyage {
 		this.vehicule = vehicule;
 	}
 
-	public String getImageDesti() {
-		return imageDesti;
-	}
-
-	public void setImageDesti(String imageDesti) {
-		this.imageDesti = imageDesti;
-	}
 
 }

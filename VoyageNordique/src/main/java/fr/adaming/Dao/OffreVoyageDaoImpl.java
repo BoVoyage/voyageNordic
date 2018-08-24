@@ -54,4 +54,78 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		return (OffreVoyage) s.get(OffreVoyage.class, id);
 	}
 
+	@Override
+	public OffreVoyage getOffreVoyageByName(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov WHERE ov.designation=:pName";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+		query.setParameter("pName", ov.getDesignation());
+
+		return (OffreVoyage) query.uniqueResult();
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByNoVoyage(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov WHERE ov.noVoyage=:pNo";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+		query.setParameter("pNo", ov.getNoVoyage());
+
+		return (OffreVoyage) query.uniqueResult();
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByState(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov WHERE ov.pays=:pPays";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+		query.setParameter("pPays", ov.getPays());
+
+		return (OffreVoyage) query.uniqueResult();
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByPrice(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM OffreVoyage ov WHERE ov.prixVoyage=:pPrix";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+		query.setParameter("pPrix", ov.getPrixVoyage());
+
+		return (OffreVoyage) query.uniqueResult();
+	}
+
+	@Override
+	public int deleteOffreVoyage(OffreVoyage ov) {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+		ov=this.getOffreVoyageByNoVoyage(ov);
+		try{
+			s.delete(ov);
+			return 1;
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+
 }

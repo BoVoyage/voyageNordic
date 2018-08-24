@@ -31,6 +31,31 @@ public class OffreVoyageServiceImpl implements IOffreVoyageService{
 	public OffreVoyage getOffreVoyageById(int id) {
 		return  offreVoyageDao.getOffreVoyageById(id);
 	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByName(OffreVoyage ov) {
+		return offreVoyageDao.getOffreVoyageByName(ov);
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByNoVoyage(OffreVoyage ov) {
+		return offreVoyageDao.getOffreVoyageByNoVoyage(ov);
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByState(OffreVoyage ov) {
+		return offreVoyageDao.getOffreVoyageByState(ov);
+	}
+
+	@Override
+	public OffreVoyage getOffreVoyageByPrice(OffreVoyage ov) {
+		return offreVoyageDao.getOffreVoyageByPrice(ov);
+	}
+
+	@Override
+	public int deleteOffreVoyage(OffreVoyage ov) {
+		return offreVoyageDao.deleteOffreVoyage(ov);
+	}
 	
 	
 

@@ -19,6 +19,46 @@ public interface IOffreVoyageDao {
 	 */
 	public List<OffreVoyage> getAllOffres();
 	
+	/**
+	 * Methode de recherche d'une offre par son ID
+	 * @param id de l'offre de voyage
+	 * @return un objet offre de voyage
+	 */
 	public OffreVoyage getOffreVoyageById(int id);
+	
+	/**
+	 * Methode de recherche d'une offre par son nom
+	 * @param ov
+	 * @return
+	 */
+	public OffreVoyage getOffreVoyageByName(OffreVoyage ov);
+	
+	/**
+	 * Methode de recherche d'une offre par son numero
+	 * @param ov, un objet offre de voyage
+	 * @return un objet offre de voyage
+	 */
+	public OffreVoyage getOffreVoyageByNoVoyage(OffreVoyage ov);
+	
+	/**
+	 * Methode de recherche d'une offre par son pays
+	 * @param ov, un objet offre de voyage
+	 * @return un objet offre de voyage
+	 */
+	public OffreVoyage getOffreVoyageByState(OffreVoyage ov);
+	
+	/**
+	 * Methode de recherche d'une offre par son prix
+	 * @param ov, un objet offre de voyage
+	 * @return un objet offre de voyage
+	 */
+	public OffreVoyage getOffreVoyageByPrice(OffreVoyage ov);
+	
+	/**
+	 * Méthode de suppression d'une offre de voyage
+	 * @param ov, un objet Offre de Voyage
+	 * @return int
+	 */
+	public int deleteOffreVoyage(OffreVoyage ov);
 
 }
