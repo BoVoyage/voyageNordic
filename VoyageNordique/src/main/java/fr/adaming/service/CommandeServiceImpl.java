@@ -1,6 +1,9 @@
 package fr.adaming.service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,11 @@ public class CommandeServiceImpl implements ICommandeService{
 	
 	@Override
 	public Commande saveCommandeService(Commande co) {
+		Date date = new Date();
+		co.setDateCommande(date);
+		Random random = new Random();
+		int randomInt = random.nextInt();
+		co.setNoCommande(randomInt);
 		return coDao.saveCommande(co);
 	}
 

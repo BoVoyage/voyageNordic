@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,21 +16,34 @@
 	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>
 
+	<form:form cssClass="form-inline" action="soumettreRechCommande"
+		method="POST" modelAttribute="coRech">
+		<div class="form-group">
+			<form:label path="noCommande">N° Commande: </form:label>
+			<form:input type="text" class="form-control" path="noCommande" />
+		</div>
+		<div>
+			<button type="submit" cssClass="btn btn-default">Rechercher</button>
+		</div>
+	</form:form>
+	
+	<h1 style="color: red; text-align: center">${msg}</h1>
+	
 	<table class="table table-bordered">
 		<tr>
 			<th>Numéro Commande</th>
 			<th>Date Commande</th>
 			<th>Gestion</th>
 		</tr>
-
-		<c:forEach var="co" items="${allCommandes}">
-			<tr>
-				<td>${co.noCommande}</td>
-				<td><fmt:formatDate value="${co.dateCommande}" pattern="dd/MM/yyyy" /></td>
-				<td><a href="<c:url value="/commande/supprLink/${co.noCommande}"/>">Supprimer</a></td>
-			</tr>
-		</c:forEach>
-
+		<tr>
+			<td>${coFind.noCommande}</td>
+			<td><fmt:formatDate value="${coFind.dateCommande}"
+					pattern="dd/MM/yyyy" /></td>
+			<td><a
+				href="<c:url value="/commande/supprLink/${coFind.noCommande}"/>">Supprimer</a></td>
+		</tr>
 	</table>
+
+
 </body>
 </html>

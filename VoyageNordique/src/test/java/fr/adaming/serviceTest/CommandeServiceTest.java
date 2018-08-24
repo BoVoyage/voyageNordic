@@ -37,8 +37,8 @@ public class CommandeServiceTest {
 	@Transactional
 	@Rollback(true)
 	public void testAddCommande() {
-		int expectedAdd = 2;
-		Commande coTest = new Commande(13, null, cl);
+		int expectedAdd = 3;
+		Commande coTest = new Commande(0, null, cl);
 		coService.saveCommandeService(coTest);
 		assertEquals(expectedAdd, coService.getCommandeByClientService(cl).size());
 	}
