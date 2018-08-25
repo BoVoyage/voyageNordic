@@ -25,8 +25,6 @@ public class Hebergement {
 	private String descriptionHebergement;
 	@Lob
 	private byte[] imageHebergement;
-	@Transient
-	private String imageHeberg;
 	
 	//transformation de l'asso UML en JAVA
 	@OneToMany(mappedBy="hebergement")
@@ -95,17 +93,6 @@ public class Hebergement {
 	public void setImageHebergement(byte[] imageHebergement) {
 		this.imageHebergement = imageHebergement;
 	}
-
-
-	public String getImageHeberg() {
-		return imageHeberg;
-	}
-
-
-	public void setImageHeberg(String imageHeberg) {
-		this.imageHeberg = imageHeberg;
-	}
-
 
 	public List<OffreVoyage> getListeOffres() {
 		return listeOffres;
