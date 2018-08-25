@@ -254,11 +254,12 @@ public class OffreVoyageController {
 	 */
 	@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
 	public String afficheFormModifOffre(Model modele) {
-		
-		// recuperer la liste des numeros d'offre voyage à partir de service (liste deroulante)
+
+		// recuperer la liste des numeros d'offre voyage à partir de service
+		// (liste deroulante)
 		List<String> listingNoVoyage = offreVoyageService.getAllNoVoyage();
 		modele.addAttribute("listeNo", listingNoVoyage);
-		
+
 		modele.addAttribute("offreModif", new OffreVoyage());
 		return "offreModifier";
 	}
