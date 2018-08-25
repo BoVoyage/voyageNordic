@@ -111,4 +111,22 @@ public class OffreVoyageDaoTest {
 		offreVoyageDao.updateOffreVoyage(ovModif);
 		assertEquals("Finlande", offreVoyageDao.getAllOffres().get(0).getPays());
 	}
+	
+	//cas de test de la liste de numero d'offres
+	@Ignore
+//	 @Test
+//	 @Transactional(readOnly=true)
+	public void testListeNoVoyage(){
+		assertEquals(1, offreVoyageDao.getAllNoVoyage().size());
+		System.out.println(offreVoyageDao.getAllNoVoyage().size());
+	}
+	
+	@Ignore
+//	 @Test
+//	 @Transactional(readOnly=true)
+	public void testListeNoVoyageFirst(){
+		assertEquals("sdfsdf", offreVoyageDao.getAllNoVoyage().get(0));
+		System.out.println(offreVoyageDao.getAllNoVoyage().get(0));
+	}
+	
 }
