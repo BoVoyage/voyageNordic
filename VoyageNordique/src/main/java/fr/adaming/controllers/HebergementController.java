@@ -2,23 +2,18 @@ package fr.adaming.controllers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,10 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.adaming.model.Client;
 import fr.adaming.model.Hebergement;
-import fr.adaming.model.OffreVoyage;
-import fr.adaming.service.IClientService;
 import fr.adaming.service.IHebergementService;
 
 @Controller
@@ -123,12 +115,12 @@ public class HebergementController {
 
 		if (heb2.getIdHebergement() != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeHebergement";
+			return "redirect:listeHebergements";
 		} else {
 			rda.addAttribute("msg", true);
 
 			// redirection vers la methode ajouterOffre
-			return "redirect:ajouterHebergement";
+			return "redirect:hebergementAjout";
 		}
 	}
 
@@ -149,7 +141,7 @@ public class HebergementController {
 		if (msg != null) {
 			modele.addAttribute("msg", msg);
 		}
-		return "hebModifier";
+		return "hebergementModif";
 	}
 
 	/**
@@ -177,7 +169,7 @@ public class HebergementController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeHebergement";
+			return "redirect:listeHebergements";
 		} else {
 			rda.addAttribute("msg", true);
 
@@ -186,6 +178,14 @@ public class HebergementController {
 		}
 	}
 
+	@RequestMapping(value = "/modifLinkHeb", method = RequestMethod.GET)
+	public String modifLien(Model modele, @RequestParam("pNom") String nomHeb) {
+		Hebergement hebIn = new Hebergement();
+		hebIn.setNomHebergement(nomHeb);
+		Hebergement hebOut = hebService.getHebByName(hebIn);
+		modele.addAttribute("hebModif", hebOut);
+		return "hebergementModif";
+	}
 	// ***********************************************************************************************
 	// ******$$$$$$$$$$$$$$$**********
 
@@ -202,7 +202,7 @@ public class HebergementController {
 		if (msg != null) {
 			modele.addAttribute("msg", msg);
 		}
-		return "hebSupprimer";
+		return "hebergementSupprimer";
 	}
 
 	/**
@@ -222,17 +222,30 @@ public class HebergementController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeHebergement";
+			return "redirect:listeHebergements";
 		} else {
 			rda.addAttribute("msg", true);
 
 			// redirection vers la methode supprimer Offre
-			return "redirect:supprimerHebergement";
+			return "redirect:hebergementSupprimer";
 		}
 	}
+
+	@RequestMapping(value = "/supprHebLink/{pNom}")
+	public String supprLien(ModelMap model, @PathVariable("pNom") String nomHeb) {
+		Hebergement hebIn = new Hebergement();
+		hebIn.setNomHebergement(nomHeb);
+		hebService.deleteHebergement(hebIn);
+
+		// Récupérer la liste de service
+		List<Hebergement> listeHebergements = hebService.getAllHebergements();
+		model.addAttribute("allHebergements", listeHebergements);
+		return "hebergementListe";
+	}
+
 	// ***********************************************************************************************
 	// ******$$$$$$$$$$$$$$$**********
-	//Formulaire de recherche
+	// Formulaire de recherche
 	/**
 	 * Méthode du formulaire de recherche par nom de l'hébergement
 	 * 
@@ -246,7 +259,7 @@ public class HebergementController {
 			modele.addAttribute("error", error);
 		}
 		modele.addAttribute("SearchNomHeb", new Hebergement());
-		return "hebRecherche";
+		return "hebergementRecherche";
 	}
 
 	/**
@@ -258,8 +271,7 @@ public class HebergementController {
 	 *            attribut message d'erreur
 	 * @param modele,
 	 *            contiendra l'hébergement si il est non nul
-	 * @return page recherche ou redirection vers la methode
-	 *         rechercherParNom
+	 * @return page recherche ou redirection vers la methode rechercherParNom
 	 */
 	@RequestMapping(value = "/soumettreSearchHeb", method = RequestMethod.POST)
 	public String soumettreSearch(@ModelAttribute("SearchNomHeb") Hebergement heb1, RedirectAttributes rda,
@@ -267,8 +279,8 @@ public class HebergementController {
 		Hebergement hebOut = hebService.getHebByName(heb1);
 		if (hebOut != null) {
 			// ajouter dans le modele, l'offre trouvée
-			modele.addAttribute("SearchNomHeb", hebOut);
-			return "hebRecherche";
+			modele.addAttribute("foundHeb", hebOut);
+			return "hebergementRecherche";
 		} else {
 			rda.addAttribute("error", true);
 			return "redirect:rechercherParNoVoyage";

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="hebergements")
+@Table(name="hebergement")
 public class Hebergement {
 	
 	//declaration des attributs
