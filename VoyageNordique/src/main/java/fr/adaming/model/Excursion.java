@@ -11,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="excursions")
@@ -24,12 +23,9 @@ public class Excursion{
 	private int idExcursion;
 	private String nomExcursion;
 	private String descriptionExcursion;
-	private String imageExcursion;
 	@Lob
-	private byte[] photo;
+	private byte[] imageExcursion;
 	private double prixExcursion;
-	@Transient
-	private String imageExcu;
 	
 	//transformation de l'association UML en JAVA
 	@ManyToMany
@@ -41,27 +37,27 @@ public class Excursion{
 	public Excursion() {
 		super();
 	}	
+	
 	/**Constructeur avec params sans id*/
-	public Excursion(String nomExcursion, String descriptionExcursion, String imageExcursion, byte[] photo,
-			double prixExcursion) {
+	public Excursion(String nomExcursion, String descriptionExcursion, byte[] imageExcursion, double prixExcursion) {
 		super();
 		this.nomExcursion = nomExcursion;
 		this.descriptionExcursion = descriptionExcursion;
 		this.imageExcursion = imageExcursion;
-		this.photo = photo;
 		this.prixExcursion = prixExcursion;
 	}
+	
 	/**Constructeur avec params avec id*/
-	public Excursion(int idExcursion, String nomExcursion, String descriptionExcursion, String imageExcursion,
-			byte[] photo, double prixExcursion) {
+	public Excursion(int idExcursion, String nomExcursion, String descriptionExcursion, byte[] imageExcursion,
+			double prixExcursion) {
 		super();
 		this.idExcursion = idExcursion;
 		this.nomExcursion = nomExcursion;
 		this.descriptionExcursion = descriptionExcursion;
 		this.imageExcursion = imageExcursion;
-		this.photo = photo;
 		this.prixExcursion = prixExcursion;
-	}	
+	}
+	
 	//****************************************************************************************
 	/**Les getters et setters*/
 	
@@ -83,18 +79,6 @@ public class Excursion{
 	public void setDescriptionExcursion(String descriptionExcursion) {
 		this.descriptionExcursion = descriptionExcursion;
 	}
-	public String getImageExcursion() {
-		return imageExcursion;
-	}
-	public void setImageExcursion(String imageExcursion) {
-		this.imageExcursion = imageExcursion;
-	}
-	public byte[] getPhoto() {
-		return photo;
-	}
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
 	public double getPrixExcursion() {
 		return prixExcursion;
 	}
@@ -107,12 +91,15 @@ public class Excursion{
 	public void setListeOffreVoyage(List<OffreVoyage> listeOffreVoyage) {
 		this.listeOffreVoyage = listeOffreVoyage;
 	}
-	public String getImageExcu() {
-		return imageExcu;
+
+	public byte[] getImageExcursion() {
+		return imageExcursion;
 	}
-	public void setImageExcu(String imageExcu) {
-		this.imageExcu = imageExcu;
+
+	public void setImageExcursion(byte[] imageExcursion) {
+		this.imageExcursion = imageExcursion;
 	}
+
 	
 	
 
