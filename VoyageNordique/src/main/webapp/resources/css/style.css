@@ -22,16 +22,6 @@
 	display: inline-block;
 }
 
-.center-pills>li>a:hover {
-	background-color: grey;
-	background-image: none;
-}
-
 .dropdown-toggle {
 	border: none;
-}
-
-.dropdown-menu>li>a:hover {
-	background-color: grey;
-	background-image: none;
 }

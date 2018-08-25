@@ -15,7 +15,15 @@
 <!-- ajouter la librairie de bootstrap.css -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-
+<link href="https://fonts.googleapis.com/css?family=Oswald"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -57,8 +65,8 @@
 
 
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">La mise en promotion de l'offre
-			a échouée.</h1>
+		<h1 style="color: red; text-align: center">La mise en promotion
+			de l'offre a échouée.</h1>
 	</c:if>
 
 </body>

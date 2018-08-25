@@ -11,26 +11,23 @@
 	</div>
 </div>
 
-<nav class="navbar navbar-inverse text-center"
-	style="background-color: #4172c1; border-top: none">
-	<ul class="nav nav-pills center-pills"
-		style="background-color: #4172c1">
+<nav class="navbar navbar-inverse text-center" style="border-top: none; background-color: #4172c1">
+	<ul class="nav nav-pills center-pills">
 		<li role="presentation"><a
-			href="${pageContext.request.contextPath}/" style="color: #ffffff">Accueil</a></li>
+			href="${pageContext.request.contextPath}/offreVoyage/listeOffrePromo" style="color: #ffffff">Accueil</a></li>
 		<li role="presentation"><div class="dropdown"
-				style="background-color: #4172c1; padding-top: 5px">
+				style="padding-top: 5px; background-color: #4172c1">
 				<button class="btn btn-default dropdown-toggle" type="button"
 					id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="true"
-					style="background-color: #4172c1; color: #ffffff">
+					aria-expanded="true" style="background-color: #4172c1; color: #ffffff">
 					Cherchez et réservez! <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"
-					style="background-color: #4172c1; border: 2px solid black">
-					<li role="presentation"><a href="listeClient.jsp"
-						style="color: #ffffff">Liste Clients</a></li>
-					<li role="presentation"><a href="addClient.jsp"
-						style="color: #ffffff">Ajouter Client</a></li>
+					style="border: 2px solid black; background-color: #4172c1">
+					<li role="presentation"><a href="${pageContext.request.contextPath}/offreVoyage/listeOffreVoyage"
+						style="color: #ffffff">Toutes nos offres!</a></li>
+					<li role="presentation"><a href="${pageContext.request.contextPath}/offreVoyage/rechercherParNoVoyage"
+						style="color: #ffffff">Rechercher une offre</a></li>
 				</ul>
 			</div></li>
 		<li role="presentation"><a
@@ -40,12 +37,12 @@
 			href="${pageContext.request.contextPath}/" style="color: #ffffff;">Login</a></li>
 		<li role="presentation"><a
 			href="${pageContext.request.contextPath}/"><i
-				class="fas fa-user-cog" style="color: #ffffff"></i> </a></li>
+				class="fas fa-user-cog" style="color: #ffffff"></i></a></li>
 		<li role="presentation"><form action="" style="margin-top: 7px">
 				<button type="submit">
 					<i class="fa fa-search"></i>
 				</button>
-				<input type="text" placeholder="Search.." name="search">
+				<input type="text" placeholder="Search..." name="search">
 			</form></li>
 	</ul>
 </nav>
