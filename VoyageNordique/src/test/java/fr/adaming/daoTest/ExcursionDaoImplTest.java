@@ -50,40 +50,41 @@ public class ExcursionDaoImplTest {
 	}
 
 	// cas de test de la suppression d'une excursion
-//	@Ignore
-	 @Test
-	 @Transactional
+	 @Ignore
+//	@Test
+//	@Transactional
 	public void testDeleteExcu() {
 		Excursion excuSuppr = new Excursion();
-		excuSuppr.setIdExcursion(1);
+		excuSuppr.setNomExcursion("Balade en chien de traineaux");
 		excursionDao.deleteExcursion(excuSuppr);
 		assertEquals(0, excursionDao.getAllExcursions().size());
 	}
 
 	// cas de test de la modification d'une excursion
-//	@Ignore
-	 @Test
-	 @Transactional
+	 @Ignore
+//	@Test
+//	@Transactional
 	public void testUpdateExcu() {
-		Excursion excuModif= new Excursion(1, "jhj", "jjjj", null, 0);
+		Excursion excuModif = new Excursion(1, "jhj", "jjjj", null, 0);
 		excursionDao.updateExcursion(excuModif);
 		assertEquals("jhj", excursionDao.getAllExcursions().get(0).getNomExcursion());
 	}
 
 	// cas de test de la recherche par id d'une excursion
-	// @Test
-//	@Ignore
-	// @Transactional(readOnly=true)
-//	public void testGetById() {
-//		assertEquals(13, offreVoyageDao.getAllOffres().get(1).getIdVoyage());
-//	}
+//	@Test
+	 @Ignore
+//	@Transactional(readOnly = true)
+	public void testGetById() {
+		assertEquals("Balade en chien de traineaux", excursionDao.getExcuById(1).getNomExcursion());
+	}
 
 	// cas de test de la recherche par nom d'une excursion
-	// @Test
-//	@Ignore
-//	// @Transactional(readOnly=true)
-//	public void testGetByName() {
-//		assertEquals("sdfsdfsd", offreVoyageDao.getAllOffres().get(1).getDesignation());
-//	}
+//	@Test
+	 @Ignore
+//	@Transactional(readOnly = true)
+	public void testGetByName() {
+		Excursion ex = excursionDao.getExcuById(1);
+		assertEquals("Une superbe balade d'une heure en chien de traineaux dans les magnifiques paysages enneigés", excursionDao.getExcuByName(ex).getDescriptionExcursion());
+	}
 
 }
