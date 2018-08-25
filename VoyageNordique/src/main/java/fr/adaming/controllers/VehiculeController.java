@@ -111,17 +111,17 @@ public class VehiculeController {
 	 * @param rda,
 	 *            attribut message d'erreur
 	 * @param modele,
-	 *            contiendra vehicule si elle est non nulle
+	 *            contiendra une liste de vehicule si elle est non nulle
 	 * @return page recherche ou redirection vers la methode
 	 *         rechercher
 	 */
 	@RequestMapping(value = "/soumettreRechercheVehicule", method = RequestMethod.POST)
 	public String soumettreSearch(@ModelAttribute("SearchVehicule") Vehicule v1, RedirectAttributes rda,
 			ModelMap modele) {
-		Vehicule vOut= vehiculeService.getVehiculeByCate(v1);
-		if (vOut != null) {
-			// ajouter dans le modele, le vehicule trouvé
-			modele.addAttribute("SearchVehicule", vOut);
+		List<Vehicule> listeVOut= vehiculeService.getVehiculeByCate(v1);
+		if (listeVOut.size() != 0) {
+			// ajouter dans le modele, la liste de vehicule
+			modele.addAttribute("listeSearchVehicule", listeVOut);
 			return "vehiculeRecherche";
 		} else {
 			rda.addAttribute("error", true);

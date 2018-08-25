@@ -38,8 +38,13 @@ public class VehiculeServiceImpl implements IVehiculeService{
 	}
 
 	@Override
-	public Vehicule getVehiculeByCate(Vehicule v) {
+	public List<Vehicule> getVehiculeByCate(Vehicule v) {
 		return vehiculeDao.getVehiculeByCate(v);
+	}
+
+	@Override
+	public Vehicule getVehiculeById(Vehicule v) {
+		return vehiculeDao.getVehiculeById(v);
 	}
 	
 	

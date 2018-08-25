@@ -52,7 +52,7 @@ public class VehiculeDaoImpl implements IVehiculeDao {
 		// recuperer la sessionFactory
 		Session s = sf.getCurrentSession();
 
-		v = this.getVehiculeByCate(v);
+		v = this.getVehiculeById(v);
 		try {
 			s.delete(v);
 			return 1;
@@ -77,12 +77,13 @@ public class VehiculeDaoImpl implements IVehiculeDao {
 		query.setParameter("pMarque", v.getMarqueVehicule());
 		query.setParameter("pPrix", v.getPrixVehicule());
 		query.setParameter("pId", v.getIdVehicule());
-		
+
 		return query.executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Vehicule getVehiculeByCate(Vehicule v) {
+	public List<Vehicule> getVehiculeByCate(Vehicule v) {
 		// recuperer la sessionFactory
 		Session s = sf.getCurrentSession();
 
@@ -92,6 +93,21 @@ public class VehiculeDaoImpl implements IVehiculeDao {
 		// creation du query et passage des param
 		Query query = s.createQuery(req);
 		query.setParameter("pCat", v.getCategorieVehicule());
+
+		return query.list();
+	}
+
+	@Override
+	public Vehicule getVehiculeById(Vehicule v) {
+		// recuperer la sessionFactory
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM Vehicule v WHERE v.idVehicule=:pId";
+
+		// creation du query et passage des param
+		Query query = s.createQuery(req);
+		query.setParameter("pId", v.getIdVehicule());
 
 		return (Vehicule) query.uniqueResult();
 	}

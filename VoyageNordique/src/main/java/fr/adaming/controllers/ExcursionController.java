@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Excursion;
-import fr.adaming.model.OffreVoyage;
 import fr.adaming.service.IExcursionService;
 
 @Controller
