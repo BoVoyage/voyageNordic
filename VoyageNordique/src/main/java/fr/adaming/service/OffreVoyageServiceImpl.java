@@ -76,6 +76,11 @@ public class OffreVoyageServiceImpl implements IOffreVoyageService{
 	public List<OffreVoyage> getOffresPromoService() {
 		return offreVoyageDao.getOffresPromo();
 	}
+
+	@Override
+	public List<String> getAllNoVoyage() {
+		return offreVoyageDao.getAllNoVoyage();
+	}
 	
 	
 

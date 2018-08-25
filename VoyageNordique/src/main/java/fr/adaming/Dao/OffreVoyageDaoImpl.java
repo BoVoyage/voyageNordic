@@ -202,4 +202,19 @@ public class OffreVoyageDaoImpl implements IOffreVoyageDao {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getAllNoVoyage() {
+		// recuperer la session à partir de sf
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "SELECT ov.noVoyage FROM OffreVoyage ov";
+
+		// recuperation de la requete
+		Query query = s.createQuery(req);
+
+		return query.list();
+	}
+
 }

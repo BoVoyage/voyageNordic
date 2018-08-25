@@ -89,4 +89,10 @@ public interface IOffreVoyageService {
 	 * @return liste d'objets Offre de voyage en promo
 	 */
 	public List<OffreVoyage> getOffresPromoService();
+	
+	/**
+	 * Méthode de recuperation de la liste des numeros d'offre de voyage
+	 * @return liste de String
+	 */
+	public List<String> getAllNoVoyage();
 }
