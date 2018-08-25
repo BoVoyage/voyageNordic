@@ -25,5 +25,10 @@ public interface IClientService {
 	* Methode rechercher le client par nom ou par id
 	 */
 	public List<Client> getClientByNomOrNoClient(Client cl);
+	
+	/**
+	* Methode envoyer un mail au client
+	 */
+	void sendMail(Client cl);
 
 }

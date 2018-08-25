@@ -80,6 +80,7 @@ public class ClientController {
 		Client clOut = clientService.addClientService(clAjout);
 		
 		if (clOut.getIdClient() != 0) {
+			clientService.sendMail(clOut);
 			return "redirect:ListeClients";
 		} else {
 			rda.addAttribute("msg", "L'ajout du client à échouer");
