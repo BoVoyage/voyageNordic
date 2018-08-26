@@ -34,7 +34,7 @@
 	<%@ include file="../../templates/header.html"%>
 	
 		<tr>
-
+			<th>ID Client</th>
 			<th>Nom Client</th>
 			<th>Prenom Client</th>
 			<th>Date de Naissance</th>
@@ -46,7 +46,7 @@
 
 		<c:forEach var="cl" items="${LesClients}">
 			<tr>
-
+				<td>${cl.idClient}</td>
 				<td>${cl.nomClient}</td>
 				<td>${cl.prenomClient}</td>
 				<td>${cl.dn}</td>

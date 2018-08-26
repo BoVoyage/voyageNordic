@@ -105,7 +105,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler Ajout Client</button>
 
       </div>
     </div>
