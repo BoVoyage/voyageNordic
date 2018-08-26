@@ -30,50 +30,68 @@
 </head>
 <body>
 
-<!-- Ajouter le menu avec include -->
+	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>
-	
-	<div class="container">
-  <h2>Ce que nous avons à vous proposer !</h2>
-  <p>Tapez ici votre recherche:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="mots-clés">
-  <br>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Destination</th>
-        <th>Descriptif</th>
-        <th>Date de départ</th>
-        <th>Date de retour</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-    <c:forEach var="o" items="${allOffresVoyage}">
-      <tr>
-        <td>${o.designation}</td>
-        <td>${o.pays}</td>
-        <td>${o.descriptionVoyage}</td>
-        <td>${o.dateDepart}</td>
-        <td>${o.dateRetour}</td>
-        
-      </c:forEach>
-    </tbody>
-  </table>
-  
-</div>
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-	
+	<div class="container">
+		<h2>Ce que nous avons à vous proposer !</h2>
+		<p>Tapez ici votre recherche:</p>
+		<input class="form-control" id="myInput" type="text"
+			placeholder="mots-clés"> <br>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Destination</th>
+					<th>Descriptif</th>
+					<th>Date de départ</th>
+					<th>Date de retour</th>
+					<th>Plus de détails</th>
+				</tr>
+			</thead>
+			<tbody id="myTable">
+				<c:forEach var="o" items="${allOffresVoyage}">
+					<tr>
+						<td>${o.designation}</td>
+						<td>${o.pays}</td>
+						<td>${o.descriptionVoyage}</td>
+						<td>${o.dateDepart}</td>
+						<td>${o.dateRetour}</td>
+						<td><a class="btn btn-lg btn-info"
+							href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}"
+							role="button" style="margin: 6px;">Détails</a></td>
+				</c:forEach>
+			</tbody>
+		</table>
+
+	</div>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+	</script>
+
 
 </body>
 </html>
