@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -220,7 +222,7 @@ public class OffreVoyageController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreAjoutOffre", method = RequestMethod.POST)
-	public String soumettreAjoutForm(@ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda,
+	public String soumettreAjoutForm(@Valid @ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte
@@ -370,7 +372,7 @@ public class OffreVoyageController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreModifOffre", method = RequestMethod.POST)
-	public String soumettreModifForm(@ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,
+	public String soumettreModifForm(@Valid @ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte

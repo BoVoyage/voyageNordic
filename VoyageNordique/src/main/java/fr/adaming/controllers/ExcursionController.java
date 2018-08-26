@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,7 +118,7 @@ public class ExcursionController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreAjoutExcursion", method = RequestMethod.POST)
-	public String soumettreAjoutForm(@ModelAttribute("excursionAjout") Excursion eAjout, RedirectAttributes rda,
+	public String soumettreAjoutForm(@Valid @ModelAttribute("excursionAjout") Excursion eAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte
@@ -259,7 +261,7 @@ public class ExcursionController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreModifExcursion", method = RequestMethod.POST)
-	public String soumettreModifForm(@ModelAttribute("excursionModif") Excursion eModif, RedirectAttributes rda,
+	public String soumettreModifForm(@Valid @ModelAttribute("excursionModif") Excursion eModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte

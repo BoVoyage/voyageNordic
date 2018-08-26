@@ -2,6 +2,8 @@ package fr.adaming.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -74,7 +76,7 @@ public class VehiculeController {
 	 * @return page de liste si succès, d'ajout si echec
 	 */
 	@RequestMapping(value = "/soumettreAjoutVehicule", method = RequestMethod.POST)
-	public String soumettreAjoutForm(@ModelAttribute("vehiculeAjout") Vehicule vAjout, RedirectAttributes rda){
+	public String soumettreAjoutForm(@Valid @ModelAttribute("vehiculeAjout") Vehicule vAjout, RedirectAttributes rda){
 		// appel de la methode service pour ajouter l'offre
 		Vehicule v1= vehiculeService.addVehicule(vAjout);
 
@@ -207,7 +209,7 @@ public class VehiculeController {
 	 * @return page de liste si succès, d'ajout si echec
 	 */
 	@RequestMapping(value = "/soumettreModifVehicule", method = RequestMethod.POST)
-	public String soumettreModifForm(@ModelAttribute("vehiculeModif") Vehicule vModif, RedirectAttributes rda){
+	public String soumettreModifForm(@Valid @ModelAttribute("vehiculeModif") Vehicule vModif, RedirectAttributes rda){
 
 		// appel de la methode service pour ajouter l'offre
 		int retour = vehiculeService.updateVehicule(vModif);

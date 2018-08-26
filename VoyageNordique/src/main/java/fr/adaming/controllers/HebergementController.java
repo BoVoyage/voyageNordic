@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +105,7 @@ public class HebergementController {
 	 * des args en entrée
 	 */
 	@RequestMapping(value = "/soumettreAjoutHebergement", method = RequestMethod.POST)
-	public String soumettreAjoutFormulaireHeb(@ModelAttribute("ajoutHeb") Hebergement hebAjout, RedirectAttributes rda,
+	public String soumettreAjoutFormulaireHeb(@Valid @ModelAttribute("ajoutHeb") Hebergement hebAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte
@@ -157,7 +159,7 @@ public class HebergementController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/soumettreModifHeb", method = RequestMethod.POST)
-	public String soumettreModifFormHeb(@ModelAttribute("hebModif") Hebergement hebModif, RedirectAttributes rda,
+	public String soumettreModifFormHeb(@Valid @ModelAttribute("hebModif") Hebergement hebModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
 			// transformer l'image en tableau de byte

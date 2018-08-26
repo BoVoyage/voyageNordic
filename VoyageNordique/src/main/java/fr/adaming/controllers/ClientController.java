@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -78,7 +80,7 @@ public class ClientController {
 	 * args en entrée
 	 */
 	@RequestMapping(value = "/soumettreAjoutClient", method = RequestMethod.POST)
-	public String soumettreAjoutFormulaire(@ModelAttribute("clientAjout") Client clAjout, RedirectAttributes rda) {
+	public String soumettreAjoutFormulaire(@Valid @ModelAttribute("clientAjout") Client clAjout, RedirectAttributes rda) {
 
 		/** Instancier un nouveau client */
 		Client clOut = clientService.addClientService(clAjout);
@@ -106,7 +108,7 @@ public class ClientController {
 		return "ClientModif";
 	}
 	@RequestMapping(value = "/soumettreModifClient", method = RequestMethod.POST)
-	public String soumettreModifFrom(@ModelAttribute("clientModif") Client clModif, RedirectAttributes rda) {
+	public String soumettreModifFrom(@Valid @ModelAttribute("clientModif") Client clModif, RedirectAttributes rda) {
 		
 		/** Instancier un nouveau client */
 		int clOut = clientService.updateClient(clModif);
