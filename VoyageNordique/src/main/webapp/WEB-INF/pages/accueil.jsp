@@ -1,22 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Carousel Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
-<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- ajouter la librairie de bootstrap.css -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link href="https://fonts.googleapis.com/css?family=Oswald"
@@ -31,136 +22,119 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-<!-- Custom styles for this template -->
-<link href="style.css" rel="stylesheet">
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<title>Heimdall Voyage: bon plans voyages, hotels, vols sur les
+	pays nordiques</title>
 </head>
-<!-- NAVBAR
-================================================== -->
 <body>
-	<div class="navbar-wrapper">
-		<div class="container">
+	<!-- Ajouter le menu avec include -->
+	<%@ include file="../../templates/header.html"%>
 
-			<nav class="navbar navbar-inverse navbar-static-top">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed"
-							data-toggle="collapse" data-target="#navbar"
-							aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand"
-							href="${pageContext.request.contextPath}/offreVoyage/listeOffreVoyage">Bifrost
-							Voyage</a>
+	<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
+	<!-- Insérer un filtre permettant de filtrer les offres. -->
+	<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="la.jpg" alt="Chania">
+      <div class="carousel-caption">
+        <h3>Los Angeles</h3>
+        <p>LA is always so much fun!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="chicago.jpg" alt="Chicago">
+      <div class="carousel-caption">
+        <h3>Chicago</h3>
+        <p>Thank you, Chicago!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="ny.jpg" alt="New York">
+      <div class="carousel-caption">
+        <h3>New York</h3>
+        <p>We love the Big Apple!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+	<div class="container marketing">
+
+		<div class="row">
+			<c:forEach var="o" items="${allOffresPromo}">
+				<div class="col-lg-4" style="text-align: center">
+					<img class="img-circle"
+						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
+						alt="Generic placeholder image" width="140" height="140">
+					<h2>${o.designation}</h2>
+					<h2>${o.pays},
+						à <span class="text-muted">${o.ville}</span>
+					</h2>
+					<div
+						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
+						<s><p style="color: white"> Prix initial: ${o.prixVoyage}
+							&#8364</p></s>
+							<p style="font-size: larger; color: white"> PROMO!: ${o.remiseVoyage}
+							&#8364</p>
 					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"><a
-								href="${pageContext.request.contextPath}/offreVoyage/listeOffreVoyage">Promos!</a></li>
-							<li><a href="${pageContext.request.contextPath}/">Login</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Cherchez et réservez!<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a
-										href="${pageContext.request.contextPath}/offreVoyage/listeOffreVoyage">Toutes
-											nos offres</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/offreVoyage/rechercherParNoVoyage">Rechercher
-											une offre</a></li>
-								</ul></li>
-						</ul>
-					</div>
+						<a class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}" role="button"
+						style="margin: 6px;">Détails</a>
 				</div>
-			</nav>
+			</c:forEach>
 
 		</div>
-	</div>
+		<!-- /.row -->
 
-
-	<!-- Carousel
-    ================================================== -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img class="first-slide"
-					src="../resources/images/VoyageNordicLogo.png"
-					alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Example headline.</h1>
+		<c:forEach var="o" items="${allOffresVoyage}">
+			<div class="row featurette"
+				style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">${o.designation}</h2>
+					<h2>${o.pays},
+						à <span class="text-muted">${o.ville}</span>
+					</h2>
+					<p class="lead">${o.descriptionVoyage}</p>
+					<div
+						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
+						<p style="font-size: larger; color: white">${o.prixVoyage}
+							&#8364</p>
 					</div>
+					<a class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}" role="button"
+						style="margin: 6px;">Détails</a>
+
+				</div>
+				<div class="col-md-5">
+					<img class="featurette-image img-responsive center-block"
+						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
+						alt="Generic placeholder image"
+						style="width: 250px; height: 250px; border: 1px solid black; margin-top: 100px; padding: none">
 				</div>
 			</div>
-			<c:forEach var="o" items="${allOffresVoyage}">
-				<div class="item">
-					<img class="slide"
-						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
-						alt="Slide">
-					<div class="container">
-						<div class="carousel-caption">
-							<h1>${o.ville}</h1>
-							<h2>${o.pays}</h2>
-							<p>${o.descriptionVoyage}</p>
-							<p>
-								<s>${o.prixVoyage}</s>
-							</p>
-							<h3 style="color: red">${o.remiseVoyage}&euro</h3>
-							<p>
-								<a class="btn btn-lg btn-info" href="#" role="button">Réserver</a>
-							</p>
-						</div>
-					</div>
-			</c:forEach>
-			<a class="left carousel-control" href="#myCarousel" role="button"
-				data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#myCarousel" role="button"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-		<!-- /.carousel -->
 
-
-		<!-- Marketing messaging and featurettes
-    ================================================== -->
-		<!-- Wrap the rest of the page in another container to center all the content. -->
-
-		<div class="container marketing">
-
-			<!-- Three columns of text below the carousel -->
-			<c:forEach var="o" items="${allOffresVoyage}">
-				<div class="row">
-					<div class="col-lg-4">
-						<img class="img-circle"
-							src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
-							alt="Generic placeholder image" width="140" height="140">
-						<h1>${o.ville}</h1>
-						<h2>${o.pays}</h2>
-						<p>${o.descriptionVoyage}</p>
-						<p>
-							<s>${o.prixVoyage}</s>
-						</p>
-						<p>
-							<a class="btn btn-lg btn-info" href="#" role="button">Réserver</a>
-						</p>
-					</div>
-					<!-- /.col-lg-4 -->
-				</div>
-				<!-- /.row -->
-			</c:forEach>
+			<hr class="featurette-divider">
+		</c:forEach>
+	</div>
+	<!-- /.container -->
 </body>
 </html>

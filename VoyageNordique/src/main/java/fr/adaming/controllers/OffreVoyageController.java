@@ -27,8 +27,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.model.Excursion;
+import fr.adaming.model.Hebergement;
 import fr.adaming.model.OffreVoyage;
+import fr.adaming.model.Vehicule;
+import fr.adaming.service.IExcursionService;
+import fr.adaming.service.IHebergementService;
 import fr.adaming.service.IOffreVoyageService;
+import fr.adaming.service.IVehiculeService;
 
 @Controller
 @RequestMapping("/offreVoyage")
@@ -47,7 +53,38 @@ public class OffreVoyageController {
 	public void setOffreVoyageService(IOffreVoyageService offreVoyageService) {
 		this.offreVoyageService = offreVoyageService;
 	}
+	/** Transformation de l'asso UML en JAVA */
+	@Autowired
+	private IHebergementService hebService;
 
+	// ** Declaration du setter pour l'injection dependance*/
+
+	/**
+	 * @param hebService
+	 *            the hebService to set
+	 */
+	public void setHebService(IHebergementService hebService) {
+		this.hebService = hebService;
+	}
+	
+	// transformation de l'association UML en JAVA
+	@Autowired
+	private IVehiculeService vehiculeService;
+
+	// setter pour l'injection dependance
+	public void setVehiculeService(IVehiculeService vehiculeService) {
+		this.vehiculeService = vehiculeService;
+	}
+	
+	// transformation de l'association UML en JAVA
+	@Autowired
+	private IExcursionService excursionService;
+
+	// setter obligatoire pour l'injection dependance
+	public void setExcursionService(IExcursionService excursionService) {
+		this.excursionService = excursionService;
+	}
+	
 	private FileUpload file;
 
 	// declaration des getter et setter de file
@@ -78,6 +115,45 @@ public class OffreVoyageController {
 		} else {
 			return IOUtils.toByteArray(new ByteArrayInputStream(voyage.getImageDestination()));
 		}
+	}
+
+	// ******************* recup de la liste des offres
+	/**
+	 * Méthode d'affichage de l'accueil
+	 * 
+	 * @return modelAndView
+	 */
+	@RequestMapping(value = "/accueil", method = RequestMethod.GET)
+	public String afficheAccueil(Model modele) {
+
+		// recuperer la liste d'offres à partir de service
+		List<OffreVoyage> listingOffres = offreVoyageService.getAllOffres();
+		List<OffreVoyage> listingPromo = offreVoyageService.getOffresPromoService();
+		modele.addAttribute("allOffresVoyage", listingOffres);
+		modele.addAttribute("allOffresPromo", listingPromo);
+		return "accueil";
+	}
+
+	// ******************* recup de la liste des offres
+	/**
+	 * Méthode d'affichage de l'accueil
+	 * 
+	 * @return modelAndView
+	 */
+	@RequestMapping(value = "/detailsOffre", method = RequestMethod.GET)
+	public String modifLien(Model modele, @RequestParam("pId") int idVoyage) {
+		OffreVoyage ovIn = new OffreVoyage();
+		ovIn.setIdVoyage(idVoyage);
+		OffreVoyage ovOut = offreVoyageService.getOffreVoyageById(ovIn.getIdVoyage());
+		modele.addAttribute("ovDetails", ovOut);
+		Hebergement hebout = ovOut.getHebergement();
+		modele.addAttribute("hebDetails", hebout);
+		Vehicule vOut = ovOut.getVehicule();
+		modele.addAttribute("vDetails", vOut);
+		List<Excursion> listeExOut = ovOut.getListeExcursion();
+		modele.addAttribute("exListe", listeExOut);
+		
+		return "detailsOffre";
 	}
 
 	// ******************* recup de la liste des offres
@@ -118,7 +194,8 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
-	 * @param error, un string
+	 * @param error,
+	 *            un string
 	 * @return page ajout d'offre
 	 */
 	@RequestMapping(value = "/ajouterOffre", method = RequestMethod.GET)
@@ -216,11 +293,13 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
-	 * @param error, un string
+	 * @param error,
+	 *            un string
 	 * @return page de suppression d'offre
 	 */
 	@RequestMapping(value = "/supprimerOffre", method = RequestMethod.GET)
-	public String afficheFormASupprimerOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
+	public String afficheFormASupprimerOffre(Model modele,
+			@RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
 		}
@@ -260,7 +339,8 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
-	 * @param error, un string
+	 * @param error,
+	 *            un string
 	 * @return page ajout d'offre
 	 */
 	@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
@@ -318,7 +398,8 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
-	 * @param error, un string
+	 * @param error,
+	 *            un string
 	 * @return page de cloture d'offre
 	 */
 	@RequestMapping(value = "/cloreOffre", method = RequestMethod.GET)
