@@ -32,11 +32,11 @@
 	<form:form cssClass="form-inline" action="soumettreRechCommande"
 		method="POST" modelAttribute="coRech">
 		<div class="form-group">
-			<form:label for="pNoCom" path="noCommande">N° Commande: </form:label>
-			<form:select id="pNoCom" path="noCommande" multiple="true">
-				<form:option value="1" label="..."></form:option>
-				<form:options items="${co.noCommande}" />
-			</form:select>
+			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="noVoyage"
+					path="noVoyage" />
+			</div>
 		</div>
 		<div>
 			<button type="submit" cssClass="btn btn-default">Rechercher</button>

@@ -35,7 +35,7 @@
 	<br />
 <!-- ********************************************************************************************** -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white; margin-left: 40%; margin-right: 30%">
   <b>S'inscrire en tant que Client</b>
 </button>
 

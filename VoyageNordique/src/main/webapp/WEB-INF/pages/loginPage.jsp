@@ -8,15 +8,25 @@
 <title>Login</title>
 </head>
 <body>
-
-	<form action="j_spring_security_check" method="post">
-		Email: <input type="text" name="j_username" /> <br /> Password: <input
-			type="text" name="j_password" /> <br /> <input type="submit"
-			value="Se Connecter" />
-	</form>
-<br/>
-<a href="${pageContext.request.contextPath}/client/ajouterClient" style="color: #ffffff; ; background-color: #4172c1">Pas encore inscrit? Créez un compte</a>
-
+	<div
+		style="margin-bottom: 5%; margin-left: 15%; margin-right: 15%; margin-top: 5%; width: 70%; text-align: center;">
+		<form action="j_spring_security_check" method="post">
+			<div style="margin: 5px">
+				Email (client) ou Numéro d'Identification (conseiller): <input
+					type="text" name="j_username" />
+			</div>
+			<br />
+			<div style="margin: 5px">
+				Password: <input type="text" name="j_password" />
+			</div>
+			<br /> <input type="submit" value="Se Connecter" />
+			
+		</form>
+		<br /> <a
+			href="${pageContext.request.contextPath}/client/ajouterClient"
+			style="color: #4172c1;; background-color: #ffffff">Pas encore
+			inscrit? Créez un compte!</a>
+	</div>
 	<c:if test="${not empty echec}">
 		<h1 style="color: red; text-align: center">Le mot de passe ou le
 			login est erroné.</h1>
