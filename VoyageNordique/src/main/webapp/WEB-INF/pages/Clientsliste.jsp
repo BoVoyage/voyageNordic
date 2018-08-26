@@ -34,19 +34,21 @@
 	<%@ include file="../../templates/header.html"%>
 	
 		<tr>
-			<th>ID Client</th>
-			<th>Nom Client</th>
-			<th>Prenom Client</th>
-			<th>Date de Naissance</th>
-			<th>Mial</th>
-			<th>Mot de passe</th>
-			<th>Telephone</th>
+			<th style="color: blue; text-align: center">ID Client</th>
+			<th style="color: blue; text-align: center">No Client</th>
+			<th style="color: blue; text-align: center">Nom Client</th>
+			<th style="color: blue; text-align: center">Prenom Client</th>
+			<th style="color: blue; text-align: center">Date de Naissance</th>
+			<th style="color: blue; text-align: center">Mail</th>
+			<th style="color: blue; text-align: center">Mot de passe</th>
+			<th style="color: blue; text-align: center">Telephone</th>
 			
 		</tr>
 
 		<c:forEach var="cl" items="${LesClients}">
 			<tr>
 				<td>${cl.idClient}</td>
+				<td>${cl.noClient}</td>
 				<td>${cl.nomClient}</td>
 				<td>${cl.prenomClient}</td>
 				<td>${cl.dn}</td>

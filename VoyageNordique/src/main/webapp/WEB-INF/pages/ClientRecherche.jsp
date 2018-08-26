@@ -34,31 +34,63 @@
 	<%@ include file="../../templates/header.html"%>
 
 	<br />
+	
+	<!-- ********************************************************************************************** -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white">
+  <b>Rechercher Client</b>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel" style="color: blue; text-align: center"><b>Rechercher Client</b></h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+		<!-- ********$$$$$$$$$$$$$$*************** -->
+	
 	<form:form cssClass="form-horizontal" method="POST"	action="soumettreRechercheClient" modelAttribute="clientRecherche">
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="noClient">N° référence du Client</form:label>
+			<form:label cssClass="col-sm-2 control-label" path="noClient" cssStyle="color: blue">N° référence Client</form:label>
 			<div class="col-sm-9">
 				<form:input cssClass="form-control" placeholder="noClient"	path="noClient" />
 			</div>
 		</div>	
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="nomClient">Nom Client</form:label>
+			<form:label cssClass="col-sm-2 control-label" path="nomClient" cssStyle="color: blue">Nom Client</form:label>
 			<div class="col-sm-9">
 				<form:input cssClass="form-control" placeholder="nomClient"	path="nomClient" />
 			</div>
 		</div>
-		<button type="submit" class="btn btn-default">Rechercher Client</button>
+		<button type="submit" class="btn btn-primary">Rechercher Client</button>
 	</form:form>
+	
+	<!-- ********$$$$$$$$$$$$$$*************** -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler Recherche Client</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 	<table class="table table-bordered">
 		<tr>
-			<th>Numéro Client</th>
-			<th>Nom Client</th>
-			<th>Prenom Client</th>
-			<th>Date de Naissance</th>
-			<th>Mail</th>
-			<th>Mot de passe</th>
-			<th>Telephone</th>
+			<th style="color: blue; text-align: center">Numéro Client</th>
+			<th style="color: blue; text-align: center">Nom Client</th>
+			<th style="color: blue; text-align: center">Prenom Client</th>
+			<th style="color: blue; text-align: center">Date de Naissance</th>
+			<th style="color: blue; text-align: center">Mail</th>
+			<th style="color: blue; text-align: center">Mot de passe</th>
+			<th style="color: blue; text-align: center">Telephone</th>
 		</tr>
 		<c:forEach var="cl" items="${clientListe}">
 			<tr>

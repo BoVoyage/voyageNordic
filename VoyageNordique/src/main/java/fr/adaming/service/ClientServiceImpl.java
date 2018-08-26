@@ -60,7 +60,9 @@ public class ClientServiceImpl implements IClientService{
 	//***********$$$$$$$$$$$$$$$$$$**********************************
 	@Override
 	public int updateClient(Client cl) {
-		// TODO Auto-generated method stub
+		Random random = new Random();
+		String randomString = random.toString();
+		cl.setNoClient(randomString);
 		return clientDao.updateClient(cl);
 	}
 	//***********$$$$$$$$$$$$$$$$$$***************************************
