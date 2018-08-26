@@ -56,6 +56,7 @@
         <td>${o.descriptionVoyage}</td>
         <td>${o.dateDepart}</td>
         <td>${o.dateRetour}</td>
+        
       </c:forEach>
     </tbody>
   </table>

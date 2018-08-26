@@ -155,6 +155,7 @@ public class OffreVoyageController {
 
 	// ******************* recup de la liste des offres
 	/**
+	 * 
 	 * Méthode d'affichage de l'accueil
 	 * 
 	 * @return modelAndView
