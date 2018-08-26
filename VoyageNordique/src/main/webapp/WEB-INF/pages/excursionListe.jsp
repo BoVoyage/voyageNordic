@@ -30,7 +30,7 @@
 <body>
 
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 
 	<table class="table table-bordered">
 		<tr>

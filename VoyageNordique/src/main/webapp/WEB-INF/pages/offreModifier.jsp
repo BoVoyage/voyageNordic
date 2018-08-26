@@ -33,7 +33,7 @@
 <body>
 
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 
 	<br />
 	<form:form cssClass="form-horizontal" method="POST"
@@ -42,19 +42,18 @@
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
 			<div class="col-sm-9" id="listeNo">
-<%-- 				<form:input cssClass="form-control" placeholder="noVoyage"> --%>
-					<SELECT name="listeNo" size="1">
-						<%
-							final Iterator<String> listeNoVoyage = listingNoVoyage.iterator();
-									while (listeNoVoyage.hasNext()) {
-										OffreVoyage ov = listeNoVoyage.next();
-						%>
-						<OPTION value="<%=ov.getNoVoyage()%>"><%=ov.getNoVoyage()%></OPTION>
-						<%
-							}
-						%>
-					</SELECT>
-<%-- 				</form:input> --%>
+				<form:input cssClass="form-control" placeholder="noVoyage">
+<!-- 					<SELECT name="listeNo" size="1"> -->
+<%-- 						<% final Iterator<String> listeNoVoyage = listingNoVoyage.iterator(); --%>
+// 									while (listeNoVoyage.hasNext()) {
+// 										OffreVoyage ov = listeNoVoyage.next();
+<%-- 						%> --%>
+<%-- 						<OPTION value="<%=ov.getNoVoyage()%>"><%=ov.getNoVoyage()%></OPTION> --%>
+<%-- 						<% --%>
+// 							}
+<%-- 						%> --%>
+<!-- 					</SELECT> -->
+				</form:input>
 			</div>
 		</div>
 		<div class="form-group">

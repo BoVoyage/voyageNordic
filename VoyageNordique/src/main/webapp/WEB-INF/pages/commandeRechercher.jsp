@@ -27,7 +27,7 @@
 </head>
 <body>
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 
 	<form:form cssClass="form-inline" action="soumettreRechCommande"
 		method="POST" modelAttribute="coRech">

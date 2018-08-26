@@ -31,7 +31,7 @@
 <table class="table table-bordered">
 
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 	
 		<tr>
 			<th style="color: blue; text-align: center">ID Client</th>

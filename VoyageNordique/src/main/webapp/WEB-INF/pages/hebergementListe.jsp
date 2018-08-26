@@ -27,7 +27,7 @@
 </head>
 <body>
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 
 	<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
 	<!-- Insérer un filtre permettant de filtrer les offres. -->

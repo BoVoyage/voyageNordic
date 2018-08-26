@@ -31,14 +31,14 @@
 <body>
 
 	<!-- Ajouter le menu avec include -->
-	<%@ include file="../../templates/header.html"%>
+	<%@ include file="../../templates/headerBack.html"%>
 
 	<br />
 
 	<!-- ********************************************************************************************** -->
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#exampleModal" style="color: white">
+		data-target="#exampleModal" style="color: white; margin-left: 40%; margin-right: 30%"">
 		<b>Rechercher Client</b>
 	</button>
 
@@ -94,7 +94,7 @@
 			</div>
 		</div>
 	</div>
-
+<c:if test="${not empty cl}">
 	<table class="table table-bordered">
 		<tr>
 			<th style="color: blue; text-align: center">Numéro Client</th>
@@ -117,7 +117,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+	</c:if>
 	<c:if test="${not empty error}">
 		<h1 style="color: red; text-align: center">Aucun client n'existe sous cet identifiant !</h1>
 	</c:if>
