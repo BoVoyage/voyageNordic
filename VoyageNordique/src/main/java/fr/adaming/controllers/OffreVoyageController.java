@@ -135,6 +135,23 @@ public class OffreVoyageController {
 		modele.addAttribute("allOffresPromo", listingPromo);
 		return "accueil";
 	}
+	
+	// ******************* recup de la liste des offres
+		/**
+		 * Méthode d'affichage de l'accueil
+		 * @param model
+		 * @return string
+		 */
+		@RequestMapping(value = "/rechercheOffreClient", method = RequestMethod.GET)
+		public String afficheRechercheOffreClient(Model modele) {
+
+			// recuperer la liste d'offres à partir de service
+			List<OffreVoyage> listingOffres = offreVoyageService.getAllOffres();
+			
+			modele.addAttribute("allOffresVoyage", listingOffres);
+			
+			return "offreRechercheClient";
+		}
 
 	// ******************* recup de la liste des offres
 	/**
