@@ -36,7 +36,7 @@
 <!-- ********************************************************************************************** -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white; margin-left: 40%; margin-right: 30%">
-  <b>S'inscrire en tant que Client</b>
+  <b>Créer un nouveau compte "Client"</b>
 </button>
 
 <!-- Modal -->
@@ -44,7 +44,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel" style="color: blue; text-align: center"><b>Inscription Client</b></h1>
+        <h1 class="modal-title" id="exampleModalLabel" style="color: blue; text-align: center"><b>Nouveau compte</b></h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -56,47 +56,47 @@
         <form:form cssClass="form-horizontal" method="POST"	action="soumettreAjoutClient" modelAttribute="AjoutClient" enctype = "multipart/form-data">
 		
 		<div class="form-group">
-			<form:label cssClass="col-xs-3 control-label" path="nomClient" cssStyle="color: blue">Nom Client</form:label>
+			<form:label cssClass="col-xs-3 control-label" path="nomClient" cssStyle="color: blue">Nom</form:label>
 			<div class="col-sm-8">
-				<form:input cssClass="form-control" placeholder="nom Client" path="nomClient" />
+				<form:input cssClass="form-control" placeholder="Lothbrok" path="nomClient" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-xs-3 control-label" path="prenomClient" cssStyle="color: blue">Prenom Client</form:label>
+			<form:label cssClass="col-xs-3 control-label" path="prenomClient" cssStyle="color: blue">Prenom</form:label>
 			<div class="col-sm-8">
-				<form:input cssClass="form-control" placeholder="prenom Client" path="prenomClient" />
+				<form:input cssClass="form-control" placeholder="Ragnar" path="prenomClient" />
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<form:label cssClass="col-xs-3 control-label" path="dn" cssStyle="color: blue">Date de Naissance</form:label>
 			<div class="col-sm-8">
-				<form:input type="date" cssClass="form-control" placeholder="Date de Naissance du client" path="dn" />
+				<form:input type="date" cssClass="form-control" placeholder="8ème siècle" path="dn" />
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<form:label cssClass="col-xs-3 control-label" path="mail" cssStyle="color: blue">Mail</form:label>
 			<div class="col-sm-8">
-				<form:input cssClass="form-control" placeholder="mail Client" path="mail" />
+				<form:input cssClass="form-control" placeholder="@viking" path="mail" />
 			</div>
 		</div>
 		<div class="form-group">
 			<form:label cssClass="col-xs-3 control-label" path="mdp" cssStyle="color: blue">Mot de passe</form:label>
 			<div class="col-sm-8">
-				<form:input cssClass="form-control" placeholder="mot de passe du Client" path="mdp" />
+				<form:input cssClass="form-control" placeholder="viking" path="mdp" />
 			</div>
 		</div>
 		<div class="form-group">
 			<form:label cssClass="col-xs-3 control-label" path="tel" cssStyle="color: blue">Telephone</form:label>
 			<div class="col-sm-8">
-				<form:input cssClass="form-control" placeholder="telephone du Client" path="tel" />
+				<form:input cssClass="form-control" placeholder="Signaux de fumée" path="tel" />
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-xs-10">
-				<button type="submit" class="btn btn-primary">Ajouter Client</button>
+				<button type="submit" class="btn btn-primary">S'inscrire</button>
 			</div>
 		</div>
 	</form:form>
@@ -105,7 +105,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler Ajout Client</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Annulation client</button>
 
       </div>
     </div>

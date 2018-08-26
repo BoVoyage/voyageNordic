@@ -22,7 +22,7 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-<title>Heimdall Voyage: bon plans voyages, hotels, vols sur les
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
 	pays nordiques</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
 
 	<table class="table table-bordered">
 		<tr>
-			<th>Nom Hébergement</th>
+			<th>Hébergement</th>
 			<th>Description</th>
 			<th>Image</th>
 			<th>Gestion</th>

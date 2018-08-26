@@ -37,7 +37,7 @@
 	<form:form cssClass="form-horizontal" method="POST"
 		action="soumettreSupprVehicule" modelAttribute="vehiculeSuppr">
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="idVehicule">ID du Véhicule</form:label>
+			<form:label cssClass="col-sm-2 control-label" path="idVehicule">N° Véhicule</form:label>
 			<div class="col-sm-9">
 				<form:input cssClass="form-control" placeholder="idVehicule"
 					path="idVehicule" />

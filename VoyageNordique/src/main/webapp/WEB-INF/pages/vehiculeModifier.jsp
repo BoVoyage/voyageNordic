@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Page de modification d'un Véhicule</title>
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
+	pays nordiques</title>
 
 <!-- ajouter la librairie de bootstrap.css -->
 <link rel="stylesheet"
@@ -37,7 +38,7 @@
 	<form:form cssClass="form-horizontal" method="POST"
 		action="soumettreModifVehicule" modelAttribute="vehiculeModif">
 		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="idVehicule">ID du Véhicule</form:label>
+			<form:label cssClass="col-sm-2 control-label" path="idVehicule">N° Véhicule</form:label>
 			<div class="col-sm-9">
 				<form:input cssClass="form-control" placeholder="idVehicule"
 					path="idVehicule" />

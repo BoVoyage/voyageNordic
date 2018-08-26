@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Denied Page</title>
+<title>ACCES RESTRICTED</title>
 </head>
 <body>
 <h1 style="color: red;text-align: center">Vous n'êtes pas autorisé à accéder à cette page.</h1>

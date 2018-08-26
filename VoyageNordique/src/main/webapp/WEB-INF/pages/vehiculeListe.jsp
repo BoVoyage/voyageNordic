@@ -24,7 +24,8 @@
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
 
-<title>Liste des véhicules</title>
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
+	pays nordiques</title>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
 
 	<table class="table table-bordered">
 		<tr>
-			<th>ID du Véhicule</th>
+			<th>N° Véhicule</th>
 			<th>Catégorie</th>
 			<th>Marque</th>
 			<th>Prix TTC</th>

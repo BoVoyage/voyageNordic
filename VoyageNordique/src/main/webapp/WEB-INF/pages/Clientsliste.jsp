@@ -24,7 +24,8 @@
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
 
-<title>Ma page liste Clients</title>
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
+	pays nordiques</title>
 </head>
 <body>
 
@@ -34,7 +35,6 @@
 	<%@ include file="../../templates/headerBack.html"%>
 	
 		<tr>
-			<th style="color: blue; text-align: center">ID Client</th>
 			<th style="color: blue; text-align: center">No Client</th>
 			<th style="color: blue; text-align: center">Nom Client</th>
 			<th style="color: blue; text-align: center">Prenom Client</th>
@@ -47,7 +47,6 @@
 
 		<c:forEach var="cl" items="${LesClients}">
 			<tr>
-				<td>${cl.idClient}</td>
 				<td>${cl.noClient}</td>
 				<td>${cl.nomClient}</td>
 				<td>${cl.prenomClient}</td>

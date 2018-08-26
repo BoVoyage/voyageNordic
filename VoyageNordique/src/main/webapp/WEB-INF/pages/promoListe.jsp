@@ -22,41 +22,76 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-<title>Heimdall Voyage: bon plans voyages, hotels, vols sur les
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
 	pays nordiques</title>
 </head>
 <body>
 	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>
 
-<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
-<!-- Insérer un filtre permettant de filtrer les offres. -->
-<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
+	<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
+	<!-- Insérer un filtre permettant de filtrer les offres. -->
+	<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
 
-	<table class="table table-bordered">
-		<tr>
-			<th>Numéro Offre</th>
-			<th>Nom Offre</th>
-			<th>Pays</th>
-			<th>Ville</th>
-			<th>Description</th>
-			<th>Prix</th>
-			<th>Image</th>
-		</tr>
+	<div class="container marketing">
+		<div class="row">
+			<c:forEach var="o" items="${allOffresPromo}">
+				<div class="col-lg-4" style="text-align: center">
+					<img class="img-circle"
+						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
+						alt="Generic placeholder image" width="140" height="140">
+					<h2>${o.designation}</h2>
+					<h2>${o.pays},
+						à <span class="text-muted">${o.ville}</span>
+					</h2>
+					<div
+						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
+						<p style="color: white">
+							<s>Prix initial: ${o.prixVoyage} &#8364</s>
+						</p>
+						<p style="font-size: larger; color: white">PROMO!:
+							${o.remiseVoyage} &#8364</p>
+					</div>
+					<a class="btn btn-lg btn-info"
+						href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}"
+						role="button" style="margin: 6px;">Détails</a>
+				</div>
+			</c:forEach>
 
-		<c:forEach var="o" items="${allOffresPromo}">
-			<tr>
-				<td>${o.noVoyage}</td>
-				<td>${o.designation}</td>
-				<td>${o.pays}</td>
-				<td>${o.ville}</td>
-				<td>${o.descriptionVoyage}</td>
-				<td>${o.prixVoyage}</td>
-				
-				<td><img  src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}" style="width: 100px; height: 100px"/></td>
-			</tr>
-		</c:forEach>
+		</div>
+	</div>
 
-	</table>
+
+
+
+<!-- 	<table class="table table-bordered"> -->
+<!-- 		<tr> -->
+<!-- 			<th>Numéro Offre</th> -->
+<!-- 			<th>Nom Offre</th> -->
+<!-- 			<th>Pays</th> -->
+<!-- 			<th>Ville</th> -->
+<!-- 			<th>Description</th> -->
+<!-- 			<th>Prix</th> -->
+<!-- 			<th>Image</th> -->
+<!-- 		</tr> -->
+
+<%-- 		<c:forEach var="o" items="${allOffresPromo}"> --%>
+<!-- 			<tr> -->
+<%-- 				<td>${o.noVoyage}</td> --%>
+<%-- 				<td>${o.designation}</td> --%>
+<%-- 				<td>${o.pays}</td> --%>
+<%-- 				<td>${o.ville}</td> --%>
+<%-- 				<td>${o.descriptionVoyage}</td> --%>
+<%-- 				<td>${o.prixVoyage}</td> --%>
+
+<!-- 				<td><img -->
+<%-- 					src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}" --%>
+<!-- 					style="width: 100px; height: 100px" /></td> -->
+<!-- 			</tr> -->
+<%-- 		</c:forEach> --%>
+
+<!-- 	</table> -->
+
+
 </body>
 </html>

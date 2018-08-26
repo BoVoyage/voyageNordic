@@ -22,7 +22,7 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-<title>Heimdall Voyage: bon plans voyages, hotels, vols sur les
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
 	pays nordiques</title>
 </head>
 <body>
@@ -93,8 +93,8 @@
 					</h2>
 					<div
 						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
-						<s><p style="color: white"> Prix initial: ${o.prixVoyage}
-							&#8364</p></s>
+						<p style="color: white"><s>Prix initial: ${o.prixVoyage}
+							&#8364</s></p>
 							<p style="font-size: larger; color: white"> PROMO!: ${o.remiseVoyage}
 							&#8364</p>
 					</div>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Heimdall Voyage: bon plans voyages, hotels, vols sur les
+<title>Bifrost Voyage: bon plans voyages, hotels, vols sur les
 	pays nordiques</title>
 <!-- ajouter la librairie de bootstrap.css -->
 <link rel="stylesheet"
