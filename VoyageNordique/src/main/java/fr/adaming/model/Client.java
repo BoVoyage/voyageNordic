@@ -43,7 +43,7 @@ public class Client implements Serializable {
 	private String mail;
 	@NotEmpty(message="Vous devez entrer un mot de passe")
 	private String mdp;
-	@Pattern(regexp="0[0-9]{1}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}", message="Votre numéro de téléphone est incorrect")
+	@Pattern(regexp="0[0-9]{1}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}", message="Votre numéro de téléphone doit être de type 00-00-00-00-00")
 	private String tel;
 	private boolean active;
 
