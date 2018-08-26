@@ -35,26 +35,26 @@
 
 	<br />
 
-	<form:form cssClass="form-horizontal" method="POST"
-		action="soummettreAddOffrePanier" modelAttribute="panAjout"
-		enctype="multipart/form-data">
+	<form:form commandName="panier" cssClass="form-horizontal"
+		method="POST" action="soummettreAddOffrePanier"
+		modelAttribute="panAjout" enctype="multipart/form-data">
 
 		<div class="form-group">
 			<form:label cssClass="col-xs-2 control-label"
-				path="lignecommande.offrevoyage.designation">Nom du voyage</form:label>
+				path="ligneCommande.offrevoyage.designation">Nom du voyage</form:label>
 			<div class="col-xs-3">
 				<form:input cssClass="form-control"
 					placeholder="Entrez le nom du voyage"
-					path="lignecommande.offrevoyage.designation" />
+					path="ligneCommande.offrevoyage.designation" />
 			</div>
 		</div>
 
 		<div class="form-group">
 			<form:label cssClass="col-xs-2 control-label"
-				path="lignecommande.quantite">Nb de place</form:label>
+				path="ligneCommande.quantite">Nb de place</form:label>
 			<div class="col-xs-3">
 				<form:input cssClass="form-control" placeholder="Combien de place ?"
-					path="lignecommande.quantite" />
+					path="ligneCommande.quantite" />
 			</div>
 		</div>
 

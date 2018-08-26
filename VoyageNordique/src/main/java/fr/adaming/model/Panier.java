@@ -9,6 +9,7 @@ public class Panier implements Serializable {
 
 	//declaration des attributs
 	private List<LigneCommande> listeCommande;
+	private LigneCommande ligneCommande;
 	
 	//declaration des constructeurs
 	public Panier() {
@@ -21,6 +22,14 @@ public class Panier implements Serializable {
 	}
 	public void setListeCommande(List<LigneCommande> listeCommande) {
 		this.listeCommande = listeCommande;
+	}
+
+	public LigneCommande getLigneCommande() {
+		return ligneCommande;
+	}
+
+	public void setLigneCommande(LigneCommande ligneCommande) {
+		this.ligneCommande = ligneCommande;
 	}	
 	
 }
