@@ -1,3 +1,4 @@
+<%@page import="fr.adaming.model.OffreVoyage"%>
 <%@page import="fr.adaming.service.OffreVoyageServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -41,12 +42,19 @@
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
 			<div class="col-sm-9" id="listeNo">
-				<form:input cssClass="form-control" placeholder="noVoyage"
-					path="noVoyage" />
-				<!-- 				<select id="noVoyage"> -->
-				<%-- 					<option id="noVoyage" value="noVoyage">${listingOffres.noVoyage}</option> --%>
-				<!-- 				</select> -->
-
+				<form:input cssClass="form-control" placeholder="noVoyage">
+					<SELECT name="listeNo" size="1">
+						<%
+							final Iterator listeNoVoyage = listingNoVoyage.iterator();
+									while (listeNoVoyage.hasNext()) {
+										OffreVoyage ov = listeNoVoyage.next();
+						%>
+						<OPTION value="<%=ov.getNoVoyage()%>"><%=ov.getNoVoyage()%></OPTION>
+						<%
+							}
+						%>
+					</SELECT>
+				</form:input>
 			</div>
 		</div>
 		<div class="form-group">
