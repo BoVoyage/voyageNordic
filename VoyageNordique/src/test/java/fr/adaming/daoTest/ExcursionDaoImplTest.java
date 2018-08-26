@@ -84,7 +84,7 @@ public class ExcursionDaoImplTest {
 //	@Transactional(readOnly = true)
 	public void testGetByName() {
 		Excursion ex = excursionDao.getExcuById(1);
-		assertEquals("Une superbe balade d'une heure en chien de traineaux dans les magnifiques paysages enneigés", excursionDao.getExcuByName(ex).getDescriptionExcursion());
+		assertEquals("Une superbe balade d'une heure en chien de traineaux dans les magnifiques paysages enneigés", ((Excursion) excursionDao.getExcuByName(ex)).getDescriptionExcursion());
 	}
 
 }

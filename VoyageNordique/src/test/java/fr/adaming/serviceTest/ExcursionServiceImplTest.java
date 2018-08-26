@@ -83,7 +83,7 @@ public class ExcursionServiceImplTest {
 //	@Transactional(readOnly = true)
 	public void testGetByName() {
 		Excursion ex = excursionService.getExcuById(1);
-		assertEquals("Une superbe balade d'une heure en chien de traineaux dans les magnifiques paysages enneigés", excursionService.getExcuByName(ex).getDescriptionExcursion());
+		assertEquals("Une superbe balade d'une heure en chien de traineaux dans les magnifiques paysages enneigés", ((Excursion) excursionService.getExcuByName(ex)).getDescriptionExcursion());
 	}
 
 }

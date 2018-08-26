@@ -87,12 +87,14 @@ public class OffreVoyageController {
 	 * @return modelAndView
 	 */
 	@RequestMapping(value = "/listeOffreVoyage", method = RequestMethod.GET)
-	public ModelAndView afficheListeOffre() {
+	public String afficheListeOffre(Model modele) {
 
 		// recuperer la liste d'offres à partir de service
 		List<OffreVoyage> listingOffres = offreVoyageService.getAllOffres();
-
-		return new ModelAndView("offreListe", "allOffresVoyage", listingOffres);
+		List<OffreVoyage> listingPromo = offreVoyageService.getOffresPromoService();
+		modele.addAttribute("allOffresVoyage", listingOffres);
+		modele.addAttribute("allOffresPromo", listingPromo);
+		return "offreListe";
 	}
 
 	// ******************* recup de la liste des offres en promo

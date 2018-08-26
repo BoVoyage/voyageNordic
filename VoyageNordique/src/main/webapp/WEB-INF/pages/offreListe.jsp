@@ -29,34 +29,66 @@
 	<!-- Ajouter le menu avec include -->
 	<%@ include file="../../templates/header.html"%>
 
-<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
-<!-- Insérer un filtre permettant de filtrer les offres. -->
-<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
+	<!-- Insérer un slideshow avec les offres du moment, un résumé et un lien vers les détails -->
+	<!-- Insérer un filtre permettant de filtrer les offres. -->
+	<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
 
-	<table class="table table-bordered">
-		<tr>
-			<th>Numéro Offre</th>
-			<th>Nom Offre</th>
-			<th>Pays</th>
-			<th>Ville</th>
-			<th>Description</th>
-			<th>Prix</th>
-			<th>Image</th>
-		</tr>
+	<div class="container marketing">
+
+		<div class="row">
+			<c:forEach var="o" items="${allOffresPromo}">
+				<div class="col-lg-4" style="text-align: center">
+					<img class="img-circle"
+						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
+						alt="Generic placeholder image" width="140" height="140">
+					<h2>${o.designation}</h2>
+					<h2>${o.pays},
+						à <span class="text-muted">${o.ville}</span>
+					</h2>
+					<div
+						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
+						<s><p style="color: white"> Prix initial: ${o.prixVoyage}
+							&#8364</p></s>
+							<p style="font-size: larger; color: white"> PROMO!: ${o.remiseVoyage}
+							&#8364</p>
+					</div>
+						<a class="btn btn-default" href="#" role="button">View details
+							&raquo;</a>
+				</div>
+			</c:forEach>
+
+		</div>
+		<!-- /.row -->
 
 		<c:forEach var="o" items="${allOffresVoyage}">
-			<tr>
-				<td>${o.noVoyage}</td>
-				<td>${o.designation}</td>
-				<td>${o.pays}</td>
-				<td>${o.ville}</td>
-				<td>${o.descriptionVoyage}</td>
-				<td>${o.prixVoyage}</td>
-				
-				<td><img  src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}" style="width: 100px; height: 100px"/></td>
-			</tr>
-		</c:forEach>
+			<div class="row featurette"
+				style="margin: 25px; border: 2px solid black; padding: 5px; margin-right: none">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">${o.designation}</h2>
+					<h2>${o.pays},
+						à <span class="text-muted">${o.ville}</span>
+					</h2>
+					<p class="lead">${o.descriptionVoyage}</p>
+					<div
+						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
+						<p style="font-size: larger; color: white">${o.prixVoyage}
+							&#8364</p>
+					</div>
+					<a class="btn btn-lg btn-info" href="#" role="button"
+						style="margin: 6px;">Réserver</a>
 
-	</table>
+				</div>
+				<div class="col-md-5">
+					<img class="featurette-image img-responsive center-block"
+						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
+						alt="Generic placeholder image"
+						style="width: 250px; height: 250px; border: 1px solid black; margin: none; padding: none">
+				</div>
+			</div>
+
+			<hr class="featurette-divider">
+		</c:forEach>
+	</div>
+	<!-- /.container -->
 </body>
 </html>
