@@ -51,6 +51,12 @@ public class ExcursionController {
 
 	// *************** methode pour recuperer les images et les envoyer à la
 	// page jsp
+	/**
+	 * Méthode pour recuperer les images et les envoyer aux pages jsp
+	 * @param id
+	 * @return tableau de byte
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/getImage", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	public byte[] recupImage(@RequestParam("pId") int id) throws IOException {
@@ -84,10 +90,15 @@ public class ExcursionController {
 	 * 
 	 * @param modele
 	 *            correspondant à une excursion
-	 * @return page ajout d'excursion
+	 * @param string pour le message d'erreur
+	 * @return string, correspondant à la page ajout d'excursion
 	 */
 	@RequestMapping(value = "/ajouterExcursion", method = RequestMethod.GET)
-	public String afficheFormAjoutExcursion(Model modele) {
+	public String afficheFormAjoutExcursion(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
+		
 		modele.addAttribute("excursionAjout", new Excursion());
 		return "excursionAjouter";
 	}
@@ -119,7 +130,7 @@ public class ExcursionController {
 			// je vais rediriger la requete vers la methode liste des excursions
 			return "redirect:listeExcursions";
 		} else {
-			rda.addAttribute("error", "L'ajout de cette nouvelle excursion a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode ajouterOffre
 			return "redirect:ajouterExcursion";
@@ -129,9 +140,9 @@ public class ExcursionController {
 	// ******************************************* methode pour rechercher une excursion par nom
 	/**
 	 * Méthode du formulaire de recherche excursion par nom
-	 * 
-	 * @return ModelAndView avec une excursion en modèle et en vue la page
-	 *         recherche
+	 * @param modele
+	 * @param error, un string
+	 * @return string correspondant à la page recherche
 	 */
 	@RequestMapping(value = "/rechercherExcursion", method = RequestMethod.GET)
 	public String afficherFormRechercheExcursion(Model modele,
@@ -179,10 +190,14 @@ public class ExcursionController {
 	 * 
 	 * @param modele
 	 *            correspondant à une excursion
-	 * @return page de suppression d'excursion
+	 * @param error, un string pour le message
+	 * @return string, page de suppression d'excursion
 	 */
 	@RequestMapping(value = "/supprimerExcursion", method = RequestMethod.GET)
-	public String afficheFormASupprimerExcu(Model modele) {
+	public String afficheFormASupprimerExcu(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("excursionSuppr", new Excursion());
 		return "excursionSupprimer";
 	}
@@ -206,7 +221,7 @@ public class ExcursionController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeExcursions";
 		} else {
-			rda.addAttribute("error", "La suppression de cette excursion a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode supprimer Offre
 			return "redirect:supprimerExcursion";
@@ -219,11 +234,14 @@ public class ExcursionController {
 	 * 
 	 * @param modele
 	 *            correspondant à une excursion
+	 * @param error, un string
 	 * @return page de modification d'excursion
 	 */
 	@RequestMapping(value = "/modifierExcursion", method = RequestMethod.GET)
-	public String afficheFormModifExcursion(Model modele) {
-
+	public String afficheFormModifExcursion(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("excursionModif", new Excursion());
 		return "excursionModifier";
 	}
@@ -255,7 +273,7 @@ public class ExcursionController {
 			// je vais rediriger la requete vers la methode liste des excursions
 			return "redirect:listeExcursions";
 		} else {
-			rda.addAttribute("error", "La modification de cette excursion a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode modifierExcursion
 			return "redirect:modifierExcursion";

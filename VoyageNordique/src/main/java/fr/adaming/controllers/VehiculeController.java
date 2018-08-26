@@ -52,10 +52,14 @@ public class VehiculeController {
 	 * 
 	 * @param modele
 	 *            correspondant à un vehicule
+	 * @param error, un string
 	 * @return page ajout vehicule
 	 */
 	@RequestMapping(value = "/ajouterVehicule", method = RequestMethod.GET)
-	public String afficheFormAjoutVehicule(Model modele) {
+	public String afficheFormAjoutVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("vehiculeAjout", new Vehicule());
 		return "vehiculeAjouter";
 	}
@@ -78,7 +82,7 @@ public class VehiculeController {
 			// je vais rediriger la requete vers la methode liste
 			return "redirect:listeVehicule";
 		} else {
-			rda.addAttribute("error", "L'ajout du vehicule a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode ajouterOffre
 			return "redirect:ajouterVehicule";
@@ -89,9 +93,9 @@ public class VehiculeController {
 	// vehicule par sa categorie
 	/**
 	 * Méthode du formulaire de recherche
-	 * 
-	 * @return ModelAndView avec un vehicule en modèle et en vue la page
-	 *         recherche
+	 * @param modele, un objet Model
+	 * @param error, un string
+	 * @return string, page de recherche du vehicule
 	 */
 	@RequestMapping(value = "/rechercherVehicule", method = RequestMethod.GET)
 	public String afficherFormRechercheVehicule(Model modele,
@@ -136,10 +140,14 @@ public class VehiculeController {
 	 * 
 	 * @param modele
 	 *            correspondant à un vehicule
+	 * @param error, un string
 	 * @return page de suppression d'un vehicule
 	 */
 	@RequestMapping(value = "/supprimerVehicule", method = RequestMethod.GET)
-	public String afficheFormASupprimerVehicule(Model modele) {
+	public String afficheFormASupprimerVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("vehiculeSuppr", new Vehicule());
 		return "vehiculeSupprimer";
 	}
@@ -163,7 +171,7 @@ public class VehiculeController {
 			// je vais rediriger la requete vers la methode liste
 			return "redirect:listeVehicule";
 		} else {
-			rda.addAttribute("error", "La suppression de ce véhicule a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode supprimer Offre
 			return "redirect:supprimerVehicule";
@@ -176,10 +184,14 @@ public class VehiculeController {
 	 * 
 	 * @param modele
 	 *            correspondant à un vehicule
+	 * @param error, un string
 	 * @return page de modification d'un vehicule
 	 */
 	@RequestMapping(value = "/modifierVehicule", method = RequestMethod.GET)
-	public String afficheFormModifVehicule(Model modele) {
+	public String afficheFormModifVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 
 		modele.addAttribute("vehiculeModif", new Vehicule());
 		return "vehiculeModifier";
@@ -204,7 +216,7 @@ public class VehiculeController {
 			// je vais rediriger la requete vers la methode liste
 			return "redirect:listeVehicule";
 		} else {
-			rda.addAttribute("error", "La modification de ce véhicule a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode modifierOffre
 			return "redirect:modifierVehicule";

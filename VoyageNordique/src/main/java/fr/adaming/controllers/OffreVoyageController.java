@@ -116,10 +116,14 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
+	 * @param error, un string
 	 * @return page ajout d'offre
 	 */
 	@RequestMapping(value = "/ajouterOffre", method = RequestMethod.GET)
-	public String afficheFormAjoutOffre(Model modele) {
+	public String afficheFormAjoutOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("offreAjout", new OffreVoyage());
 		return "offreAjouter";
 	}
@@ -151,7 +155,7 @@ public class OffreVoyageController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeOffreVoyage";
 		} else {
-			rda.addAttribute("error", "L'ajout de cette nouvelle offre de voyage a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode ajouterOffre
 			return "redirect:ajouterOffre";
@@ -210,10 +214,14 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
+	 * @param error, un string
 	 * @return page de suppression d'offre
 	 */
 	@RequestMapping(value = "/supprimerOffre", method = RequestMethod.GET)
-	public String afficheFormASupprimerOffre(Model modele) {
+	public String afficheFormASupprimerOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("offreSuppr", new OffreVoyage());
 		return "offreSupprimer";
 	}
@@ -237,7 +245,7 @@ public class OffreVoyageController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeOffreVoyage";
 		} else {
-			rda.addAttribute("error", "La suppression de cette offre de voyage a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode supprimer Offre
 			return "redirect:supprimerOffre";
@@ -250,11 +258,14 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
+	 * @param error, un string
 	 * @return page ajout d'offre
 	 */
 	@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
-	public String afficheFormModifOffre(Model modele) {
-
+	public String afficheFormModifOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		// recuperer la liste des numeros d'offre voyage à partir de service
 		// (liste deroulante)
 		List<String> listingNoVoyage = offreVoyageService.getAllNoVoyage();
@@ -291,7 +302,7 @@ public class OffreVoyageController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeOffreVoyage";
 		} else {
-			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode modifierOffre
 			return "redirect:modifierOffre";
@@ -305,6 +316,7 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
+	 * @param error, un string
 	 * @return page de cloture d'offre
 	 */
 	@RequestMapping(value = "/cloreOffre", method = RequestMethod.GET)
@@ -338,7 +350,7 @@ public class OffreVoyageController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeOffreVoyage";
 		} else {
-			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode modifierOffre
 			return "redirect:cloreOffre";
@@ -351,6 +363,7 @@ public class OffreVoyageController {
 	 * 
 	 * @param modele
 	 *            correspondant à une offre de voyage
+	 * @param
 	 * @return page de mise en promo d'une offre
 	 */
 	@RequestMapping(value = "/promoOffre", method = RequestMethod.GET)
@@ -382,7 +395,7 @@ public class OffreVoyageController {
 			// je vais rediriger la requete vers la methode liste des offres
 			return "redirect:listeOffreVoyage";
 		} else {
-			rda.addAttribute("error", "La modification de cette offre de voyage a échoué");
+			rda.addAttribute("error", true);
 
 			// redirection vers la methode modifierOffre
 			return "redirect:promoOffre";

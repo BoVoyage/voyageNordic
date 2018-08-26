@@ -49,7 +49,9 @@
 			excursion</button>
 	</form:form>
 	
-	<h1 style="color: red; text-align: center">${error}</h1>
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">Une erreur est survenue lors de la suppression de l'excursion !</h1>
+	</c:if>
 
 </body>
 </html>

@@ -62,7 +62,7 @@
 	</form:form>
 
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">La clôture de l'offre a échouée.</h1>
+		<h1 style="color: red; text-align: center">Une erreur est survenue lors de la clôture de l'offre !</h1>
 	</c:if>
 
 </body>

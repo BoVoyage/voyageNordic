@@ -75,7 +75,7 @@
 
 
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">La recherche a échoué</h1>
+		<h1 style="color: red; text-align: center">Aucune excursion ne porte ce nom !</h1>
 	</c:if>
 
 </body>

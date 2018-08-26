@@ -42,10 +42,10 @@
 		<div class="form-group">
 			<form:label cssClass="col-sm-2 control-label" path="noVoyage">N° référence du Voyage</form:label>
 			<div class="col-sm-9" id="listeNo">
-				<form:input cssClass="form-control" placeholder="noVoyage">
+<%-- 				<form:input cssClass="form-control" placeholder="noVoyage"> --%>
 					<SELECT name="listeNo" size="1">
 						<%
-							final Iterator listeNoVoyage = listingNoVoyage.iterator();
+							final Iterator<String> listeNoVoyage = listingNoVoyage.iterator();
 									while (listeNoVoyage.hasNext()) {
 										OffreVoyage ov = listeNoVoyage.next();
 						%>
@@ -54,7 +54,7 @@
 							}
 						%>
 					</SELECT>
-				</form:input>
+<%-- 				</form:input> --%>
 			</div>
 		</div>
 		<div class="form-group">
@@ -135,7 +135,9 @@
 	</form:form>
 
 
-	<h1 style="color: red; text-align: center">${error}</h1>
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">Une erreur est survenue lors de la modification de l'offre !</h1>
+	</c:if>
 
 </body>
 </html>

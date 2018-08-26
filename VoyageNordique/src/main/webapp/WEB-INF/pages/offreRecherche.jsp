@@ -76,7 +76,7 @@
 	</table>
 
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">La recherche a échoué</h1>
+		<h1 style="color: red; text-align: center">Aucune offre de voyage ne correspond à ce numéro !</h1>
 	</c:if>
 	
 </body>

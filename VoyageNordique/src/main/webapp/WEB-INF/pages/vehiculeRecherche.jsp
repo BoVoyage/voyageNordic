@@ -73,7 +73,7 @@
 	</table>
 
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">La recherche a échoué</h1>
+		<h1 style="color: red; text-align: center">Aucun véhicule n'a été répertorié dans cette catégorie !</h1>
 	</c:if>
 
 </body>
