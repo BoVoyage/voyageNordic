@@ -3,8 +3,8 @@
 
 <!-- besoin des balises form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,53 +34,66 @@
 	<%@ include file="../../templates/header.html"%>
 
 	<br />
-	
-	<!-- ********************************************************************************************** -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white">
-  <b>Rechercher Client</b>
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel" style="color: blue; text-align: center"><b>Rechercher Client</b></h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-		<!-- ********$$$$$$$$$$$$$$*************** -->
-	
-	<form:form cssClass="form-horizontal" method="POST"	action="soumettreRechercheClient" modelAttribute="clientRecherche">
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="noClient" cssStyle="color: blue">N° référence Client</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="noClient"	path="noClient" />
-			</div>
-		</div>	
-		<div class="form-group">
-			<form:label cssClass="col-sm-2 control-label" path="nomClient" cssStyle="color: blue">Nom Client</form:label>
-			<div class="col-sm-9">
-				<form:input cssClass="form-control" placeholder="nomClient"	path="nomClient" />
+	<!-- ********************************************************************************************** -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#exampleModal" style="color: white">
+		<b>Rechercher Client</b>
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="exampleModalLabel"
+						style="color: blue; text-align: center">
+						<b>Rechercher Client</b>
+					</h1>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<!-- ********$$$$$$$$$$$$$$*************** -->
+
+					<form:form cssClass="form-horizontal" method="POST"
+						action="soumettreRechercheClient" modelAttribute="clientRecherche">
+						<div class="form-group">
+							<form:label cssClass="col-sm-2 control-label" path="noClient"
+								cssStyle="color: blue">N° référence Client</form:label>
+							<div class="col-sm-9">
+								<form:input cssClass="form-control" placeholder="noClient"
+									path="noClient" />
+							</div>
+						</div>
+						<div class="form-group">
+							<form:label cssClass="col-sm-2 control-label" path="nomClient"
+								cssStyle="color: blue">Nom Client</form:label>
+							<div class="col-sm-9">
+								<form:input cssClass="form-control" placeholder="nomClient"
+									path="nomClient" />
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Rechercher
+							Client</button>
+					</form:form>
+
+					<!-- ********$$$$$$$$$$$$$$*************** -->
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Annuler
+						Recherche Client</button>
+
+				</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Rechercher Client</button>
-	</form:form>
-	
-	<!-- ********$$$$$$$$$$$$$$*************** -->
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler Recherche Client</button>
-
-      </div>
-    </div>
-  </div>
-</div>
+	</div>
 
 	<table class="table table-bordered">
 		<tr>
@@ -104,7 +117,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<h1 style="color: red; text-align: center">${msg}</h1>
+
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">Aucun client n'existe sous cet identifiant !</h1>
+	</c:if>
 
 </body>
 </html>

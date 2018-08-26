@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -63,7 +64,10 @@ public class ClientController {
 	// ******$$$$$$$$$$$$$$$**********
 	/** Le formulaire AjoutClient */
 	@RequestMapping(value = "/ajouterClient", method = RequestMethod.GET)
-	public String afficheFormulaireAddClient(Model modele) {
+	public String afficheFormulaireAddClient(Model modele, @RequestParam(value = "error", required = false) String error) {
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("AjoutClient", new Client());
 		return "ClientAjout";
 	}
@@ -83,7 +87,7 @@ public class ClientController {
 			clientService.sendMail(clOut);
 			return "redirect:ListeClients";
 		} else {
-			rda.addAttribute("msg", "L'ajout du client à échouer");
+			rda.addAttribute("msg", true);
 			return "redirect:ajouterClient";
 		}
 	}
@@ -93,7 +97,10 @@ public class ClientController {
 	
 	//methode Modifier un Client
 	@RequestMapping(value="/modifier" , method=RequestMethod.GET)
-	public String afficheFormModifClient(Model modele){
+	public String afficheFormModifClient(Model modele, @RequestParam(value = "error", required = false) String error){
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("clientModif", new Client());
 	
 		return "ClientModif";
@@ -108,7 +115,7 @@ public class ClientController {
 			
 			return "redirect:ListeClients";
 		}else{
-			rda.addAttribute("msg", "La modif a echoué!");
+			rda.addAttribute("msg", true);
 			return "redirect:modifier";
 		}
 	}
@@ -118,7 +125,10 @@ public class ClientController {
 	
 	//methode Supprimer un Client
 	@RequestMapping(value="/supprimer" , method=RequestMethod.GET)
-	public String afficheFormSupprimeClient(Model modele){
+	public String afficheFormSupprimeClient(Model modele, @RequestParam(value = "error", required = false) String error){
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
 		modele.addAttribute("clientSupprime", new Client());
 	
 		return "ClientSupprime";
@@ -133,17 +143,21 @@ public class ClientController {
 			
 			return "redirect:ListeClients";
 		}else{
-			rda.addAttribute("msg", "La suppession a echoué!");
+			rda.addAttribute("msg", true);
 			return "redirect:supprimer";
 		}
 	}
 	// ***********************************************************************************************
 	// ******$$$$$$$$$$$$$$$**********
 	
-	//methode Supprimer un Client
+	//methode rechercher un Client
 	@RequestMapping(value="/rechercher" , method=RequestMethod.GET)
-	public ModelAndView afficheFormRechercheClient(){
-		return new ModelAndView("ClientRecherche", "clientRecherche", new Client());
+	public String afficheFormRechercheClient(Model modele, @RequestParam(value = "error", required = false) String error){
+		if (error != null) {
+			modele.addAttribute("error", error);
+		}
+		modele.addAttribute("clientRecherche", new Client());
+		return "ClientRecherche";
 	}
 
 	@RequestMapping(value = "/soumettreRechercheClient", method = RequestMethod.POST)
@@ -156,7 +170,7 @@ public class ClientController {
 			modele.addAttribute("clientListe",clOut);
 			return "ClientRecherche";
 		}else{
-			rda.addAttribute("msg", "La recherche a echoué!");
+			rda.addAttribute("msg", true);
 			return "redirect:rechercher";
 		}
 	}

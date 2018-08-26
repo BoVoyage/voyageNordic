@@ -3,7 +3,7 @@
     
 <!-- besoin des balises form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
     
 <!DOCTYPE html>
 <html>
@@ -78,7 +78,9 @@
 	</form:form>
 
 
-	<h1 style="color: red; text-align: center">${msg}</h1>
+		<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">Une erreur est survenue lors de l'inscription du client !</h1>
+	</c:if>
 
 </body>
 </html>
