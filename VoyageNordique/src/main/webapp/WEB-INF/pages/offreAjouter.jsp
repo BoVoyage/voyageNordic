@@ -70,6 +70,27 @@
 					path="descriptionVoyage" />
 			</div>
 		</div>
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="dateDepart">Date de départ</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="date de Depart"
+					path="dateDepart" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="dateRetour">Date de retour</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="date de Retour"
+					path="dateRetour" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label cssClass="col-sm-2 control-label" path="compagnieAerienne">Compagnie aérienne</form:label>
+			<div class="col-sm-9">
+				<form:input cssClass="form-control" placeholder="compagnie Aerienne"
+					path="compagnieAerienne" />
+			</div>
+		</div>
 		<div class="radio">
 			<form:label cssClass="col-sm-3 control-label" path="etat">
 				<input type="radio" name="etat" value="true">

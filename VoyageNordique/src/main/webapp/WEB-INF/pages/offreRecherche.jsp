@@ -56,6 +56,9 @@
 			<th>Ville</th>
 			<th>Description</th>
 			<th>Prix</th>
+			<th>Date de départ</th>
+			<th>Date de retour</th>
+			<th>Compagnie aérienne</th>
 			<th>Image</th>
 		</tr>
 
@@ -67,6 +70,9 @@
 			<td>${SearchNoVoyage.ville}</td>
 			<td>${SearchNoVoyage.descriptionVoyage}</td>
 			<td>${SearchNoVoyage.prixVoyage}</td>
+			<td>${SearchNoVoyage.dateDepart}</td>
+			<td>${SearchNoVoyage.dateRetour}</td>
+			<td>${SearchNoVoyage.compagnieAerienne}</td>
 
 			<td><img
 				src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${SearchNoVoyage.idVoyage}"></td>
