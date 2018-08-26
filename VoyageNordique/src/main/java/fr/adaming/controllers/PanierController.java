@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -68,10 +70,12 @@ public class PanierController implements Serializable {
 
 	@PostConstruct
 	@ModelAttribute(value = "visiteur")
-	public void init() {
+	public void init(HttpServletRequest req) {
 
 		// on récupere la session du panier et on verifie qu'elle ne soit pas
 		// vide
+		req.getSession().setAttribute("panierClient", req);
+
 		if (panier != null) {
 
 			// on recupere la liste de commande du panier et on verifie qu'elle
@@ -162,7 +166,10 @@ public class PanierController implements Serializable {
 	 * Ce panier n'est pas stocké dans la base de donnée mais dans la session.
 	 */
 	@RequestMapping(value = "/clientLoggedIn/addOffrePan", method = RequestMethod.GET)
-	public String addOffrePanier(Model modele, @RequestParam(value = "error", required = false) String error) {
+	public String addOffrePanier(Model modele, HttpServletRequest req,
+			@RequestParam(value = "error", required = false) String error) {
+
+		req.getSession().getAttribute("panierClient");
 
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -178,7 +185,7 @@ public class PanierController implements Serializable {
 			@RequestParam("pName") String designation, RedirectAttributes rda) {
 
 		// le panier dans la session est récupérer dans le postConstruct
-		
+
 		// on récupere le voyage de la base de donnée.
 		OffreVoyage ovOut = offreService.getOffreVoyageByName(this.offre);
 
