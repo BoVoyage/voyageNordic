@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @SuppressWarnings("serial")
 @Entity
@@ -29,12 +33,17 @@ public class Client implements Serializable {
 	@Column(name = "idClient")
 	private int idClient;
 	private String noClient;
+	@NotEmpty(message="Le nom du client est obligatoire")
 	private String nomClient;
 	private String prenomClient;
 	@Temporal(TemporalType.DATE)
+	@Past(message="Veuillez entrer une date antérieure à celle d'aujourd'hui")
 	private Date dn;
+	@Email(message="Votre mail doit être de type xxxxxx@xxx.xxx")
 	private String mail;
+	@NotEmpty(message="Vous devez entrer un mot de passe")
 	private String mdp;
+	@Pattern(regexp="0[0-9]{1}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}", message="Votre numéro de téléphone est incorrect")
 	private String tel;
 	private boolean active;
 

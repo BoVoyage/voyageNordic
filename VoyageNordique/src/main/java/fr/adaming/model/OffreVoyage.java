@@ -15,6 +15,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name ="offreVoyages")
@@ -24,9 +27,12 @@ public class OffreVoyage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVoyage;
+	@NotEmpty(message="Veuillez entrer une numéro d'offre")
 	private String noVoyage;
+	@NotEmpty(message="Veuillez saisir la destination du voyage")
 	private String pays;
 	private String ville;
+	@NotEmpty(message="Veuillez saisir la quantité de places disponibles")
 	private int quantite;
 	private boolean etat;
 	@Lob
@@ -35,10 +41,13 @@ public class OffreVoyage {
 	private String descriptionVoyage;
 	private double prixVoyage;
 	private double remiseVoyage;
+	@NotEmpty(message="Veuillez entrer le nom de l'offre de voyage")
 	private String designation;
 	@Temporal(TemporalType.DATE)
+	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
 	private Date dateDepart;
 	@Temporal(TemporalType.DATE)
+	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
 	private Date dateRetour;
 	private String compagnieAerienne;
 

@@ -12,6 +12,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="excursions")
 public class Excursion{
@@ -21,10 +23,12 @@ public class Excursion{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idExcursion;
+	@NotEmpty(message="Veuillez entrer le nom de l'excursion")
 	private String nomExcursion;
 	private String descriptionExcursion;
 	@Lob
 	private byte[] imageExcursion;
+	@NotEmpty(message="Veuillez entrer le prix de l'excursion")
 	private double prixExcursion;
 	
 	//transformation de l'association UML en JAVA

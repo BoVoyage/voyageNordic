@@ -175,6 +175,13 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
+		
+				<!-- lib de hibernate-validator, pour la validation (hibernate avait créé ça et spring mvc s'en sert -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.3.Final</version>
+		</dependency>
 
 		<!-- ***************** Driver MySQL -->
 		<!-- mysql-connector-java -->

@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="vehicules")
 public class Vehicule {
@@ -18,8 +20,11 @@ public class Vehicule {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVehicule;
+	@NotEmpty(message="Veuillez choisir une catégorie")
 	private String categorieVehicule;
+	@NotEmpty(message="Veuillez remplir le champs marque")
 	private String marqueVehicule;
+	@NotEmpty(message="Veuillez indiquer le prix du véhicule")
 	private double prixVehicule;
 	
 	//transformation de l'association UML en JAVA

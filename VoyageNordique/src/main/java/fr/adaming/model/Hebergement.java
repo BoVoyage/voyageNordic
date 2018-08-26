@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="hebergement")
@@ -21,6 +22,7 @@ public class Hebergement {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idhebergement")
 	private int idHebergement;
+	@NotEmpty(message="Veuillez entrer le nom de l'hôtel")
 	private String nomHebergement;
 	private String descriptionHebergement;
 	@Lob
