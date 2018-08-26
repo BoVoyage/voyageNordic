@@ -1,8 +1,8 @@
 package fr.adaming.model;
 
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name ="offreVoyages")
@@ -34,13 +36,16 @@ public class OffreVoyage {
 	private double prixVoyage;
 	private double remiseVoyage;
 	private String designation;
+	@Temporal(TemporalType.DATE)
+	private Date dateDepart;
+	@Temporal(TemporalType.DATE)
+	private Date dateRetour;
+	private String compagnieAerienne;
 
 	// transformation des associations UML en JAVA
 	@ManyToOne
 	@JoinColumn(name = "heberg_id", referencedColumnName = "idhebergement")
 	private Hebergement hebergement;
-	@Embedded
-	private Vol vol;
 	@ManyToMany(mappedBy = "listeOffreVoyage")
 	private List<Excursion> listeExcursion;
 	@OneToOne(mappedBy = "offreVoyage")
@@ -53,7 +58,7 @@ public class OffreVoyage {
 
 	public OffreVoyage(String noVoyage, String pays, String ville, int quantite, boolean etat, byte[] imageDestination,
 			boolean promotion, String descriptionVoyage, double prixVoyage, double remiseVoyage, String designation,
-			Vol vol) {
+			Date dateDepart, Date dateRetour, String compagnieAerienne) {
 		super();
 		this.noVoyage = noVoyage;
 		this.pays = pays;
@@ -66,12 +71,14 @@ public class OffreVoyage {
 		this.prixVoyage = prixVoyage;
 		this.remiseVoyage = remiseVoyage;
 		this.designation = designation;
-		this.vol = vol;
+		this.dateDepart = dateDepart;
+		this.dateRetour = dateRetour;
+		this.compagnieAerienne = compagnieAerienne;
 	}
 
 	public OffreVoyage(int idVoyage, String noVoyage, String pays, String ville, int quantite, boolean etat,
 			byte[] imageDestination, boolean promotion, String descriptionVoyage, double prixVoyage,
-			double remiseVoyage, String designation, Vol vol) {
+			double remiseVoyage, String designation, Date dateDepart, Date dateRetour, String compagnieAerienne) {
 		super();
 		this.idVoyage = idVoyage;
 		this.noVoyage = noVoyage;
@@ -85,7 +92,9 @@ public class OffreVoyage {
 		this.prixVoyage = prixVoyage;
 		this.remiseVoyage = remiseVoyage;
 		this.designation = designation;
-		this.vol = vol;
+		this.dateDepart = dateDepart;
+		this.dateRetour = dateRetour;
+		this.compagnieAerienne = compagnieAerienne;
 	}
 
 	// declaration des getter et setter
@@ -193,14 +202,6 @@ public class OffreVoyage {
 		this.hebergement = hebergement;
 	}
 
-	public Vol getVol() {
-		return vol;
-	}
-
-	public void setVol(Vol vol) {
-		this.vol = vol;
-	}
-
 	public List<Excursion> getListeExcursion() {
 		return listeExcursion;
 	}
@@ -215,6 +216,30 @@ public class OffreVoyage {
 
 	public void setVehicule(Vehicule vehicule) {
 		this.vehicule = vehicule;
+	}
+
+	public Date getDateDepart() {
+		return dateDepart;
+	}
+
+	public void setDateDepart(Date dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+
+	public Date getDateRetour() {
+		return dateRetour;
+	}
+
+	public void setDateRetour(Date dateRetour) {
+		this.dateRetour = dateRetour;
+	}
+
+	public String getCompagnieAerienne() {
+		return compagnieAerienne;
+	}
+
+	public void setCompagnieAerienne(String compagnieAerienne) {
+		this.compagnieAerienne = compagnieAerienne;
 	}
 
 
