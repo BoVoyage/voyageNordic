@@ -35,7 +35,7 @@
 	
 	<!-- ********************************************************************************************** -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white; margin-left: 40%; margin-right: 30%">
   <b>Modifier mes informations Client</b>
 </button>
 
@@ -57,7 +57,7 @@
 		
 				
 		<div class="form-group">
-			<form:label cssClass="col-xs-3 control-label" path="idClient" cssStyle="color: blue">ID Client</form:label>
+			<form:label cssClass="col-xs-3 control-label" path="idClient" cssStyle="color: blue">Numéro de Client</form:label>
 			<div class="col-xs-8">
 				<form:input cssClass="form-control" placeholder="ID Client" path="idClient" />
 			</div>

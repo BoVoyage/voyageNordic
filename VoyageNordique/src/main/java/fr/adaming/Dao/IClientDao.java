@@ -24,4 +24,6 @@ public interface IClientDao {
 	* Methode rechercher le client par nom ou par id
 	 */
 	public List<Client> getClientByNomOrNoClient(Client cl);
+	
+	public Client getClientByMail(Client cl);
 }

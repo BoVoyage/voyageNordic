@@ -21,14 +21,27 @@
 	<!-- 1°) Configuration de la partie authorisation -->
 	<security:http>
 		<!-- Spécifier les URL à protéger -->
-		<security:intercept-url pattern="/clients/**"
+		<security:intercept-url pattern="/client/clientLoggedIn/**"
 			access="ROLE_CLIENT" />
-		<security:intercept-url pattern="/admin/**"
+		<security:intercept-url pattern="/commande/clientLoggedIn/**"
+			access="ROLE_CLIENT" />
+		<security:intercept-url pattern="/panier/clientLoggedIn/**"
+			access="ROLE_CLIENT" />
+		<security:intercept-url pattern="/client/admin/**"
 			access="ROLE_ADMIN" />
-
+		<security:intercept-url pattern="/excursion/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/hebergement/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/offreVoyage/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/vehicule/admin/**"
+			access="ROLE_ADMIN" />	
+			
+			
 		<!-- Utilisation d'un formulaire perso pour la connexion -->
 		<security:form-login login-page="/login"
-			authentication-failure-url="/echec" default-target-url="/offreVoyage/listeOffrePromo" />
+			authentication-failure-url="/echec" default-target-url="/offreVoyage/accueil" />
 
 		<!-- Spécifier la page d'accès refusé -->
 		<security:access-denied-handler

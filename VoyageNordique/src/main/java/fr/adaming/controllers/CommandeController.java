@@ -5,9 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
+import fr.adaming.service.IClientService;
 import fr.adaming.service.ICommandeService;
 
 @Controller
@@ -44,7 +49,30 @@ public class CommandeController {
 		this.coService = coService;
 	}
 
+	// **********************************************************************************************
+	/** Transformation de l'asso UML en JAVA */
+	@Autowired
+	private IClientService clientService;
+
+	// ** Declaration du setter pour l'injection dependance*/
+	public void setClientService(IClientService clientService) {
+		this.clientService = clientService;
+	}
+
 	private Client cl = new Client();
+
+	@PostConstruct
+	public void init() {
+		//récupérer le context Spring MVC (la partie qui nous intéresse)
+		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+		
+		//Récupérer l'identifiant du client connecté
+		String mail = auth.getName();
+		Client clIn = new Client();
+		clIn.setMail(mail);
+		this.cl=clientService.getClientByMail(clIn);
+		
+	}
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -60,13 +88,11 @@ public class CommandeController {
 	 * @return la page où s'affichera la liste ainsi que la liste récupérée en
 	 *         base de données
 	 */
-	@RequestMapping(value = "/listeCommandes", method = RequestMethod.GET)
+	@RequestMapping(value = "/clientLoggedIn/listeCommandes", method = RequestMethod.GET)
 	public String displayListeCommandes(Model modele) {
-		Client clIn = new Client();
-		clIn.setIdClient(1);
 
 		// Récupérer la liste de service
-		List<Commande> listeCo = coService.getCommandeByClientService(clIn);
+		List<Commande> listeCo = coService.getCommandeByClientService(this.cl);
 
 		modele.addAttribute("allCommandes", listeCo);
 
@@ -75,23 +101,20 @@ public class CommandeController {
 
 	@RequestMapping(value = "/supprLink/{pNum}")
 	public String supprLien(ModelMap model, @PathVariable("pNum") int noCo) {
-		Client clIn = new Client();
-		clIn.setIdClient(1);
-
 		Commande coIn = new Commande();
 		coIn.setNoCommande(noCo);
 		coService.deleteCommandeService(coIn);
 
 		// Récupérer la liste de service
 
-		List<Commande> listeCo = coService.getCommandeByClientService(clIn);
+		List<Commande> listeCo = coService.getCommandeByClientService(this.cl);
 		model.addAttribute("allCommandes", listeCo);
 		return "commandesListe";
 	}
 
 	// ****************************Fonctionnalité recherche
 	// Afficher le formulaire de recherche
-	@RequestMapping(value = "/rechercheCommande", method = RequestMethod.GET)
+	@RequestMapping(value = "/clientLoggedIn/rechercheCommande", method = RequestMethod.GET)
 	public String displayFormRechCommande(Model model, @RequestParam(value = "msg", required = false) String msg) {
 		model.addAttribute("coRech", new Commande());
 
@@ -103,7 +126,7 @@ public class CommandeController {
 	}
 
 	// // Soumettre le formulaire de recherche et afficher le résultat
-	@RequestMapping(value = "/soumettreRechCommande", method = RequestMethod.POST)
+	@RequestMapping(value = "/clientLoggedIn/soumettreRechCommande", method = RequestMethod.POST)
 	public String soumettreFormRech(ModelMap model, @ModelAttribute("coRech") Commande coIn, RedirectAttributes rda) {
 		// Appel de la méthode service
 		Commande coOut = coService.getCommandeByNumberService(coIn);

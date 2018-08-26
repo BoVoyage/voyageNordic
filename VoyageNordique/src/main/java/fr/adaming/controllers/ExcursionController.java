@@ -95,7 +95,7 @@ public class ExcursionController {
 	 * @param string pour le message d'erreur
 	 * @return string, correspondant à la page ajout d'excursion
 	 */
-	@RequestMapping(value = "/ajouterExcursion", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/ajouterExcursion", method = RequestMethod.GET)
 	public String afficheFormAjoutExcursion(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -117,7 +117,7 @@ public class ExcursionController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreAjoutExcursion", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreAjoutExcursion", method = RequestMethod.POST)
 	public String soumettreAjoutForm(@Valid @ModelAttribute("excursionAjout") Excursion eAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
@@ -146,7 +146,7 @@ public class ExcursionController {
 	 * @param error, un string
 	 * @return string correspondant à la page recherche
 	 */
-	@RequestMapping(value = "/rechercherExcursion", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/rechercherExcursion", method = RequestMethod.GET)
 	public String afficherFormRechercheExcursion(Model modele,
 			@RequestParam(value = "error", required = false) String error) {
 		
@@ -169,7 +169,7 @@ public class ExcursionController {
 	 * @return page recherche ou redirection vers la methode
 	 *         recherche
 	 */
-	@RequestMapping(value = "/soumettreSearchExcursion", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSearchExcursion", method = RequestMethod.POST)
 	public String soumettreSearchExcursion(@ModelAttribute("SearchExcursion") Excursion e1, RedirectAttributes rda,
 			ModelMap modele) {
 		List<Excursion> listeExcu=excursionService.getExcuByName(e1);
@@ -195,7 +195,7 @@ public class ExcursionController {
 	 * @param error, un string pour le message
 	 * @return string, page de suppression d'excursion
 	 */
-	@RequestMapping(value = "/supprimerExcursion", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/supprimerExcursion", method = RequestMethod.GET)
 	public String afficheFormASupprimerExcu(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -214,7 +214,7 @@ public class ExcursionController {
 	 * @return redirection vers les méthodes liste (si succès de la suppression)
 	 *         ou suppr (si echec de la suppression)
 	 */
-	@RequestMapping(value = "/soumettreSupprExcursion", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSupprExcursion", method = RequestMethod.POST)
 	public String soumettreSupprForm(@ModelAttribute("excursionSuppr") Excursion eSuppr, RedirectAttributes rda) {
 		// appel de la methode service pour supprimer l'excursion
 		int retour = excursionService.deleteExcursion(eSuppr);
@@ -239,7 +239,7 @@ public class ExcursionController {
 	 * @param error, un string
 	 * @return page de modification d'excursion
 	 */
-	@RequestMapping(value = "/modifierExcursion", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/modifierExcursion", method = RequestMethod.GET)
 	public String afficheFormModifExcursion(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -260,7 +260,7 @@ public class ExcursionController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreModifExcursion", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreModifExcursion", method = RequestMethod.POST)
 	public String soumettreModifForm(@Valid @ModelAttribute("excursionModif") Excursion eModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {

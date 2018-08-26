@@ -28,7 +28,7 @@ import fr.adaming.model.Hebergement;
 import fr.adaming.service.IHebergementService;
 
 @Controller
-@RequestMapping("/hebergement")
+@RequestMapping("/admin/hebergement")
 @Scope("session")
 public class HebergementController {
 
@@ -79,7 +79,7 @@ public class HebergementController {
 	 * ModelAndView
 	 */
 
-	@RequestMapping(value = "/listeHebergements", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/listeHebergements", method = RequestMethod.GET)
 	public ModelAndView afficheListeHebergements() {
 
 		/** Recuperation de la liste des offres */
@@ -90,7 +90,7 @@ public class HebergementController {
 	// ***********************************************************************************************
 	// ******$$$$$$$$$$$$$$$**********
 	/** Le formulaire AjoutClient */
-	@RequestMapping(value = "/ajouterHebergement", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/ajouterHebergement", method = RequestMethod.GET)
 	public String afficheFormulaireAddHeb(Model modele, @RequestParam(value = "msg", required = false) String msg) {
 		modele.addAttribute("ajoutHeb", new Hebergement());
 		if (msg != null) {
@@ -104,7 +104,7 @@ public class HebergementController {
 	 * Methode ajout d'un hébergement. On utilise la methode String qui accepte
 	 * des args en entrée
 	 */
-	@RequestMapping(value = "/soumettreAjoutHebergement", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreAjoutHebergement", method = RequestMethod.POST)
 	public String soumettreAjoutFormulaireHeb(@Valid @ModelAttribute("ajoutHeb") Hebergement hebAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
@@ -137,7 +137,7 @@ public class HebergementController {
 	 *            correspondant à un hébergement
 	 * @return page de modification d'hébergement
 	 */
-	@RequestMapping(value = "/modifierHebergement", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/modifierHebergement", method = RequestMethod.GET)
 	public String afficheFormModifHeb(Model modele, @RequestParam(value = "msg", required = false) String msg) {
 		modele.addAttribute("hebModif", new Hebergement());
 		if (msg != null) {
@@ -158,7 +158,7 @@ public class HebergementController {
 	 * @return page de liste si succès, de modification si échec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreModifHeb", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreModifHeb", method = RequestMethod.POST)
 	public String soumettreModifFormHeb(@Valid @ModelAttribute("hebModif") Hebergement hebModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
@@ -198,7 +198,7 @@ public class HebergementController {
 	 *            correspondant à un hébergement
 	 * @return page de suppression d'hébergement
 	 */
-	@RequestMapping(value = "/supprimerHebergement", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/supprimerHebergement", method = RequestMethod.GET)
 	public String afficheFormASupprimerHeb(Model modele, @RequestParam(value = "msg", required = false) String msg) {
 		modele.addAttribute("hebSuppr", new Hebergement());
 		if (msg != null) {
@@ -217,7 +217,7 @@ public class HebergementController {
 	 * @return redirection vers les méthodes liste (si succès de la suppression)
 	 *         ou suppr (si echec de la suppression)
 	 */
-	@RequestMapping(value = "/soumettreSupprHeb", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSupprHeb", method = RequestMethod.POST)
 	public String soumettreSupprForm(@ModelAttribute("hebSuppr") Hebergement hebSuppr, RedirectAttributes rda) {
 		// appel de la methode service pour ajouter l'offre
 		int retour = hebService.deleteHebergement(hebSuppr);
@@ -254,7 +254,7 @@ public class HebergementController {
 	 * @return ModelAndView avec une offre de voyage en modèle et en vue la page
 	 *         recherche
 	 */
-	@RequestMapping(value = "/rechercherParNomHeb", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/rechercherParNomHeb", method = RequestMethod.GET)
 	public String afficherFormRechercheNoVoyage(Model modele,
 			@RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
@@ -275,7 +275,7 @@ public class HebergementController {
 	 *            contiendra l'hébergement si il est non nul
 	 * @return page recherche ou redirection vers la methode rechercherParNom
 	 */
-	@RequestMapping(value = "/soumettreSearchHeb", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSearchHeb", method = RequestMethod.POST)
 	public String soumettreSearch(@ModelAttribute("SearchNomHeb") Hebergement heb1, RedirectAttributes rda,
 			ModelMap modele) {
 		Hebergement hebOut = hebService.getHebByName(heb1);

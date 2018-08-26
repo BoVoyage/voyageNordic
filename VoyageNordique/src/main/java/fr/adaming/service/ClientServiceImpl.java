@@ -136,5 +136,9 @@ public class ClientServiceImpl implements IClientService{
 			throw new RuntimeException(e);
 		}		
 	}
+	@Override
+	public Client getClientByMail(Client cl) {
+		return clientDao.getClientByMail(cl);
+	}
 
 }

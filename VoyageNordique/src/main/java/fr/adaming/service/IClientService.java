@@ -30,5 +30,7 @@ public interface IClientService {
 	* Methode envoyer un mail au client
 	 */
 	void sendMail(Client cl);
+	
+	public Client getClientByMail(Client cl);
 
 }

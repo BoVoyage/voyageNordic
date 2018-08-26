@@ -37,7 +37,7 @@
 	<!-- ********************************************************************************************** -->
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#exampleModal" style="color: white">
+		data-target="#exampleModal" style="color: white; margin-left: 40%; margin-right: 30%">
 		<b>Supprimer Client</b>
 	</button>
 

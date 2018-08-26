@@ -57,7 +57,7 @@ public class VehiculeController {
 	 * @param error, un string
 	 * @return page ajout vehicule
 	 */
-	@RequestMapping(value = "/ajouterVehicule", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/ajouterVehicule", method = RequestMethod.GET)
 	public String afficheFormAjoutVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -75,7 +75,7 @@ public class VehiculeController {
 	 *            attribut message d'erreur
 	 * @return page de liste si succès, d'ajout si echec
 	 */
-	@RequestMapping(value = "/soumettreAjoutVehicule", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreAjoutVehicule", method = RequestMethod.POST)
 	public String soumettreAjoutForm(@Valid @ModelAttribute("vehiculeAjout") Vehicule vAjout, RedirectAttributes rda){
 		// appel de la methode service pour ajouter l'offre
 		Vehicule v1= vehiculeService.addVehicule(vAjout);
@@ -145,7 +145,7 @@ public class VehiculeController {
 	 * @param error, un string
 	 * @return page de suppression d'un vehicule
 	 */
-	@RequestMapping(value = "/supprimerVehicule", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/supprimerVehicule", method = RequestMethod.GET)
 	public String afficheFormASupprimerVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -164,7 +164,7 @@ public class VehiculeController {
 	 * @return redirection vers les méthodes liste (si succès de la suppression)
 	 *         ou suppr (si echec de la suppression)
 	 */
-	@RequestMapping(value = "/soumettreSupprVehicule", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSupprVehicule", method = RequestMethod.POST)
 	public String soumettreSupprForm(@ModelAttribute("vehiculeSuppr") Vehicule vSuppr, RedirectAttributes rda) {
 		// appel de la methode service pour ajouter le vehicule
 		int retour = vehiculeService.deleteVehicule(vSuppr);
@@ -189,7 +189,7 @@ public class VehiculeController {
 	 * @param error, un string
 	 * @return page de modification d'un vehicule
 	 */
-	@RequestMapping(value = "/modifierVehicule", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/modifierVehicule", method = RequestMethod.GET)
 	public String afficheFormModifVehicule(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -208,7 +208,7 @@ public class VehiculeController {
 	 *            attribut message d'erreur
 	 * @return page de liste si succès, d'ajout si echec
 	 */
-	@RequestMapping(value = "/soumettreModifVehicule", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreModifVehicule", method = RequestMethod.POST)
 	public String soumettreModifForm(@Valid @ModelAttribute("vehiculeModif") Vehicule vModif, RedirectAttributes rda){
 
 		// appel de la methode service pour ajouter l'offre

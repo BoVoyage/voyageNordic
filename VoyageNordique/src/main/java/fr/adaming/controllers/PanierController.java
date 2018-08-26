@@ -161,7 +161,7 @@ public class PanierController implements Serializable {
 	 * Ajouter une offre dans son panier en passant par une ligne de commande.
 	 * Ce panier n'est pas stocké dans la base de donnée mais dans la session.
 	 */
-	@RequestMapping(value = "/addOffrePan", method = RequestMethod.GET)
+	@RequestMapping(value = "/clientLoggedIn/addOffrePan", method = RequestMethod.GET)
 	public String addOffrePanier(Model modele, @RequestParam(value = "error", required = false) String error) {
 
 		if (error != null) {
@@ -173,7 +173,7 @@ public class PanierController implements Serializable {
 		return "panierAjout";
 	}
 
-	@RequestMapping(value = "/soummettreAddOffrePan", method = RequestMethod.POST)
+	@RequestMapping(value = "/clientLoggedIn/soummettreAddOffrePan", method = RequestMethod.POST)
 	public String soummettreAddOffrePanier(Model modele, @RequestParam(value = "error", required = false) String error,
 			@RequestParam("pName") String designation, RedirectAttributes rda) {
 

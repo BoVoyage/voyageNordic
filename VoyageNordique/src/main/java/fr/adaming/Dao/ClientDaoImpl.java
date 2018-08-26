@@ -11,52 +11,62 @@ import org.springframework.stereotype.Repository;
 import fr.adaming.model.Client;
 
 @Repository
-/** sert a declarer le dao comme un bean de spring IoC. On pouvait aussi utiliser: @component. On l'utilise juste pour le Dao*/
-public class ClientDaoImpl implements IClientDao{
-	
-	//*****************************************************************************
-	/**declaration de l'attribut sessionFactory*/
-	/**sf est un collaborateur de FormateurDaoImpl donc on utilise l'annotation @Autowired*/
+/**
+ * sert a declarer le dao comme un bean de spring IoC. On pouvait aussi
+ * utiliser: @component. On l'utilise juste pour le Dao
+ */
+public class ClientDaoImpl implements IClientDao {
+
+	// *****************************************************************************
+	/** declaration de l'attribut sessionFactory */
+	/**
+	 * sf est un collaborateur de FormateurDaoImpl donc on utilise
+	 * l'annotation @Autowired
+	 */
 	@Autowired
 	private SessionFactory sf;
-	/**setter pour l'injection de dependance de sf*/
+
+	/** setter pour l'injection de dependance de sf */
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
-	//*********************************************************************************
+
+	// *********************************************************************************
 	@Override
 	public Client addClient(Client cl) {
 		/** recuperer une session */
-		Session s=sf.getCurrentSession();
+		Session s = sf.getCurrentSession();
 		s.save(cl);
 		return cl;
 	}
-	//************************************************************************************
+
+	// ************************************************************************************
 	@Override
 	public List<Client> getAllClientDao() {
-		/**recup de la session*/
-		Session s=sf.getCurrentSession();
-		/** La requete HQL*/
-		String reqHQL="From Client";
-		/**Creation du query*/
-		Query query=s.createQuery(reqHQL);
-		/**recuperation de la liste*/
+		/** recup de la session */
+		Session s = sf.getCurrentSession();
+		/** La requete HQL */
+		String reqHQL = "From Client";
+		/** Creation du query */
+		Query query = s.createQuery(reqHQL);
+		/** recuperation de la liste */
 		return query.list();
 	}
-	//************************************************************************************
+
+	// ************************************************************************************
 	@Override
 	public int updateClient(Client cl) {
-		
-		/**Recuperer la session*/
-		Session s=sf.getCurrentSession();
-		
-		/**La requete HQL*/
-		String reqHQL="UPDATE Client cl SET cl.noClient=:pNoClient, cl.nomClient=:pNom, cl.prenomClient=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=:pIdClient";
-		
-		//Creation du Query
-		Query query=s.createQuery(reqHQL);
-		
-		/**Passage des params*/
+
+		/** Recuperer la session */
+		Session s = sf.getCurrentSession();
+
+		/** La requete HQL */
+		String reqHQL = "UPDATE Client cl SET cl.noClient=:pNoClient, cl.nomClient=:pNom, cl.prenomClient=:pPrenom, cl.dn=:pDn, cl.mail=:pMail, cl.mdp=:pMdp, cl.tel=:pTel where cl.idClient=:pIdClient";
+
+		// Creation du Query
+		Query query = s.createQuery(reqHQL);
+
+		/** Passage des params */
 		query.setParameter("pNoClient", cl.getNoClient());
 		query.setParameter("pNom", cl.getNomClient());
 		query.setParameter("pPrenom", cl.getPrenomClient());
@@ -65,36 +75,38 @@ public class ClientDaoImpl implements IClientDao{
 		query.setParameter("pMdp", cl.getMdp());
 		query.setParameter("pTel", cl.getTel());
 		query.setParameter("pIdClient", cl.getIdClient());
-		
+
 		return query.executeUpdate();
 	}
+
 	@Override
 	public int deleteClient(Client cl) {
-		/**Recuperer la session*/
+		/** Recuperer la session */
 		Session s = sf.getCurrentSession();
-		
-		/** La req HQL*/
-		String reqHQl="Delete Client cl where cl.noClient=:pNoClient";
-		
-		/**Recuperation du query*/
-		Query query=s.createQuery(reqHQl);
-		
-		/**pASSAGE DES params*/
+
+		/** La req HQL */
+		String reqHQl = "Delete Client cl where cl.noClient=:pNoClient";
+
+		/** Recuperation du query */
+		Query query = s.createQuery(reqHQl);
+
+		/** pASSAGE DES params */
 		query.setParameter("pNoClient", cl.getNoClient());
-		
-		int verif=query.executeUpdate();
-		
+
+		int verif = query.executeUpdate();
+
 		return verif;
 	}
+
 	@Override
 	public List<Client> getClientByNomOrNoClient(Client cl) {
-		/**Recuperer la session*/
+		/** Recuperer la session */
 		Session s = sf.getCurrentSession();
-		
-		/** Req HQL*/
+
+		/** Req HQL */
 		String req = "FROM Client cl WHERE cl.noClient=:pNoClient OR cl.nomClient=:pNom";
 
-		/** Query*/
+		/** Query */
 		Query query = s.createQuery(req);
 
 		// passage des parametres
@@ -102,6 +114,23 @@ public class ClientDaoImpl implements IClientDao{
 		query.setParameter("pNom", cl.getNomClient());
 
 		return query.list();
+	}
+
+	@Override
+	public Client getClientByMail(Client cl) {
+		// récupérer la session
+		Session s = sf.getCurrentSession();
+
+		// Requête HQL
+		String req = "FROM Client cl WHERE cl.mail=:pMail";
+
+		// récup du query
+		Query query = s.createQuery(req);
+
+		// Paramétrage
+		query.setParameter("pMail", cl.getMail());
+
+		return (Client) query.uniqueResult();
 	}
 
 }

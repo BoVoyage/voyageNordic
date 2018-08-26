@@ -53,6 +53,7 @@
 				<th>Nom Hébergement</th>
 				<th>Description</th>
 				<th>Image</th>
+				<th>Gestion</th>
 			</tr>
 
 			<tr>
@@ -62,12 +63,17 @@
 				<td><img
 					src="${pageContext.request.contextPath}/hebergement/getImage?pId=${foundHeb.idHebergement}"
 					style="width: 100px; height: 100px" /></td>
+				<td><a
+					href="${pageContext.request.contextPath}/hebergement/modifLinkHeb?pNom=${foundHeb.nomHebergement}">Modifier</a>
+					|<a
+					href="<c:url value="/hebergement/supprHebLink/${foundHeb.nomHebergement}"/>">Supprimer</a></td>
 			</tr>
 
 		</table>
 	</c:if>
 	<c:if test="${not empty error}">
-		<h1 style="color: red; text-align: center">Aucun hébergement n'est répertorié sous ce nom !</h1>
+		<h1 style="color: red; text-align: center">Aucun hébergement
+			n'est répertorié sous ce nom !</h1>
 	</c:if>
 
 </body>

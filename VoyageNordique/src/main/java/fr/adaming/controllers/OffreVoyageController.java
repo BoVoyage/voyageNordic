@@ -218,7 +218,7 @@ public class OffreVoyageController {
 	 *            un string
 	 * @return page ajout d'offre
 	 */
-	@RequestMapping(value = "/ajouterOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/ajouterOffre", method = RequestMethod.GET)
 	public String afficheFormAjoutOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -239,7 +239,7 @@ public class OffreVoyageController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreAjoutOffre", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreAjoutOffre", method = RequestMethod.POST)
 	public String soumettreAjoutForm(@Valid @ModelAttribute("offreAjout") OffreVoyage ovAjout, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
@@ -317,7 +317,7 @@ public class OffreVoyageController {
 	 *            un string
 	 * @return page de suppression d'offre
 	 */
-	@RequestMapping(value = "/supprimerOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/supprimerOffre", method = RequestMethod.GET)
 	public String afficheFormASupprimerOffre(Model modele,
 			@RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
@@ -337,7 +337,7 @@ public class OffreVoyageController {
 	 * @return redirection vers les méthodes liste (si succès de la suppression)
 	 *         ou suppr (si echec de la suppression)
 	 */
-	@RequestMapping(value = "/soumettreSupprOffre", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreSupprOffre", method = RequestMethod.POST)
 	public String soumettreSupprForm(@ModelAttribute("offreSuppr") OffreVoyage ovSuppr, RedirectAttributes rda) {
 		// appel de la methode service pour ajouter l'offre
 		int retour = offreVoyageService.deleteOffreVoyage(ovSuppr);
@@ -363,7 +363,7 @@ public class OffreVoyageController {
 	 *            un string
 	 * @return page ajout d'offre
 	 */
-	@RequestMapping(value = "/modifierOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/modifierOffre", method = RequestMethod.GET)
 	public String afficheFormModifOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
 		if (error != null) {
 			modele.addAttribute("error", error);
@@ -389,7 +389,7 @@ public class OffreVoyageController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreModifOffre", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreModifOffre", method = RequestMethod.POST)
 	public String soumettreModifForm(@Valid @ModelAttribute("offreModif") OffreVoyage ovModif, RedirectAttributes rda,
 			MultipartFile file) throws IOException {
 		if (file != null) {
@@ -422,7 +422,7 @@ public class OffreVoyageController {
 	 *            un string
 	 * @return page de cloture d'offre
 	 */
-	@RequestMapping(value = "/cloreOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/cloreOffre", method = RequestMethod.GET)
 	public String afficheFormCloreOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
 
 		modele.addAttribute("offreClose", new OffreVoyage());
@@ -443,7 +443,7 @@ public class OffreVoyageController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettreCloreOffre", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettreCloreOffre", method = RequestMethod.POST)
 	public String soumettreCloreForm(@ModelAttribute("offreClose") OffreVoyage ovClose, RedirectAttributes rda) {
 
 		// appel de la methode service pour clore l'oddre
@@ -469,7 +469,7 @@ public class OffreVoyageController {
 	 * @param
 	 * @return page de mise en promo d'une offre
 	 */
-	@RequestMapping(value = "/promoOffre", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/promoOffre", method = RequestMethod.GET)
 	public String afficheFormPromoOffre(Model modele, @RequestParam(value = "error", required = false) String error) {
 		modele.addAttribute("offrePromo", new OffreVoyage());
 		if (error != null) {
@@ -488,7 +488,7 @@ public class OffreVoyageController {
 	 * @return page de liste si succès, d'ajout si echec
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/soumettrePromoOffre", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/soumettrePromoOffre", method = RequestMethod.POST)
 	public String soumettrePromoForm(@ModelAttribute("offrePromo") OffreVoyage ovPromo, RedirectAttributes rda) {
 
 		// appel de la methode service pour clore l'oddre

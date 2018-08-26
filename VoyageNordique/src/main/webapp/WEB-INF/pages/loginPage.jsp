@@ -14,7 +14,8 @@
 			type="text" name="j_password" /> <br /> <input type="submit"
 			value="Se Connecter" />
 	</form>
-
+<br/>
+<a href="${pageContext.request.contextPath}/client/ajouterClient" style="color: #ffffff; ; background-color: #4172c1">Pas encore inscrit? Créez un compte</a>
 
 	<c:if test="${not empty echec}">
 		<h1 style="color: red; text-align: center">Le mot de passe ou le
@@ -23,6 +24,8 @@
 	<c:if test="${not empty msg}">
 		<h1 style="color: red; text-align: center">Vous êtes déconnecté.</h1>
 	</c:if>
+
+
 
 </body>
 </html>

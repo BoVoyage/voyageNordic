@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -55,7 +56,7 @@ public class OffreVoyage {
 	@ManyToOne
 	@JoinColumn(name = "heberg_id", referencedColumnName = "idhebergement")
 	private Hebergement hebergement;
-	@ManyToMany(mappedBy = "listeOffreVoyage")
+	@ManyToMany(mappedBy = "listeOffreVoyage",fetch = FetchType.EAGER)
 	private List<Excursion> listeExcursion;
 	@OneToOne(mappedBy = "offreVoyage")
 	private Vehicule vehicule;
