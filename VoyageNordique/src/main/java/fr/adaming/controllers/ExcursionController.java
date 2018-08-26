@@ -136,6 +136,7 @@ public class ExcursionController {
 	@RequestMapping(value = "/rechercherExcursion", method = RequestMethod.GET)
 	public String afficherFormRechercheExcursion(Model modele,
 			@RequestParam(value = "error", required = false) String error) {
+		
 		if (error != null) {
 			modele.addAttribute("error", error);
 		}
@@ -158,11 +159,11 @@ public class ExcursionController {
 	@RequestMapping(value = "/soumettreSearchExcursion", method = RequestMethod.POST)
 	public String soumettreSearchExcursion(@ModelAttribute("SearchExcursion") Excursion e1, RedirectAttributes rda,
 			ModelMap modele) {
-		Excursion eOut=excursionService.getExcuByName(e1);
+		List<Excursion> listeExcu=excursionService.getExcuByName(e1);
 		
-		if (eOut != null) {
+		if (listeExcu.size() != 0) {
 			// ajouter dans le modele, l'excursion trouvée
-			modele.addAttribute("SearchExcursion", eOut);
+			modele.addAttribute("listeSearchExcursion", listeExcu);
 			return "excursionRecherche";
 		} else {
 			rda.addAttribute("error", true);

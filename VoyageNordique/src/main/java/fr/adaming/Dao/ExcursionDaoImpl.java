@@ -53,7 +53,7 @@ public class ExcursionDaoImpl implements IExcursionDao {
 		Session s = sf.getCurrentSession();
 		
 		//retrouver l'objet excursion par son nom
-		excu=this.getExcuByName(excu);
+		excu=this.getExcu(excu);
 		
 		try{
 			s.delete(excu);
@@ -70,23 +70,24 @@ public class ExcursionDaoImpl implements IExcursionDao {
 	public int updateExcursion(Excursion excu) {
 		// recuperation de la session
 		Session s = sf.getCurrentSession();
-		
-		//creation de la requete
-		String req="UPDATE Excursion ex SET ex.nomExcursion=:pNom, ex.descriptionExcursion=:pDesc, ex.imageExcursion=:pImg, ex.prixExcursion=:pPrix WHERE ex.idExcursion=:pId";
-		
-		//creation de query et passage des paramètres
-		Query query=s.createQuery(req);
+
+		// creation de la requete
+		String req = "UPDATE Excursion ex SET ex.nomExcursion=:pNom, ex.descriptionExcursion=:pDesc, ex.imageExcursion=:pImg, ex.prixExcursion=:pPrix WHERE ex.idExcursion=:pId";
+
+		// creation de query et passage des paramètres
+		Query query = s.createQuery(req);
 		query.setParameter("pNom", excu.getNomExcursion());
 		query.setParameter("pDesc", excu.getDescriptionExcursion());
 		query.setParameter("pImg", excu.getImageExcursion());
 		query.setParameter("pPrix", excu.getPrixExcursion());
 		query.setParameter("pId", excu.getIdExcursion());
-		
+
 		return query.executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Excursion getExcuByName(Excursion excu) {
+	public List<Excursion> getExcuByName(Excursion excu) {
 		// recuperation de la session
 		Session s = sf.getCurrentSession();
 
@@ -97,7 +98,7 @@ public class ExcursionDaoImpl implements IExcursionDao {
 		Query query = s.createQuery(req);
 		query.setParameter("pNom", excu.getNomExcursion());
 
-		return (Excursion) query.uniqueResult();
+		return query.list();
 	}
 
 	@Override
@@ -106,6 +107,21 @@ public class ExcursionDaoImpl implements IExcursionDao {
 		Session s = sf.getCurrentSession();
 
 		return (Excursion) s.get(Excursion.class, id);
+	}
+
+	@Override
+	public Excursion getExcu(Excursion excu) {
+		// recuperation de la session
+		Session s = sf.getCurrentSession();
+
+		// creation de la requete
+		String req = "FROM Excursion ex WHERE ex.idExcursion=:pId";
+
+		// creation de query et passage des paramètres
+		Query query = s.createQuery(req);
+		query.setParameter("pId", excu.getIdExcursion());
+
+		return (Excursion) query.uniqueResult();
 	}
 
 }

@@ -36,9 +36,9 @@ public interface IExcursionService {
 	/**
 	 * Méthode de recherche d'une excursion par nom
 	 * @param excu, un objet excursion
-	 * @return objet excursion trouvé
+	 * @return liste d'objet excursion
 	 */
-	public Excursion getExcuByName(Excursion excu);
+	public List<Excursion> getExcuByName(Excursion excu);
 	
 	/**
 	 * Méthode de recherche d'une excursion par id
@@ -46,5 +46,13 @@ public interface IExcursionService {
 	 * @return un objet excursion
 	 */
 	public Excursion getExcuById(int id);
+	
+	/**
+	 * Méthode de recherche d'une excursion
+	 * @param un objet excursion
+	 * @return un objet excursion
+	 */
+	public Excursion getExcu(Excursion excu);
+
 
 }

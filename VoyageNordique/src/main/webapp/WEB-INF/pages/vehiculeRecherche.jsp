@@ -72,7 +72,9 @@
 
 	</table>
 
-	<h1 style="color: red; text-align: center">${error}</h1>
+	<c:if test="${not empty error}">
+		<h1 style="color: red; text-align: center">La recherche a échoué</h1>
+	</c:if>
 
 </body>
 </html>

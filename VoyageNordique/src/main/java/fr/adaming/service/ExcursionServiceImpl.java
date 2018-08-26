@@ -38,13 +38,18 @@ public class ExcursionServiceImpl implements IExcursionService{
 	}
 
 	@Override
-	public Excursion getExcuByName(Excursion excu) {
+	public List<Excursion> getExcuByName(Excursion excu) {
 		return excursionDao.getExcuByName(excu);
 	}
 
 	@Override
 	public Excursion getExcuById(int id) {
 		return excursionDao.getExcuById(id);
+	}
+
+	@Override
+	public Excursion getExcu(Excursion excu) {
+		return excursionDao.getExcu(excu);
 	}
 
 }
