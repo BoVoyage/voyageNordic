@@ -33,63 +33,87 @@
 	<%@ include file="../../templates/header.html"%>
 
 	<br />
+<!-- ********************************************************************************************** -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color: white">
+  <b>S'inscrire en tant que Client</b>
+</button>
 
-	<form:form cssClass="form-horizontal" method="POST"	action="soumettreAjoutClient" modelAttribute="AjoutClient" enctype = "multipart/form-data">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel" style="color: blue; text-align: center"><b>Inscription Client</b></h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+		<!-- ********$$$$$$$$$$$$$$*************** -->
 		
-		<div class="form-group">		
-	<form:label cssClass="col-xs-2 control-label" path="noClient">Numero référence du Client</form:label>
-		<div class="col-xs-3">
-				<form:input cssClass="form-control" placeholder="numero Client" path="noClient" />
-			</div>
-		</div>
+        <form:form cssClass="form-horizontal" method="POST"	action="soumettreAjoutClient" modelAttribute="AjoutClient" enctype = "multipart/form-data">
+		
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="nomClient">Nom Client</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="nomClient" cssStyle="color: blue">Nom Client</form:label>
+			<div class="col-sm-8">
 				<form:input cssClass="form-control" placeholder="nom Client" path="nomClient" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="prenomClient">Prenom Client</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="prenomClient" cssStyle="color: blue">Prenom Client</form:label>
+			<div class="col-sm-8">
 				<form:input cssClass="form-control" placeholder="prenom Client" path="prenomClient" />
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="dn">Date de Naissance</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="dn" cssStyle="color: blue">Date de Naissance</form:label>
+			<div class="col-sm-8">
 				<form:input type="date" cssClass="form-control" placeholder="Date de Naissance du client" path="dn" />
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="mail">Mail</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="mail" cssStyle="color: blue">Mail</form:label>
+			<div class="col-sm-8">
 				<form:input cssClass="form-control" placeholder="mail Client" path="mail" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="mdp">Mot de passe</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="mdp" cssStyle="color: blue">Mot de passe</form:label>
+			<div class="col-sm-8">
 				<form:input cssClass="form-control" placeholder="mot de passe du Client" path="mdp" />
 			</div>
 		</div>
 		<div class="form-group">
-			<form:label cssClass="col-xs-2 control-label" path="tel">Telephone</form:label>
-			<div class="col-xs-3">
+			<form:label cssClass="col-xs-3 control-label" path="tel" cssStyle="color: blue">Telephone</form:label>
+			<div class="col-sm-8">
 				<form:input cssClass="form-control" placeholder="telephone du Client" path="tel" />
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<div class="col-xs-offset-2 col-xs-10">
-				<button type="submit" class="btn btn-default">Ajouter Client</button>
+			<div class="col-sm-offset-2 col-xs-10">
+				<button type="submit" class="btn btn-primary">Ajouter Client</button>
 			</div>
 		</div>
 	</form:form>
 
+		<!-- ********$$$$$$$$$$$$$$*************** -->
 
-	<h1 style="color: red; text-align: center">${msg}</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+		<h1 style="color: red; text-align: center">${msg}</h1>
+<!-- ********************************************************************************************** -->
+
 
 </body>
 </html>
