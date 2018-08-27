@@ -24,7 +24,6 @@ public class Vehicule {
 	private String categorieVehicule;
 	@NotEmpty(message="Veuillez remplir le champs marque")
 	private String marqueVehicule;
-	@NotEmpty(message="Veuillez indiquer le prix du véhicule")
 	private double prixVehicule;
 	
 	//transformation de l'association UML en JAVA

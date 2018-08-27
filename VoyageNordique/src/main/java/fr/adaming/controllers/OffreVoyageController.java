@@ -153,7 +153,7 @@ public class OffreVoyageController {
 			return "offreRechercheClient";
 		}
 
-	// ******************* recup de la liste des offres
+	// ******************* details d'une offre
 	/**
 	 * 
 	 * Méthode d'affichage de l'accueil
@@ -190,7 +190,7 @@ public class OffreVoyageController {
 		List<OffreVoyage> listingPromo = offreVoyageService.getOffresPromoService();
 		modele.addAttribute("allOffresVoyage", listingOffres);
 		modele.addAttribute("allOffresPromo", listingPromo);
-		return "offreListe";
+		return "accueil";
 	}
 
 	// ******************* recup de la liste des offres en promo
@@ -252,7 +252,7 @@ public class OffreVoyageController {
 
 		if (ov2.getIdVoyage() != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeOffreVoyage";
+			return "redirect:accueil";
 		} else {
 			rda.addAttribute("error", true);
 

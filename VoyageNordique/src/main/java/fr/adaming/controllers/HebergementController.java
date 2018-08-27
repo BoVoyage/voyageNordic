@@ -122,7 +122,7 @@ public class HebergementController {
 			rda.addAttribute("msg", true);
 
 			// redirection vers la methode ajouterOffre
-			return "redirect:hebergementAjout";
+			return "redirect:ajouterHebergement";
 		}
 	}
 

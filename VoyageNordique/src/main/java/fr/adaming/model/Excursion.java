@@ -28,7 +28,6 @@ public class Excursion{
 	private String descriptionExcursion;
 	@Lob
 	private byte[] imageExcursion;
-	@NotEmpty(message="Veuillez entrer le prix de l'excursion")
 	private double prixExcursion;
 	
 	//transformation de l'association UML en JAVA

@@ -33,7 +33,7 @@ public class OffreVoyage {
 	@NotEmpty(message="Veuillez saisir la destination du voyage")
 	private String pays;
 	private String ville;
-	@NotEmpty(message="Veuillez saisir la quantité de places disponibles")
+//	@NotEmpty(message="Veuillez saisir la quantité de places disponibles")
 	private int quantite;
 	private boolean etat;
 	@Lob
@@ -45,10 +45,10 @@ public class OffreVoyage {
 	@NotEmpty(message="Veuillez entrer le nom de l'offre de voyage")
 	private String designation;
 	@Temporal(TemporalType.DATE)
-	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
+//	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
 	private Date dateDepart;
 	@Temporal(TemporalType.DATE)
-	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
+//	@Future(message="Veuillez entrer une date postérieure à celle d'aujourd'hui")
 	private Date dateRetour;
 	private String compagnieAerienne;
 

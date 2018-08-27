@@ -35,7 +35,8 @@
 				<div class="main">
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-sm-offset-1">
-							<h1 style="color : #000099">BioFrost Voyage</h1>
+							<h1 style="color : #000099">BiFrost Voyage</h1>
+							<br/>
 							<h2>Réserver pour explorer</h2>
 							<form action="j_spring_security_check" method="post"
 								accept-charset="utf-8">
@@ -45,14 +46,15 @@
 											placeholder="Email/Idenfiant" />
 									</div>
 								</div>
-
+								<br/>
+								<br/>
 								<div class="form-group">
 									<div class="col-md-8">
 										<input type="password" name="j_password"
 											placeholder="Mot de passe" class="form-control" />
 									</div>
 								</div>
-
+<br/>
 								<br />
 								<div class="form-group">
 									<div class="col-md-offset-0 col-md-8">

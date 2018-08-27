@@ -51,7 +51,7 @@
 
 				<td><img
 					src="${pageContext.request.contextPath}/excursion/getImage?pId=${e.idExcursion}"
-					style="width: 100px; height: 100px" /></td>
+					style="width: 150px; height: 125px" /></td>
 			</tr>
 		</c:forEach>
 
