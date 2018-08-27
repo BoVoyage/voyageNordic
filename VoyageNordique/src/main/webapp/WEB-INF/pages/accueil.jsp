@@ -33,51 +33,49 @@
 	<!-- Insérer un filtre permettant de filtrer les offres. -->
 	<!-- Insérer une liste complète des offres sur 2 colonnes responsives -->
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="la.jpg" alt="Chania">
-      <div class="carousel-caption">
-        <h3>Los Angeles</h3>
-        <p>LA is always so much fun!</p>
-      </div>
-    </div>
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="../resources/images/rennes_Laponie.jpg" alt="Chania">
+				<div class="carousel-caption">
+					<h3>Laponie</h3>
+					<p>Excursion au pays des Rennes!</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="../resources/images/fjord_norvege.jpg" alt="Norvege">
+				<div class="carousel-caption">
+					<h3>Norvège</h3>
+					<p>Evadez vous le long des Fjords</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="../resources/images/geyser_iceland.jpg" alt="Iceland">
+				<div class="carousel-caption">
+					<h3>Islande</h3>
+					<p>Admirez les geysers!</p>
+				</div>
+			</div>
+		</div>
 
-    <div class="item">
-      <img src="chicago.jpg" alt="Chicago">
-      <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago!</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="ny.jpg" alt="New York">
-      <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>We love the Big Apple!</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
 
 	<div class="container marketing">
 
@@ -93,13 +91,15 @@
 					</h2>
 					<div
 						style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
-						<p style="color: white"><s>Prix initial: ${o.prixVoyage}
-							&#8364</s></p>
-							<p style="font-size: larger; color: white"> PROMO!: ${o.remiseVoyage}
-							&#8364</p>
+						<p style="color: white">
+							<s>Prix initial: ${o.prixVoyage} &#8364</s>
+						</p>
+						<p style="font-size: larger; color: white">PROMO!:
+							${o.remiseVoyage} &#8364</p>
 					</div>
-						<a class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}" role="button"
-						style="margin: 6px;">Détails</a>
+					<a class="btn btn-lg btn-info"
+						href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}"
+						role="button" style="margin: 6px;">Détails</a>
 				</div>
 			</c:forEach>
 
@@ -120,8 +120,9 @@
 						<p style="font-size: larger; color: white">${o.prixVoyage}
 							&#8364</p>
 					</div>
-					<a class="btn btn-lg btn-info" href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}" role="button"
-						style="margin: 6px;">Détails</a>
+					<a class="btn btn-lg btn-info"
+						href="${pageContext.request.contextPath}/offreVoyage/detailsOffre?pId=${o.idVoyage}"
+						role="button" style="margin: 6px;">Détails</a>
 
 				</div>
 				<div class="col-md-5">
