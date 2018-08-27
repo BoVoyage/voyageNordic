@@ -78,7 +78,7 @@
 			</div>
 			<div class="col-md-5">
 				<img class="featurette-image img-responsive center-block"
-					src="${pageContext.request.contextPath}/hebergement/getImage?pId=${hebDetails.idHebergement}"
+					src="${pageContext.request.contextPath}/admin/hebergement/getImage?pId=${hebDetails.idHebergement}"
 					alt="Generic placeholder image"
 					style="width: 250px; height: 250px; border: 1px solid black; margin-top: 100px; margin-bottom: 5px; padding: none">
 			</div>
