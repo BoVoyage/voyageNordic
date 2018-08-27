@@ -285,7 +285,7 @@ public class HebergementController {
 			return "hebergementRecherche";
 		} else {
 			rda.addAttribute("error", true);
-			return "redirect:rechercherParNoVoyage";
+			return "redirect:hebergementRecherche";
 		}
 	}
 }

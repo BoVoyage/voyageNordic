@@ -252,7 +252,7 @@ public class OffreVoyageController {
 
 		if (ov2.getIdVoyage() != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:accueil";
+			return "redirect:ajouterOffre";
 		} else {
 			rda.addAttribute("error", true);
 

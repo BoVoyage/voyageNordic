@@ -62,7 +62,7 @@
 				<td>${foundHeb.descriptionHebergement}</td>
 
 				<td><img
-					src="${pageContext.request.contextPath}/hebergement/getImage?pId=${foundHeb.idHebergement}"
+					src="${pageContext.request.contextPath}/admin/hebergement/getImage?pId=${foundHeb.idHebergement}"
 					style="width: 100px; height: 100px" /></td>
 				<td><a
 					href="${pageContext.request.contextPath}/hebergement/modifLinkHeb?pNom=${foundHeb.nomHebergement}">Modifier</a>
