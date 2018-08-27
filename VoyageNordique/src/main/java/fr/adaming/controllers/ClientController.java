@@ -91,7 +91,7 @@ public class ClientController {
 
 	@RequestMapping(value = "/clientLoggedIn/monCompte", method = RequestMethod.GET)
 	public String afficheMonCompte(Model modele) {
-
+		
 		modele.addAttribute("clientIn", this.cl);
 
 		return "monCompte";

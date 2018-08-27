@@ -129,7 +129,7 @@
 					<img class="featurette-image img-responsive center-block"
 						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${o.idVoyage}"
 						alt="Generic placeholder image"
-						style="width: 250px; height: 250px; border: 1px solid black; margin-top: 100px; padding: none">
+						style="width: 350px; height: 250px; border: 1px solid black; margin-top: 100px; padding: none">
 				</div>
 			</div>
 

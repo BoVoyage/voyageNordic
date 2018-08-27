@@ -94,7 +94,7 @@
 				<h2>${vDetails.marqueVehicule}</h2>
 				<div
 					style="border: 2px solid #4172c1; margin-bottom: 5px; padding-top: 5px; text-align: center; background-color: #4172c1">
-					<p style="color: white">Prix: ${vDetail.prixVehicule} &#8364</p>
+					<p style="color: white">Prix: ${vDetails.prixVehicule} &#8364</p>
 				</div>
 				<a class="btn btn-lg btn-info" href="" role="button"
 					style="margin: 6px;">Réserver un véhicule</a>
@@ -106,7 +106,7 @@
 			<c:forEach var="ex" items="${exListe}">
 				<div class="col-lg-4" style="text-align: center">
 					<img class="img-circle"
-						src="${pageContext.request.contextPath}/offreVoyage/getImage?pId=${ex.idExcursion}"
+						src="${pageContext.request.contextPath}/excursion/getImage?pId=${ex.idExcursion}"
 						alt="Generic placeholder image" width="140" height="140">
 					<h2>${ex.nomExcursion}</h2>
 					<p>${ex.descriptionExcursion}</p>

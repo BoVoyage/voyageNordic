@@ -106,7 +106,7 @@ public class ClientServiceImpl implements IClientService{
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(cl.getMail()));
 			
 			// Set Subject: header du message
-			message.setSubject("Mail facture");
+			message.setSubject("Mail inscription");
 			
 			ByteArrayOutputStream outputStream=null;
 			
@@ -116,7 +116,7 @@ public class ClientServiceImpl implements IClientService{
 					+ "\n Votre inscription s'est bien effectuée sur notre site"
 					+ "\n Votre identifiant est: "+ cl.getMail()
 					+ "\n Votre Mot de passe est: "+ cl.getMdp()
-					+ "\n\n\n L'equipe Demba, Noelia, Ewen et Thibault vous souhaite la bienvenue sur notre site!");
+					+ "\n\n\n L'equipe BiFrost Voyage vous souhaite la bienvenue sur notre site!");
 			
 			//Ecrire le pdf dans outputStream
 			outputStream =new ByteArrayOutputStream();
@@ -130,7 +130,7 @@ public class ClientServiceImpl implements IClientService{
 			//On en voie le message
 			Transport.send(message);
 			//Verification de la reussite de l'envoie du mail
-			System.out.println("DSD envoie du mail reussi ");
+			System.out.println("DSD envoi du mail reussi ");
 						
 		}catch(Exception e){
 			throw new RuntimeException(e);

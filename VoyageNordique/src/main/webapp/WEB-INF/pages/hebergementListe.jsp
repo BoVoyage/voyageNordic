@@ -47,7 +47,7 @@
 				<td>${h.descriptionHebergement}</td>
 				<td><img
 					src="${pageContext.request.contextPath}/admin/hebergement/getImage?pId=${h.idHebergement}"
-					style="width: 100px; height: 100px" /></td>
+					style="width: 150px; height: 125px" /></td>
 				<td><a
 					href="${pageContext.request.contextPath}/hebergement/modifLinkHeb?pNom=${h.nomHebergement}">Modifier</a>
 					|<a

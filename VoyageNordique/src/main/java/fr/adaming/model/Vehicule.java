@@ -28,7 +28,7 @@ public class Vehicule {
 	
 	//transformation de l'association UML en JAVA
 	@OneToOne
-	@JoinColumn(name="voyage_id", referencedColumnName="idvoyage")
+	@JoinColumn(name="voyage_id", referencedColumnName="idVoyage")
 	private OffreVoyage offreVoyage;
 
 	

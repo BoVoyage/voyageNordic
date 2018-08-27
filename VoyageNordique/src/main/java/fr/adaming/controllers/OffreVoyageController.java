@@ -344,7 +344,7 @@ public class OffreVoyageController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeOffreVoyage";
+			return "redirect:supprimerOffre";
 		} else {
 			rda.addAttribute("error", true);
 
@@ -402,7 +402,7 @@ public class OffreVoyageController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeOffreVoyage";
+			return "redirect:modifierOffre";
 		} else {
 			rda.addAttribute("error", true);
 
@@ -451,7 +451,7 @@ public class OffreVoyageController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeOffreVoyage";
+			return "redirect:cloreOffre";
 		} else {
 			rda.addAttribute("error", true);
 
@@ -496,7 +496,7 @@ public class OffreVoyageController {
 
 		if (retour != 0) {
 			// je vais rediriger la requete vers la methode liste des offres
-			return "redirect:listeOffreVoyage";
+			return "redirect:promoOffre";
 		} else {
 			rda.addAttribute("error", true);
 
